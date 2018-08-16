@@ -7,9 +7,13 @@ import javax.persistence.*;
 @Entity
 @Table(name = "PRF_FUNZIONE")
 public class Funzione {
+	
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_FUN_SEQ")
+    @SequenceGenerator(sequenceName = "prf_funzione_seq", initialValue = 1, allocationSize = 1, name = "PRF_FUN_SEQ")
 
 	@Column(name = "ID_FUNZIONE")
-	private long idFunzione;
+	@Id
+	private Long idFunzione;
 
 	@Column(name = "CODICE")
 	private String codice;
@@ -29,11 +33,11 @@ public class Funzione {
 	@Column(name = "UT_MODIFICA")
 	private String utModifica;
 
-	public long getIdFunzione() {
+	public Long getIdFunzione() {
 		return idFunzione;
 	}
 
-	public void setIdFunzione(long idFunzione) {
+	public void setIdFunzione(Long idFunzione) {
 		this.idFunzione = idFunzione;
 	}
 

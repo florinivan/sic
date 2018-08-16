@@ -9,8 +9,12 @@ import java.sql.Timestamp;
 
 public class Filtro {
 	
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_FIL_SEQ")
+    @SequenceGenerator(sequenceName = "prf_filtro_seq", initialValue = 1, allocationSize = 1, name = "PRF_FIL_SEQ")
+	
 	@Column(name = "ID_FILTRO")
-	private Integer idFiltro;
+	@Id
+	private Long idFiltro;
 	
 	@Column(name = "CODICE")
 	private String codice;
@@ -33,11 +37,11 @@ public class Filtro {
 	@Column(name = "UT_MOFICA")
 	private String utModifica;
 
-	public Integer getIdFiltro() {
+	public Long getIdFiltro() {
 		return idFiltro;
 	}
 
-	public void setIdFiltro(Integer idFiltro) {
+	public void setIdFiltro(Long idFiltro) {
 		this.idFiltro = idFiltro;
 	}
 

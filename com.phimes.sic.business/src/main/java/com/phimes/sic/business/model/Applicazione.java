@@ -12,6 +12,7 @@ public class Applicazione {
     @SequenceGenerator(sequenceName = "prf_applicazione_seq", initialValue = 1, allocationSize = 1, name = "PRF_APP_SEQ")
 
 	@Column(name = "ID_APPLICAZIONE")
+	@Id
 	private Long idApplicazione;
 	
 	@Column(name = "ID_STATO")

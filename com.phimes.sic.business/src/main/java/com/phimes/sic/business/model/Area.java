@@ -8,8 +8,12 @@ import java.sql.Timestamp;
 @Table(name = "PRF_AREA")
 public class Area {
 	
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_ARE_SEQ")
+    @SequenceGenerator(sequenceName = "prf_area_seq", initialValue = 1, allocationSize = 1, name = "PRF_ARE_SEQ")
+	
 	@Column(name = "ID_AREA")
-	private long idArea;
+	@Id
+	private Long idArea;
 
 	@Column(name = "ID_STATO")
 	private char idStato;
@@ -33,11 +37,11 @@ public class Area {
 	private String utModifica;
 	
 
-	public long getIdArea() {
+	public Long getIdArea() {
 		return idArea;
 	}
 
-	public void setIdArea(long idArea) {
+	public void setIdArea(Long idArea) {
 		this.idArea = idArea;
 	}
 
