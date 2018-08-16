@@ -10,7 +10,8 @@ import javax.persistence.*;
 public class Stato {
 
 	@Column(name = "ID_STATO")
-	private char idStato;
+	@Id
+	private Character idStato;
 
 	@Column(name = "DESCRIZIONE")
 	private String descrizione;
@@ -30,11 +31,11 @@ public class Stato {
 	@Column(name = "UT_MODIFICA")
 	private String utModifica;
 
-	public char getIdStato() {
+	public Character getIdStato() {
 		return idStato;
 	}
 
-	public void setIdStato(char idStato) {
+	public void setIdStato(Character idStato) {
 		this.idStato = idStato;
 	}
 

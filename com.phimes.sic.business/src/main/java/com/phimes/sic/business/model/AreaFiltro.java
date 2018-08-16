@@ -10,7 +10,8 @@ import javax.persistence.*;
 public class AreaFiltro {
 
 	@Column(name = "ID_FILTRO")
-	private Integer idFiltro;
+	@Id
+	private Long idFiltro;
 
 	@Column(name = "TS_CREAZIONE")
 	private Timestamp tsCreazione;
@@ -24,11 +25,11 @@ public class AreaFiltro {
 	@Column(name = "UT_MODIFICA")
 	private String utModifica;
 
-	public Integer getIdFiltro() {
+	public Long getIdFiltro() {
 		return idFiltro;
 	}
 
-	public void setIdFiltro(Integer idFiltro) {
+	public void setIdFiltro(Long idFiltro) {
 		this.idFiltro = idFiltro;
 	}
 

@@ -8,9 +8,13 @@ import javax.persistence.*;
 @Table(name = "PRF_LIVELLO")
 
 public class Livello {
+	
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_LIV_SEQ")
+    @SequenceGenerator(sequenceName = "prf_livello_seq", initialValue = 1, allocationSize = 1, name = "PRF_LIV_SEQ")
 
 	@Column(name = "ID_LIVELLO")
-	private long idLivello;
+	@Id
+	private Long idLivello;
 
 	@Column(name = "CODICE")
 	private String codice;
@@ -33,11 +37,11 @@ public class Livello {
 	@Column(name = "UT_MODIFICA")
 	private String utModifica;
 
-	public long getIdLivello() {
+	public Long getIdLivello() {
 		return idLivello;
 	}
 
-	public void setIdLivello(long idLivello) {
+	public void setIdLivello(Long idLivello) {
 		this.idLivello = idLivello;
 	}
 

@@ -7,9 +7,13 @@ import javax.persistence.*;
 @Entity
 @Table(name = "PRF_MENU")
 public class Menu {
+	
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_MENU_SEQ")
+    @SequenceGenerator(sequenceName = "prf_menu_seq", initialValue = 1, allocationSize = 1, name = "PRF_MENU_SEQ")
 
 	@Column(name = "ID_MENU")
-	private long idUtente;
+	@Id
+	private Long idUtente;
 
 	@Column(name = "CODICE")
 	private String codice;
@@ -35,11 +39,11 @@ public class Menu {
 	@Column(name = "UT_MODIFICA")
 	private String utModifica;
 
-	public long getIdUtente() {
+	public Long getIdUtente() {
 		return idUtente;
 	}
 
-	public void setIdUtente(long idUtente) {
+	public void setIdUtente(Long idUtente) {
 		this.idUtente = idUtente;
 	}
 

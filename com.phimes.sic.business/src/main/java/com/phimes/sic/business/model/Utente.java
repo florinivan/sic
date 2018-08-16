@@ -7,9 +7,13 @@ import javax.persistence.*;
 @Entity
 @Table(name = "PRF_UTENTE")
 public class Utente {
+	
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_UTE_SEQ")
+    @SequenceGenerator(sequenceName = "prf_utente_seq", initialValue = 1, allocationSize = 1, name = "PRF_UTE_SEQ")
 
 	@Column(name = "ID_UTENTE")
-	private long idUtente;
+	@Id
+	private Long idUtente;
 
 	@Column(name = "USERNAME")
 	private String username;
@@ -29,11 +33,11 @@ public class Utente {
 	@Column(name = "UT_MODIFICA")
 	private String utModifica;
 
-	public long getIdUtente() {
+	public Long getIdUtente() {
 		return idUtente;
 	}
 
-	public void setIdUtente(long idUtente) {
+	public void setIdUtente(Long idUtente) {
 		this.idUtente = idUtente;
 	}
 

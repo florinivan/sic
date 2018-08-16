@@ -8,6 +8,7 @@ import javax.persistence.*;
 public class Parametro {
 
 	  @Column(name="ID_PARAMETRO")
+	  @Id
       private String idParametro;
       
       @Column(name="VALORE")
