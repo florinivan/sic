@@ -8,8 +8,8 @@ import javax.persistence.*;
 @Table(name = "PRF_APPLICAZIONE")
 public class Applicazione {
 	
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CUST_SEQ")
-    @SequenceGenerator(sequenceName = "prf_applicazione_seq", initialValue = 1, allocationSize = 1, name = "CUST_SEQ")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_APP_SEQ")
+    @SequenceGenerator(sequenceName = "prf_applicazione_seq", initialValue = 1, allocationSize = 1, name = "PRF_APP_SEQ")
 
 	@Column(name = "ID_APPLICAZIONE")
 	private Long idApplicazione;
