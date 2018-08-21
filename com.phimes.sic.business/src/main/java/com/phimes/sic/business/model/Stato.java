@@ -1,6 +1,7 @@
 package com.phimes.sic.business.model;
 
 import java.sql.Timestamp;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -8,6 +9,18 @@ import javax.persistence.*;
 @Table(name = "PRF_STATO")
 
 public class Stato {
+
+	@OneToMany(mappedBy = "stato")
+	private Set<Area> aree;
+
+	@OneToMany(mappedBy = "stato")
+	private Set<Ruolo> ruoli;
+
+	@OneToMany(mappedBy = "stato")
+	private Set<Applicazione> applicazioni;
+
+	@OneToMany(mappedBy = "stato")
+	private Set<Utente> utenti;
 
 	@Column(name = "ID_STATO")
 	@Id
@@ -30,6 +43,38 @@ public class Stato {
 
 	@Column(name = "UT_MODIFICA")
 	private String utModifica;
+
+	public Set<Area> getAree() {
+		return aree;
+	}
+
+	public void setAree(Set<Area> aree) {
+		this.aree = aree;
+	}
+
+	public Set<Ruolo> getRuoli() {
+		return ruoli;
+	}
+
+	public void setRuoli(Set<Ruolo> ruoli) {
+		this.ruoli = ruoli;
+	}
+
+	public Set<Applicazione> getApplicazioni() {
+		return applicazioni;
+	}
+
+	public void setApplicazioni(Set<Applicazione> applicazioni) {
+		this.applicazioni = applicazioni;
+	}
+
+	public Set<Utente> getUtenti() {
+		return utenti;
+	}
+
+	public void setUtenti(Set<Utente> utenti) {
+		this.utenti = utenti;
+	}
 
 	public Character getIdStato() {
 		return idStato;

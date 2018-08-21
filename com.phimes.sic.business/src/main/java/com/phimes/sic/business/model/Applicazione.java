@@ -1,20 +1,43 @@
 package com.phimes.sic.business.model;
 
 import java.sql.Timestamp;
+import java.util.Set;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "PRF_APPLICAZIONE")
 public class Applicazione {
-	
+
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_APP_SEQ")
-    @SequenceGenerator(sequenceName = "prf_applicazione_seq", initialValue = 1, allocationSize = 1, name = "PRF_APP_SEQ")
+	@SequenceGenerator(sequenceName = "prf_applicazione_seq", initialValue = 1, allocationSize = 1, name = "PRF_APP_SEQ")
+
+	@ManyToOne
+	@JoinColumn(name = "ID_STATO")
+	private Stato stato;
+
+	@OneToMany(mappedBy = "applicazione")
+	private Set<Livello> livelli;
+
+	@OneToMany(mappedBy = "applicazione")
+	private Set<Parametro> parametri;
+
+	@OneToMany(mappedBy = "applicazione")
+	private Set<Ruolo> ruoli;
+
+	@OneToMany(mappedBy = "applicazione")
+	private Set<Funzione> funzioni;
+
+	@OneToMany(mappedBy = "applicazione")
+	private Set<Menu> menu;
+
+	@OneToMany(mappedBy = "applicazione")
+	private Set<Area> aree;
 
 	@Column(name = "ID_APPLICAZIONE")
 	@Id
 	private Long idApplicazione;
-	
+
 	@Column(name = "ID_STATO")
 	private char idStato;
 
@@ -44,6 +67,62 @@ public class Applicazione {
 
 	@Column(name = "UT_MODIFICA")
 	private String utModifica;
+
+	public Stato getStato() {
+		return stato;
+	}
+
+	public void setStato(Stato stato) {
+		this.stato = stato;
+	}
+
+	public Set<Livello> getLivelli() {
+		return livelli;
+	}
+
+	public void setLivelli(Set<Livello> livelli) {
+		this.livelli = livelli;
+	}
+
+	public Set<Parametro> getParametri() {
+		return parametri;
+	}
+
+	public void setParametri(Set<Parametro> parametri) {
+		this.parametri = parametri;
+	}
+
+	public Set<Ruolo> getRuoli() {
+		return ruoli;
+	}
+
+	public void setRuoli(Set<Ruolo> ruoli) {
+		this.ruoli = ruoli;
+	}
+
+	public Set<Funzione> getFunzioni() {
+		return funzioni;
+	}
+
+	public void setFunzioni(Set<Funzione> funzioni) {
+		this.funzioni = funzioni;
+	}
+
+	public Set<Menu> getMenu() {
+		return menu;
+	}
+
+	public void setMenu(Set<Menu> menu) {
+		this.menu = menu;
+	}
+
+	public Set<Area> getAree() {
+		return aree;
+	}
+
+	public void setAree(Set<Area> aree) {
+		this.aree = aree;
+	}
 
 	public Long getIdApplicazione() {
 		return idApplicazione;
@@ -133,5 +212,4 @@ public class Applicazione {
 		this.utModifica = utModifica;
 	}
 
-	
 }

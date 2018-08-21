@@ -1,30 +1,42 @@
 package com.phimes.sic.business.model;
+
 import java.sql.Timestamp;
 import javax.persistence.*;
 
-
 @Entity
-@Table (name ="PRF_PARAMETRO")
+@Table(name = "PRF_PARAMETRO")
 public class Parametro {
 
-	  @Column(name="ID_PARAMETRO")
-	  @Id
-      private String idParametro;
-      
-      @Column(name="VALORE")
-      private String valore;
+	@ManyToOne
+	@JoinColumn(name = "ID_APPLICAZIONE")
+	private Applicazione applicazione;
 
-      @Column(name="TS_CREAZIONE")
-      private Timestamp tsCreazione;
+	@Column(name = "ID_PARAMETRO")
+	@Id
+	private String idParametro;
 
-      @Column(name="UT_CREAZIONE")
-      private String utCreazione;
-      
-      @Column(name="TS_MODIFICA")
-      private Timestamp tsModifica;
+	@Column(name = "VALORE")
+	private String valore;
 
-      @Column(name="UT_MODIFICA")
-      private String utMODIFICA;
+	@Column(name = "TS_CREAZIONE")
+	private Timestamp tsCreazione;
+
+	@Column(name = "UT_CREAZIONE")
+	private String utCreazione;
+
+	@Column(name = "TS_MODIFICA")
+	private Timestamp tsModifica;
+
+	@Column(name = "UT_MODIFICA")
+	private String utMODIFICA;
+
+	public Applicazione getApplicazione() {
+		return applicazione;
+	}
+
+	public void setApplicazione(Applicazione applicazione) {
+		this.applicazione = applicazione;
+	}
 
 	public String getIdParametro() {
 		return idParametro;

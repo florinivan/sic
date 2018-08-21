@@ -1,15 +1,28 @@
 package com.phimes.sic.business.model;
 
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "PRF_UTENTE")
 public class Utente {
-	
+
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_UTE_SEQ")
-    @SequenceGenerator(sequenceName = "prf_utente_seq", initialValue = 1, allocationSize = 1, name = "PRF_UTE_SEQ")
+	@SequenceGenerator(sequenceName = "prf_utente_seq", initialValue = 1, allocationSize = 1, name = "PRF_UTE_SEQ")
+
+	@ManyToOne
+	@JoinColumn(name = "ID_STATO")
+	private Stato stato;
+
+	@ManyToMany(mappedBy = "utenti")
+	private Set<Area> aree = new HashSet<>();
+
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "prf_utente_ruolo", joinColumns = @JoinColumn(name = "id_utente"), inverseJoinColumns = @JoinColumn(name = "id_ruolo"))
+	private Set<Ruolo> ruoli = new HashSet<>();
 
 	@Column(name = "ID_UTENTE")
 	@Id
@@ -32,6 +45,30 @@ public class Utente {
 
 	@Column(name = "UT_MODIFICA")
 	private String utModifica;
+
+	public Stato getStato() {
+		return stato;
+	}
+
+	public void setStato(Stato stato) {
+		this.stato = stato;
+	}
+
+	public Set<Ruolo> getRuoli() {
+		return ruoli;
+	}
+
+	public void setRuoli(Set<Ruolo> ruoli) {
+		this.ruoli = ruoli;
+	}
+
+	public Set<Area> getAree() {
+		return aree;
+	}
+
+	public void setAree(Set<Area> aree) {
+		this.aree = aree;
+	}
 
 	public Long getIdUtente() {
 		return idUtente;

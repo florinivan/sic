@@ -1,5 +1,6 @@
 package com.phimes.sic.business.model;
 
+import java.util.*;
 import javax.persistence.*;
 
 import java.sql.Timestamp;
@@ -7,9 +8,24 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "PRF_AREA")
 public class Area {
-	
+
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_ARE_SEQ")
-    @SequenceGenerator(sequenceName = "prf_area_seq", initialValue = 1, allocationSize = 1, name = "PRF_ARE_SEQ")
+	@SequenceGenerator(sequenceName = "prf_area_seq", initialValue = 1, allocationSize = 1, name = "PRF_ARE_SEQ")
+
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "prf_utente_area", joinColumns = @JoinColumn(name = "id_area"), inverseJoinColumns = @JoinColumn(name = "id_utente"))
+	private Set<Utente> utenti = new HashSet<>();
+
+	@ManyToMany(mappedBy = "aree")
+	private Set<Filtro> filtri = new HashSet<>();
+
+	@ManyToOne
+	@JoinColumn(name = "ID_STATO")
+	private Stato stato;
+    
+	@ManyToOne
+	@JoinColumn(name = "ID_APPLICAZIONE")
+	private Applicazione applicazione;
 	
 	@Column(name = "ID_AREA")
 	@Id
@@ -35,7 +51,38 @@ public class Area {
 
 	@Column(name = "UT_MODIFICA")
 	private String utModifica;
+
+	public Applicazione getApplicazione() {
+		return applicazione;
+	}
+
+	public void setApplicazione(Applicazione applicazione) {
+		this.applicazione = applicazione;
+	}
 	
+	public Set<Filtro> getFiltri() {
+		return filtri;
+	}
+
+	public void setFiltri(Set<Filtro> filtri) {
+		this.filtri = filtri;
+	}
+
+	public Stato getStato() {
+		return stato;
+	}
+
+	public void setStato(Stato stato) {
+		this.stato = stato;
+	}
+
+	public Set<Utente> getUtenti() {
+		return utenti;
+	}
+
+	public void setUtenti(Set<Utente> utenti) {
+		this.utenti = utenti;
+	}
 
 	public Long getIdArea() {
 		return idArea;
@@ -100,7 +147,5 @@ public class Area {
 	public void setUtModifica(String utModifica) {
 		this.utModifica = utModifica;
 	}
-
-	
 
 }

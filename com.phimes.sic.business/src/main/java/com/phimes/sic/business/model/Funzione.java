@@ -1,15 +1,28 @@
 package com.phimes.sic.business.model;
 
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "PRF_FUNZIONE")
 public class Funzione {
-	
+
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_FUN_SEQ")
-    @SequenceGenerator(sequenceName = "prf_funzione_seq", initialValue = 1, allocationSize = 1, name = "PRF_FUN_SEQ")
+	@SequenceGenerator(sequenceName = "prf_funzione_seq", initialValue = 1, allocationSize = 1, name = "PRF_FUN_SEQ")
+
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "prf_funzione_accesso", joinColumns = @JoinColumn(name = "id_funzione"), inverseJoinColumns = @JoinColumn(name = "id_accesso"))
+	private Set<Accesso> accessi = new HashSet<>();
+
+	@ManyToMany(mappedBy = "funzioni")
+	private Set<Ruolo> ruoli = new HashSet<>();
+
+	@ManyToOne
+	@JoinColumn(name = "ID_APPLICAZIONE")
+	private Applicazione applicazione;
 
 	@Column(name = "ID_FUNZIONE")
 	@Id
@@ -32,6 +45,30 @@ public class Funzione {
 
 	@Column(name = "UT_MODIFICA")
 	private String utModifica;
+
+	public Set<Accesso> getAccessi() {
+		return accessi;
+	}
+
+	public void setAccessi(Set<Accesso> accessi) {
+		this.accessi = accessi;
+	}
+
+	public Set<Ruolo> getRuoli() {
+		return ruoli;
+	}
+
+	public void setRuoli(Set<Ruolo> ruoli) {
+		this.ruoli = ruoli;
+	}
+
+	public Applicazione getApplicazione() {
+		return applicazione;
+	}
+
+	public void setApplicazione(Applicazione applicazione) {
+		this.applicazione = applicazione;
+	}
 
 	public Long getIdFunzione() {
 		return idFunzione;

@@ -3,39 +3,65 @@ package com.phimes.sic.business.model;
 import javax.persistence.*;
 
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name="PRF_FILTRO")
+@Table(name = "PRF_FILTRO")
 
 public class Filtro {
-	
+
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_FIL_SEQ")
-    @SequenceGenerator(sequenceName = "prf_filtro_seq", initialValue = 1, allocationSize = 1, name = "PRF_FIL_SEQ")
-	
+	@SequenceGenerator(sequenceName = "prf_filtro_seq", initialValue = 1, allocationSize = 1, name = "PRF_FIL_SEQ")
+
+	@ManyToOne
+	@JoinColumn(name = "ID_LIVELLO")
+	private Livello livello;
+
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "prf_filtro_area", joinColumns = @JoinColumn(name = "id_filtro"), inverseJoinColumns = @JoinColumn(name = "id_area"))
+	private Set<Area> aree = new HashSet<>();
+
 	@Column(name = "ID_FILTRO")
 	@Id
 	private Long idFiltro;
-	
+
 	@Column(name = "CODICE")
 	private String codice;
-	
+
 	@Column(name = "DESCRIZIONE")
 	private String descrizione;
-	
+
 	@Column(name = "DESCRIZIONE_LUNGA")
 	private String descrizioneLunga;
-	
+
 	@Column(name = "TS_CREAZIONE")
 	private Timestamp tsCreazione;
-	
+
 	@Column(name = "UT_CREAZIONE")
 	private String utCreazione;
-	
+
 	@Column(name = "TS_MODIFICA")
 	private Timestamp tsModifica;
-	
+
 	@Column(name = "UT_MOFICA")
 	private String utModifica;
+
+	public Livello getLivello() {
+		return livello;
+	}
+
+	public void setLivello(Livello livello) {
+		this.livello = livello;
+	}
+
+	public Set<Area> getAree() {
+		return aree;
+	}
+
+	public void setAree(Set<Area> aree) {
+		this.aree = aree;
+	}
 
 	public Long getIdFiltro() {
 		return idFiltro;

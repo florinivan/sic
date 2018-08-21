@@ -1,6 +1,7 @@
 package com.phimes.sic.business.model;
 
 import java.sql.Timestamp;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -8,9 +9,16 @@ import javax.persistence.*;
 @Table(name = "PRF_LIVELLO")
 
 public class Livello {
-	
+
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_LIV_SEQ")
-    @SequenceGenerator(sequenceName = "prf_livello_seq", initialValue = 1, allocationSize = 1, name = "PRF_LIV_SEQ")
+	@SequenceGenerator(sequenceName = "prf_livello_seq", initialValue = 1, allocationSize = 1, name = "PRF_LIV_SEQ")
+
+	@OneToMany(mappedBy = "livello")
+	private Set<Filtro> filtri;
+
+	@ManyToOne
+	@JoinColumn(name = "ID_APPLICAZIONE")
+	private Applicazione applicazione;
 
 	@Column(name = "ID_LIVELLO")
 	@Id
@@ -36,6 +44,22 @@ public class Livello {
 
 	@Column(name = "UT_MODIFICA")
 	private String utModifica;
+
+	public Set<Filtro> getFiltri() {
+		return filtri;
+	}
+
+	public void setFiltri(Set<Filtro> filtri) {
+		this.filtri = filtri;
+	}
+
+	public Applicazione getApplicazione() {
+		return applicazione;
+	}
+
+	public void setApplicazione(Applicazione applicazione) {
+		this.applicazione = applicazione;
+	}
 
 	public Long getIdLivello() {
 		return idLivello;
@@ -69,36 +93,36 @@ public class Livello {
 		this.ordine = ordine;
 	}
 
-	public Timestamp getTs_Creazione() {
+	public Timestamp getTsCreazione() {
 		return tsCreazione;
 	}
 
-	public void setTs_Creazione(Timestamp ts_Creazione) {
-		this.tsCreazione = ts_Creazione;
+	public void setTsCreazione(Timestamp tsCreazione) {
+		this.tsCreazione = tsCreazione;
 	}
 
-	public String getUt_Creazione() {
+	public String getUtCreazione() {
 		return utCreazione;
 	}
 
-	public void setUt_Creazione(String ut_Creazione) {
-		this.utCreazione = ut_Creazione;
+	public void setUtCreazione(String utCreazione) {
+		this.utCreazione = utCreazione;
 	}
 
-	public Timestamp getTs_Modifica() {
+	public Timestamp getTsModifica() {
 		return tsModifica;
 	}
 
-	public void setTs_Modifica(Timestamp ts_Modifica) {
-		this.tsModifica = ts_Modifica;
+	public void setTsModifica(Timestamp tsModifica) {
+		this.tsModifica = tsModifica;
 	}
 
-	public String getUt_Modifica() {
+	public String getUtModifica() {
 		return utModifica;
 	}
 
-	public void setUt_Modifica(String ut_Modifica) {
-		this.utModifica = ut_Modifica;
+	public void setUtModifica(String utModifica) {
+		this.utModifica = utModifica;
 	}
 
 }

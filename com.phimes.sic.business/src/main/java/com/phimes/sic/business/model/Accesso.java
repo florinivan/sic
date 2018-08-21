@@ -1,6 +1,8 @@
 package com.phimes.sic.business.model;
 
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -8,6 +10,9 @@ import javax.persistence.*;
 @Table(name = "PRF_ACCESSO")
 
 public class Accesso {
+
+	@ManyToMany(mappedBy = "accessi")
+	private Set<Funzione> funzioni = new HashSet<>();
 
 	@Column(name = "ID_ACCESSO")
 	@Id
@@ -30,6 +35,14 @@ public class Accesso {
 
 	@Column(name = "UT_MODIFICA")
 	private String utModifica;
+
+	public Set<Funzione> getFunzioni() {
+		return funzioni;
+	}
+
+	public void setFunzioni(Set<Funzione> funzioni) {
+		this.funzioni = funzioni;
+	}
 
 	public Character getIdAccesso() {
 		return idAccesso;
