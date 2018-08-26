@@ -13,7 +13,7 @@ public class Applicazione {
 	@SequenceGenerator(sequenceName = "prf_applicazione_seq", initialValue = 1, allocationSize = 1, name = "PRF_APP_SEQ")
 
 	@ManyToOne
-	@JoinColumn(name = "ID_STATO")
+	@JoinColumn(name = "ID_STATO", insertable = false, updatable = false)
 	private Stato stato;
 
 	@OneToMany(mappedBy = "applicazione")

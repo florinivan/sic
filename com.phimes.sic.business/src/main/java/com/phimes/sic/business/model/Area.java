@@ -20,7 +20,7 @@ public class Area {
 	private Set<Filtro> filtri = new HashSet<>();
 
 	@ManyToOne
-	@JoinColumn(name = "ID_STATO")
+	@JoinColumn(name = "ID_STATO", insertable = false, updatable = false)
 	private Stato stato;
     
 	@ManyToOne
