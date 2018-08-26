@@ -14,9 +14,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.phimes.sic.business.dao.CustomerRepository;
-import com.phimes.sic.business.model.Accesso;
+import com.phimes.sic.business.model.Access;
 import com.phimes.sic.business.model.Customer;
-import com.phimes.sic.business.service.AccessoService;
+import com.phimes.sic.business.service.AccessService;
 
 @SpringBootApplication
 public class TestCustumer implements CommandLineRunner {

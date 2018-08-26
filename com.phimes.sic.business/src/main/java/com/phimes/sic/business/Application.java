@@ -9,8 +9,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.phimes.sic.business.model.Accesso;
-import com.phimes.sic.business.service.AccessoService;
+import com.phimes.sic.business.model.Access;
+import com.phimes.sic.business.service.AccessService;
 
 //for jsr310 java 8 java.time.*
 //@EntityScan(
@@ -23,16 +23,16 @@ public class Application implements CommandLineRunner {
 	DataSource dataSource;
 
 	@Autowired
-	AccessoService accessoTest;
+	AccessService accessoTest;
 
 	@Override
 	public void run(String... args) throws Exception {
 
-		Accesso accTest = new Accesso();
-		accTest.setDescrizione("Read");
+		Access accTest = new Access();
+		accTest.setDescription("Read");
 
-		accTest.setIdAccesso('R');
-		accTest.setDescrizione("Descrivo l'istanza che uso per il test");
+		//accTest.setIdAccesso('R');
+		accTest.setDescription("Descrivo l'istanza che uso per il test");
 
 		accessoTest.saveOrUpdate(accTest);
 

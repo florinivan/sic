@@ -1,38 +1,40 @@
 package com.phimes.sic.business.model;
 
-import java.util.*;
+import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
 
-import java.sql.Timestamp;
-
 @Entity
-@Table(name = "PRF_AREA")
-public class Area {
+@Table(name = "PRF_ROLE")
+public class Role {
 
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_ARE_SEQ")
-	@SequenceGenerator(sequenceName = "prf_area_seq", initialValue = 1, allocationSize = 1, name = "PRF_ARE_SEQ")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_ROL_SEQ")
+	@SequenceGenerator(sequenceName = "prf_role_seq", initialValue = 1, allocationSize = 1, name = "PRF_ROL_SEQ")
 
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(name = "prf_user_area", joinColumns = @JoinColumn(name = "id_area"), inverseJoinColumns = @JoinColumn(name = "id_user"))
+	@JoinTable(name = "prf_role_menu", joinColumns = @JoinColumn(name = "id_role"), inverseJoinColumns = @JoinColumn(name = "id_menu"))
+	private Set<Menu> menu = new HashSet<>();
+
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "prf_role_function", joinColumns = @JoinColumn(name = "id_role"), inverseJoinColumns = @JoinColumn(name = "id_function"))
+	private Set<Function> functions = new HashSet<>();
+
+	@ManyToMany(mappedBy = "roles")
 	private Set<User> users = new HashSet<>();
 
-	@ManyToMany(mappedBy = "areas")
-	private Set<Filter> filters = new HashSet<>();
-
 	@ManyToOne
-	@JoinColumn(name = "ID_STATE", insertable = false, updatable = false)
+	@JoinColumn(name = "ID_STATE")
 	private State state;
-    
+
 	@ManyToOne
 	@JoinColumn(name = "ID_APPLICATION")
 	private Application application;
-	
-	@Column(name = "ID_AREA")
-	@Id
-	private Long idArea;
 
-	@Column(name = "ID_STATE")
-	private char idState;
+	@Column(name = "ID_ROLE")
+	@Id
+	private Long idRole;
 
 	@Column(name = "CODE")
 	private String code;
@@ -52,20 +54,28 @@ public class Area {
 	@Column(name = "UT_MODIFY")
 	private String utModify;
 
+	public Set<Menu> getMenu() {
+		return menu;
+	}
+
+	public void setMenu(Set<Menu> menu) {
+		this.menu = menu;
+	}
+
+	public Set<Function> getFunctions() {
+		return functions;
+	}
+
+	public void setFunctions(Set<Function> functions) {
+		this.functions = functions;
+	}
+
 	public Set<User> getUsers() {
 		return users;
 	}
 
 	public void setUsers(Set<User> users) {
 		this.users = users;
-	}
-
-	public Set<Filter> getFilters() {
-		return filters;
-	}
-
-	public void setFilters(Set<Filter> filters) {
-		this.filters = filters;
 	}
 
 	public State getState() {
@@ -82,14 +92,6 @@ public class Area {
 
 	public void setApplication(Application application) {
 		this.application = application;
-	}
-
-	public char getIdState() {
-		return idState;
-	}
-
-	public void setIdState(char idState) {
-		this.idState = idState;
 	}
 
 	public String getCode() {
@@ -140,4 +142,4 @@ public class Area {
 		this.utModify = utModify;
 	}
 
-	}
+}

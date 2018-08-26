@@ -3,14 +3,14 @@ package com.phimes.sic.business.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 
-import com.phimes.sic.business.dao.MenuRepository;
-import com.phimes.sic.business.dto.MenuDto;
+import com.phimes.sic.business.dao.RoleRepository;
+import com.phimes.sic.business.dto.RoleDto;
 
 @org.springframework.stereotype.Service
-public class MenuService extends Service<MenuDto, Long> {
+public class RoleService extends Service<RoleDto, Long> {
 
 	@Autowired
-	private MenuRepository rep;
+	private RoleRepository rep;
 
 	@Override
 	protected CrudRepository getCrudRep() {

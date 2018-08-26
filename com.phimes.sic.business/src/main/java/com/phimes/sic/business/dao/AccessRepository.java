@@ -5,12 +5,12 @@ import java.util.stream.Stream;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import com.phimes.sic.business.model.Menu;
+import com.phimes.sic.business.model.Access;
 
 @org.springframework.stereotype.Repository
+public interface AccessRepository extends CrudRepository<Access, Character> {
 
-public interface MenuRepository  extends CrudRepository<Menu, Long> {
-	
-	@Query("select mn.code, mn.description, mn.url, mn.order, from Menu mn") //rl.subMenu
-	Stream getAllMenuSubMenu();
+	@Query("select acc.code, acc.description from Access acc join Function fz")
+	Stream getAccessFunction();
+
 }

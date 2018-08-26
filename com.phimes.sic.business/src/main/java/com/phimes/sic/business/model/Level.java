@@ -1,44 +1,37 @@
 package com.phimes.sic.business.model;
 
-import java.util.*;
+import java.sql.Timestamp;
+import java.util.Set;
+
 import javax.persistence.*;
 
-import java.sql.Timestamp;
-
 @Entity
-@Table(name = "PRF_AREA")
-public class Area {
+@Table(name = "PRF_LEVEL")
 
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_ARE_SEQ")
-	@SequenceGenerator(sequenceName = "prf_area_seq", initialValue = 1, allocationSize = 1, name = "PRF_ARE_SEQ")
+public class Level {
 
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(name = "prf_user_area", joinColumns = @JoinColumn(name = "id_area"), inverseJoinColumns = @JoinColumn(name = "id_user"))
-	private Set<User> users = new HashSet<>();
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_LEV_SEQ")
+	@SequenceGenerator(sequenceName = "prf_level_seq", initialValue = 1, allocationSize = 1, name = "PRF_LEV_SEQ")
 
-	@ManyToMany(mappedBy = "areas")
-	private Set<Filter> filters = new HashSet<>();
+	@OneToMany(mappedBy = "levels")
+	private Set<Filter> filters;
 
-	@ManyToOne
-	@JoinColumn(name = "ID_STATE", insertable = false, updatable = false)
-	private State state;
-    
 	@ManyToOne
 	@JoinColumn(name = "ID_APPLICATION")
 	private Application application;
-	
-	@Column(name = "ID_AREA")
-	@Id
-	private Long idArea;
 
-	@Column(name = "ID_STATE")
-	private char idState;
+	@Column(name = "ID_LEVEL")
+	@Id
+	private Long idLevel;
 
 	@Column(name = "CODE")
 	private String code;
 
 	@Column(name = "DESCRIPTION")
 	private String description;
+
+	@Column(name = "ORDER")
+	private Integer order;
 
 	@Column(name = "TS_CREATION")
 	private Timestamp tsCreation;
@@ -52,14 +45,6 @@ public class Area {
 	@Column(name = "UT_MODIFY")
 	private String utModify;
 
-	public Set<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(Set<User> users) {
-		this.users = users;
-	}
-
 	public Set<Filter> getFilters() {
 		return filters;
 	}
@@ -68,28 +53,12 @@ public class Area {
 		this.filters = filters;
 	}
 
-	public State getState() {
-		return state;
-	}
-
-	public void setState(State state) {
-		this.state = state;
-	}
-
 	public Application getApplication() {
 		return application;
 	}
 
 	public void setApplication(Application application) {
 		this.application = application;
-	}
-
-	public char getIdState() {
-		return idState;
-	}
-
-	public void setIdState(char idState) {
-		this.idState = idState;
 	}
 
 	public String getCode() {
@@ -106,6 +75,14 @@ public class Area {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Integer getOrder() {
+		return order;
+	}
+
+	public void setOrder(Integer order) {
+		this.order = order;
 	}
 
 	public Timestamp getTsCreation() {
@@ -140,4 +117,4 @@ public class Area {
 		this.utModify = utModify;
 	}
 
-	}
+}

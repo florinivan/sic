@@ -1,38 +1,32 @@
 package com.phimes.sic.business.model;
 
-import java.util.*;
+import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
 
-import java.sql.Timestamp;
-
 @Entity
-@Table(name = "PRF_AREA")
-public class Area {
+@Table(name = "PRF_FUNCTION")
+public class Function {
 
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_ARE_SEQ")
-	@SequenceGenerator(sequenceName = "prf_area_seq", initialValue = 1, allocationSize = 1, name = "PRF_ARE_SEQ")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_FUN_SEQ")
+	@SequenceGenerator(sequenceName = "prf_function_seq", initialValue = 1, allocationSize = 1, name = "PRF_FUN_SEQ")
 
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(name = "prf_user_area", joinColumns = @JoinColumn(name = "id_area"), inverseJoinColumns = @JoinColumn(name = "id_user"))
-	private Set<User> users = new HashSet<>();
+	@JoinTable(name = "prf_function_access", joinColumns = @JoinColumn(name = "id_function"), inverseJoinColumns = @JoinColumn(name = "id_access"))
+	private Set<Access> accesses = new HashSet<>();
 
-	@ManyToMany(mappedBy = "areas")
-	private Set<Filter> filters = new HashSet<>();
+	@ManyToMany(mappedBy = "functions")
+	private Set<Role> roles = new HashSet<>();
 
-	@ManyToOne
-	@JoinColumn(name = "ID_STATE", insertable = false, updatable = false)
-	private State state;
-    
 	@ManyToOne
 	@JoinColumn(name = "ID_APPLICATION")
 	private Application application;
-	
-	@Column(name = "ID_AREA")
-	@Id
-	private Long idArea;
 
-	@Column(name = "ID_STATE")
-	private char idState;
+	@Column(name = "ID_FUNCTION")
+	@Id
+	private Long idFunction;
 
 	@Column(name = "CODE")
 	private String code;
@@ -52,28 +46,20 @@ public class Area {
 	@Column(name = "UT_MODIFY")
 	private String utModify;
 
-	public Set<User> getUsers() {
-		return users;
+	public Set<Access> getAccesses() {
+		return accesses;
 	}
 
-	public void setUsers(Set<User> users) {
-		this.users = users;
+	public void setAccesses(Set<Access> accesses) {
+		this.accesses = accesses;
 	}
 
-	public Set<Filter> getFilters() {
-		return filters;
+	public Set<Role> getRoles() {
+		return roles;
 	}
 
-	public void setFilters(Set<Filter> filters) {
-		this.filters = filters;
-	}
-
-	public State getState() {
-		return state;
-	}
-
-	public void setState(State state) {
-		this.state = state;
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 
 	public Application getApplication() {
@@ -82,14 +68,6 @@ public class Area {
 
 	public void setApplication(Application application) {
 		this.application = application;
-	}
-
-	public char getIdState() {
-		return idState;
-	}
-
-	public void setIdState(char idState) {
-		this.idState = idState;
 	}
 
 	public String getCode() {
@@ -140,4 +118,4 @@ public class Area {
 		this.utModify = utModify;
 	}
 
-	}
+}

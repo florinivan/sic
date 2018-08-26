@@ -5,12 +5,13 @@ import java.util.stream.Stream;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import com.phimes.sic.business.model.Menu;
+import com.phimes.sic.business.model.Level;
 
 @org.springframework.stereotype.Repository
 
-public interface MenuRepository  extends CrudRepository<Menu, Long> {
+public interface LevelRepository extends CrudRepository<Level, Long> {
 	
-	@Query("select mn.code, mn.description, mn.url, mn.order, from Menu mn") //rl.subMenu
-	Stream getAllMenuSubMenu();
+	@Query("select lv.code, lv.description, lv.order from Level lv join Filter fl")
+	Stream getLevelFilter();
+
 }
