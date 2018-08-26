@@ -2,8 +2,8 @@ package com.phimes.sic.business.dto;
 
 import java.util.Map;
 
-import com.phimes.sic.business.model.Area;
-import com.phimes.sic.business.model.Ruolo;
+import com.phimes.sic.business.dto.Area;
+import com.phimes.sic.business.dto.Ruolo;
 
 public class ProfiloUtente {
 

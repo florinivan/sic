@@ -32,16 +32,14 @@ select prf_area.id_area, prf_area.codice, prf_area.descrizione, userprofile.id_u
         join userprofile
             on prf_area.id_area = userprofile.id_area
         join prf_filtro
-            on prf_filtro.id_filtro = prf_filtro.id_filtro;
+            on userprofile.id_area = prf_filtro.id_filtro;
                 
                        
 create or replace view Area as
     select userprofile.area_codice, userprofile.area_descrizione, userprofile.codice userprofile_codice, 
            userprofile.descrizione userprofile_descrizione, userprofile.id_ruolo, userprofile.id_utente, userprofile.username, prf_filtro.id_filtro, 
            prf_filtro.descrizione_lunga, prf_filtro.id_livello
-        from prf_area area
-            join userprofile
-                on area.id_area = userprofile.id_area
+        from userprofile
             join prf_filtro
                 on userprofile.id_area = prf_filtro.id_filtro;
     
