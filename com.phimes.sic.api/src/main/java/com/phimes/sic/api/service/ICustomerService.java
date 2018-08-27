@@ -1,5 +1,5 @@
 package com.phimes.sic.api.service;
 
-public interface ICustomerService extends IService {
+public interface ICustomerService {
 
 }
