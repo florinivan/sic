@@ -7,11 +7,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "PRF_LEVEL")
-
+@SequenceGenerator(sequenceName = "prf_level_seq", initialValue = 1, allocationSize = 1, name = "PRF_LEV_SEQ")
 public class Level {
 
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_LEV_SEQ")
-	@SequenceGenerator(sequenceName = "prf_level_seq", initialValue = 1, allocationSize = 1, name = "PRF_LEV_SEQ")
 
 	@OneToMany(mappedBy = "levels")
 	private Set<Filter> filters;

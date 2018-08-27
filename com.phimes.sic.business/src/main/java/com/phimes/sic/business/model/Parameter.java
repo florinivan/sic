@@ -15,7 +15,7 @@ public class Parameter {
 	@Id
 	private String idParameter;
 
-	@Column(name = "VALUE")
+    @Column(name = "VALUE")
 	private String value;
 
 	@Column(name = "TS_CREATION")
@@ -30,6 +30,14 @@ public class Parameter {
 	@Column(name = "UT_MODIFY")
 	private String utModify;
 
+	public String getIdParameter() {
+		return idParameter;
+	}
+
+	public void setIdParameter(String idParameter) {
+		this.idParameter = idParameter;
+	}
+	
 	public Application getApplication() {
 		return application;
 	}

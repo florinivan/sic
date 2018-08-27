@@ -44,6 +44,14 @@ public class State {
 	@Column(name = "UT_MODIFY")
 	private String utModify;
 
+	public Character getIdState() {
+		return idState;
+	}
+
+	public void setIdState(Character idState) {
+		this.idState = idState;
+	}
+	
 	public Set<Area> getAreas() {
 		return areas;
 	}

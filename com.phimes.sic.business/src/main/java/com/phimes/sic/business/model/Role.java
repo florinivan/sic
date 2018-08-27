@@ -8,10 +8,11 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "PRF_ROLE")
+@SequenceGenerator(sequenceName = "prf_role_seq", initialValue = 1, allocationSize = 1, name = "PRF_ROL_SEQ")
 public class Role {
 
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_ROL_SEQ")
-	@SequenceGenerator(sequenceName = "prf_role_seq", initialValue = 1, allocationSize = 1, name = "PRF_ROL_SEQ")
+	
 
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "prf_role_menu", joinColumns = @JoinColumn(name = "id_role"), inverseJoinColumns = @JoinColumn(name = "id_menu"))

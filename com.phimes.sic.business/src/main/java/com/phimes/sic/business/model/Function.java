@@ -8,11 +8,11 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "PRF_FUNCTION")
+@SequenceGenerator(sequenceName = "prf_function_seq", initialValue = 1, allocationSize = 1, name = "PRF_FUN_SEQ")
 public class Function {
 
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_FUN_SEQ")
-	@SequenceGenerator(sequenceName = "prf_function_seq", initialValue = 1, allocationSize = 1, name = "PRF_FUN_SEQ")
-
+	
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "prf_function_access", joinColumns = @JoinColumn(name = "id_function"), inverseJoinColumns = @JoinColumn(name = "id_access"))
 	private Set<Access> accesses = new HashSet<>();
