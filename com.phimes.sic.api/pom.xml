@@ -8,6 +8,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<sonar.projectName>com.phimes.sic.api</sonar.projectName>
 	</properties>
 
 	<parent>
@@ -29,4 +30,16 @@
 		</dependency>
 
 	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.5.1</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 </project>
