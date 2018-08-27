@@ -31,7 +31,7 @@ public class Application implements CommandLineRunner {
 		Access accTest = new Access();
 		accTest.setDescription("Read");
 
-		//accTest.setIdAccesso('R');
+		accTest.setIdAccess('R');
 		accTest.setDescription("Descrivo l'istanza che uso per il test");
 
 		accessoTest.saveOrUpdate(accTest);

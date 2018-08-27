@@ -32,6 +32,15 @@ public class Access {
 
 	@Column(name = "TS_MODIFY")
 	private Timestamp tsModify;
+	
+
+	public Character getIdAccess() {
+		return idAccess;
+	}
+
+	public void setIdAccess(Character idAccess) {
+		this.idAccess = idAccess;
+	}
 
 	public Set<Function> getFunctions() {
 		return functions;

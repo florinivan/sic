@@ -7,11 +7,14 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "PRF_APPLICATION")
+@SequenceGenerator(sequenceName = "prf_application_seq", initialValue = 1, allocationSize = 1, name = "PRF_APP_SEQ")
 public class Application {
 
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_APP_SEQ")
-	@SequenceGenerator(sequenceName = "prf_application_seq", initialValue = 1, allocationSize = 1, name = "PRF_APP_SEQ")
-
+	@Column(name = "ID_APPLICATION")
+	@Id
+	private Long idApplication;
+	
 	@ManyToOne
 	@JoinColumn(name = "ID_STATE", insertable = false, updatable = false)
 	private State state;
@@ -33,10 +36,6 @@ public class Application {
 
 	@OneToMany(mappedBy = "application")
 	private Set<Area> areas;
-
-	@Column(name = "ID_APPLICATION")
-	@Id
-	private Long idApplication;
 
 	@Column(name = "ID_STATE")
 	private char idState;
