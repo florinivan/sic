@@ -12,6 +12,6 @@ import com.phimes.sic.business.model.Function;
 public interface FunctionRepository extends CrudRepository<Function, Long> {
 	
 	@Query("select fz.code, fz.description, fz.accesses from Function fz join Access acc")
-	Stream getFunctionAccess();
+	Function getFunctionAccess();
 
 }

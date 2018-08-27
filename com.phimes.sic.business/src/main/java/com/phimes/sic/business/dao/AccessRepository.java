@@ -11,6 +11,6 @@ import com.phimes.sic.business.model.Access;
 public interface AccessRepository extends CrudRepository<Access, Character> {
 
 	@Query("select acc.code, acc.description from Access acc join Function fz")
-	Stream getAccessFunction();
+	Access getAccessFunction();
 
 }

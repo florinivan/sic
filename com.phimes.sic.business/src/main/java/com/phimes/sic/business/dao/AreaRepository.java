@@ -13,6 +13,6 @@ import com.phimes.sic.business.model.Area;
 public interface AreaRepository extends CrudRepository<Area, Long> {
 	
 	@Query("select ar.codice, ar.descrizione, fl from Area ar join Filter fl")
-	Stream<Area> getAreaFilterBy();
+	Area getAreaFilterBy();
 
 }
