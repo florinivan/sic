@@ -1,9 +1,9 @@
-package com.phimes.sic.business.dto;
+package com.phimes.sic.api.dto;
 
 import java.util.Set;
 
-import com.phimes.sic.business.dto.FunctionDto;
-import com.phimes.sic.business.dto.MenuDto;
+import com.phimes.sic.api.dto.FunctionDto;
+import com.phimes.sic.api.dto.MenuDto;
 
 public class RoleDto {
 

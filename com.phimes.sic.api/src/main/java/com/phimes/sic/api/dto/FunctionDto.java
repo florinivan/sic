@@ -1,8 +1,8 @@
-package com.phimes.sic.business.dto;
+package com.phimes.sic.api.dto;
 
 import java.util.Set;
 
-import com.phimes.sic.business.dto.AccessDto;
+import com.phimes.sic.api.dto.AccessDto;
 
 public class FunctionDto {
 

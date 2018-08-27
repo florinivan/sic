@@ -1,9 +1,9 @@
-package com.phimes.sic.business.dto;
+package com.phimes.sic.api.dto;
 
 import java.util.Map;
 
-import com.phimes.sic.business.dto.AreaDto;
-import com.phimes.sic.business.dto.RoleDto;
+import com.phimes.sic.api.dto.AreaDto;
+import com.phimes.sic.api.dto.RoleDto;
 
 public class UserProfileDto {
 

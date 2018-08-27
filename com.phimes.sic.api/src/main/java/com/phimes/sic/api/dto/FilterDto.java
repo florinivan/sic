@@ -1,6 +1,6 @@
-package com.phimes.sic.business.dto;
+package com.phimes.sic.api.dto;
 
-import com.phimes.sic.business.dto.LevelDto;
+import com.phimes.sic.api.dto.LevelDto;
 
 public class FilterDto {
 
