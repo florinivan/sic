@@ -29,6 +29,7 @@ public class Configuration {
 	public Configuration load(URL url) throws IOException {
 
 		BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+		// prendere il stream da bufferedReader
 		String inputLine;
 		while ((inputLine = in.readLine()) != null)
 			System.out.println(inputLine);
@@ -47,12 +48,11 @@ public class Configuration {
 		return load(stream);
 	}
 
-	public Configuration load(InputStream stream) {
+	public Configuration load(InputStream stream) throws IOException{
 
 		Properties prop = new Properties();
 		try {
-
-			stream = Configuration.class.getClassLoader().getResourceAsStream(fileProperties);
+			
 			if (stream == null) {
 				System.out.println("Sorry, unable to find " + fileProperties);
 
@@ -69,22 +69,20 @@ public class Configuration {
 				String result = prop.getProperty(obj.toString());
 				switch (obj.toString()) {
 				case "spring.datasource.url":
-					istanza.setJndiDataSource(result);
+					getInstance().setJndiDataSource(result);
 					break;
 				case "spring.datasource.username":
-					istanza.setUserDataSource(result);
+					getInstance().setUserDataSource(result);
 					break;
 				case "spring.datasource.password":
-					istanza.setUserDataSource(result);
+					getInstance().setUserDataSource(result);
 					break;
 				case "spring.datasource.driver-class":
-					istanza.setUserDataSource(result);
+					getInstance().setUserDataSource(result);
 					break;
 
 				}
 			}
-		} catch (IOException ex) {
-			ex.printStackTrace();
 		} finally {
 			if (stream != null) {
 				try {
