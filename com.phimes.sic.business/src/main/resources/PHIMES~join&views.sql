@@ -1,176 +1,176 @@
-select prf_utente.username, prf_utente_ruolo.id_utente, prf_utente_ruolo.id_ruolo, prf_ruolo.codice, prf_ruolo.descrizione, prf_area.codice, 
-       prf_area.descrizione, prf_utente_area.id_utente, prf_utente_area.id_area
-    from prf_utente
-        join prf_utente_ruolo
-            on prf_utente.id_utente = prf_utente_ruolo.id_utente
-        join prf_ruolo
-            on prf_utente_ruolo.id_utente = prf_ruolo.id_ruolo
+select prf_user.username, prf_user_role.id_user, prf_user_role.id_role, prf_role.code, prf_role.description, prf_area.code, 
+       prf_area.description, prf_user_area.id_user, prf_user_area.id_area
+    from prf_user
+        join prf_user_role
+            on prf_user.id_user = prf_user_role.id_user
+        join prf_role
+            on prf_user_role.id_user = prf_role.id_role
         join prf_area
-            on prf_ruolo.id_ruolo = prf_area.id_area
-        join prf_utente_area
-            on prf_area.id_area = prf_utente_area.id_area;
+            on prf_role.id_role = prf_area.id_area
+        join prf_user_area
+            on prf_area.id_area = prf_user_area.id_area;
          
 
 create or replace view UserProfile as 
-    select utente.username, prf_utente_ruolo.id_utente, prf_utente_ruolo.id_ruolo, prf_ruolo.codice, prf_ruolo.descrizione, prf_area.codice area_codice, 
-           prf_area.descrizione area_descrizione, prf_utente_area.id_area
-        from prf_utente utente
-            join prf_utente_ruolo
-                on utente.id_utente = prf_utente_ruolo.id_utente
-            join prf_ruolo
-                on prf_utente_ruolo.id_ruolo = prf_ruolo.id_ruolo
-            join prf_utente_area
-                on prf_utente_area.id_utente = utente.id_utente
+    select prf_user.username, prf_user_role.id_user, prf_user_role.id_role, prf_role.code, prf_role.description, prf_area.code area_code, 
+           prf_area.description area_description, prf_user_area.id_area
+        from prf_user
+            join prf_user_role
+                on prf_user.id_user = prf_user_role.id_user
+            join prf_role
+                on prf_user_role.id_role = prf_role.id_role
+            join prf_user_area
+                on prf_user_area.id_user = prf_user.id_user
             join prf_area
-                on prf_utente_area.id_area = prf_area.id_area;
+                on prf_user_area.id_area = prf_area.id_area;
         
         
-select prf_area.id_area, prf_area.codice, prf_area.descrizione, userprofile.id_utente, userprofile.area_codice, userprofile.area_descrizione, userprofile.codice, 
-       userprofile.descrizione,userprofile.id_area, userprofile.id_ruolo, userprofile.username, prf_filtro.id_filtro, prf_filtro.codice, prf_filtro.descrizione, 
-       prf_filtro.descrizione_lunga, prf_filtro.id_livello
+select prf_area.id_area, prf_area.code, prf_area.description, userprofile.id_user, userprofile.area_code, userprofile.area_description, userprofile.code, 
+       userprofile.description, userprofile.id_area, userprofile.id_role, userprofile.username, prf_filter.id_filter, prf_filter.code, prf_filter.description, 
+       prf_filter.long_description, prf_filter.id_level
     from prf_area 
         join userprofile
             on prf_area.id_area = userprofile.id_area
-        join prf_filtro
-            on userprofile.id_area = prf_filtro.id_filtro;
+        join prf_filter
+            on userprofile.id_area = prf_filter.id_filter;
                 
                        
 create or replace view Area as
-    select userprofile.area_codice, userprofile.area_descrizione, userprofile.codice userprofile_codice, 
-           userprofile.descrizione userprofile_descrizione, userprofile.id_ruolo, userprofile.id_utente, userprofile.username, prf_filtro.id_filtro, 
-           prf_filtro.descrizione_lunga, prf_filtro.id_livello
+    select userprofile.area_code, userprofile.area_description, userprofile.code userprofile_code, 
+           userprofile.description userprofile_description, userprofile.id_role, userprofile.id_user, userprofile.username, prf_filter.id_filter, 
+           prf_filter.long_description, prf_filter.id_level
         from userprofile
-            join prf_filtro
-                on userprofile.id_area = prf_filtro.id_filtro;
+            join prf_filter
+                on userprofile.id_area = prf_filter.id_filter;
     
     
-select prf_filtro.id_filtro, prf_filtro.codice, prf_filtro.descrizione, prf_filtro.descrizione_lunga, prf_filtro.id_livello, prf_area.codice, prf_area.descrizione,
-       prf_livello.codice, prf_livello.descrizione, prf_livello.ordine
-    from prf_filtro
+select prf_filter.id_filter, prf_filter.code, prf_filter.description, prf_filter.long_description, prf_filter.id_level, prf_area.code, prf_area.description,
+      prf_level.id_level, prf_level.code, prf_level.description, prf_level.level_order
+    from prf_filter
         join prf_area
-            on prf_filtro.id_filtro = prf_area.id_area
-        join prf_livello
-            on prf_area.id_area = prf_livello.id_livello;
+            on prf_filter.id_filter = prf_area.id_area
+        join prf_level
+            on prf_area.id_area = prf_level.id_level;
     
     
 create or replace view Filter as
-    select prf_filtro.id_filtro, prf_filtro.codice, prf_filtro.descrizione, prf_filtro.descrizione_lunga, prf_filtro.id_livello, prf_area.codice area_codice, 
-           prf_area.descrizione area_descrizione, prf_livello.codice livello_codice, prf_livello.descrizione livello_descrizione, prf_livello.ordine
-        from prf_filtro
+    select prf_filter.id_filter, prf_filter.code, prf_filter.description, prf_filter.long_description, prf_filter.id_level, prf_area.code area_code, 
+           prf_area.description area_description, prf_level.code level_code, prf_level.description level_description, prf_level.level_order
+        from prf_filter
             join prf_area
-                on prf_filtro.id_filtro = prf_area.id_area
-            join prf_livello
-                on prf_area.id_area = prf_livello.id_livello;
+                on prf_filter.id_filter = prf_area.id_area
+            join prf_level
+                on prf_area.id_area = prf_level.id_level;
     
     
-select prf_livello.id_livello, prf_livello.codice, prf_livello.descrizione, prf_livello.ordine, prf_filtro.id_filtro, prf_filtro.codice, prf_filtro.descrizione, 
-       prf_filtro.descrizione_lunga, prf_filtro.id_livello
-    from prf_livello
-        join prf_filtro
-            on prf_livello.id_livello = prf_filtro.id_filtro;
+select prf_level.id_level, prf_level.code, prf_level.description, prf_level.level_order, prf_filter.id_filter, prf_filter.code, prf_filter.description, 
+       prf_filter.long_description, prf_filter.id_level
+    from prf_level
+        join prf_filter
+            on prf_level.id_level = prf_filter.id_filter;
     
     
-create or replace view Livello as
-    select prf_livello.id_livello, prf_livello.codice, prf_livello.descrizione, prf_livello.ordine, prf_filtro.id_filtro, prf_filtro.codice filtro_codice, 
-           prf_filtro.descrizione filtro_descrizione, prf_filtro.descrizione_lunga, prf_filtro.id_livello filtro_id_livello
-        from (prf_livello
-            join prf_filtro
-                on prf_livello.id_livello = prf_filtro.id_filtro);
+create or replace view Level_Level as
+    select prf_level.id_level, prf_level.code, prf_level.description, prf_level.level_order, prf_filter.id_filter, prf_filter.code filter_code, 
+           prf_filter.description filter_description, prf_filter.long_description, prf_filter.id_level filter_id_level
+        from prf_level
+            join prf_filter
+                on prf_level.id_level = prf_filter.id_filter;
     
    
-select prf_ruolo.id_ruolo, prf_ruolo.codice, prf_ruolo.descrizione, userprofile.id_utente, userprofile.area_codice, userprofile.area_descrizione, userprofile.codice, 
-       userprofile.descrizione,userprofile.id_area, userprofile.id_ruolo, userprofile.username, prf_funzione.id_funzione, prf_funzione.codice, prf_funzione.descrizione,
-       prf_menu.id_menu, prf_menu.codice, prf_menu.descrizione, prf_menu.url, prf_menu.ordine
-    from prf_ruolo 
+select prf_role.id_role, prf_role.code, prf_role.description, userprofile.id_user, userprofile.area_code, userprofile.area_description, userprofile.code, 
+       userprofile.description, userprofile.id_area, userprofile.id_role, userprofile.username, prf_function.id_function, prf_function.code, prf_function.description,
+       prf_menu.id_menu, prf_menu.code, prf_menu.description, prf_menu.url, prf_menu.menu_order
+    from prf_role
         join userprofile
-            on prf_ruolo.id_ruolo = userprofile.id_ruolo
-        join prf_funzione
-            on userprofile.id_ruolo = prf_funzione.id_funzione
+            on prf_role.id_role = userprofile.id_role
+        join prf_function
+            on userprofile.id_role = prf_function.id_function
         join prf_menu
-            on prf_funzione.id_funzione = prf_menu.id_menu;
+            on prf_function.id_function = prf_menu.id_menu;
       
       
 create or replace view Role as 
-    select prf_ruolo.id_ruolo ruolo_id_ruolo, prf_ruolo.codice ruolo_codice, prf_ruolo.descrizione ruolo_descrizione, userprofile.id_utente, userprofile.area_codice, 
-           userprofile.area_descrizione, userprofile.codice, userprofile.descrizione,userprofile.id_area, userprofile.id_ruolo, userprofile.username, 
-           prf_funzione.id_funzione, prf_funzione.codice funzione_codice, prf_funzione.descrizione funzione_descrizione, prf_menu.id_menu,
-           prf_menu.codice menu_codice, prf_menu.descrizione menu_descrizione, prf_menu.url, prf_menu.ordine
-        from prf_ruolo 
+    select prf_role.id_role ruolo_id_role, prf_role.code role_code, prf_role.description role_description, userprofile.id_user, userprofile.area_code, 
+           userprofile.area_description, userprofile.code, userprofile.description, userprofile.id_area, userprofile.id_role, userprofile.username, 
+           prf_function.id_function, prf_function.code function_code, prf_function.description function_description, prf_menu.id_menu,
+           prf_menu.code menu_code, prf_menu.description menu_description, prf_menu.url, prf_menu.menu_order
+        from prf_role
             join userprofile
-                on prf_ruolo.id_ruolo = userprofile.id_ruolo
-            join prf_funzione
-                on userprofile.id_ruolo = prf_funzione.id_funzione
+                on prf_role.id_role = userprofile.id_role
+            join prf_function
+                on userprofile.id_role = prf_function.id_function
             join prf_menu
-                on prf_funzione.id_funzione = prf_menu.id_menu;
+                on prf_function.id_function = prf_menu.id_menu;
       
       
-select prf_menu.id_menu, prf_menu.codice, prf_menu.descrizione, prf_menu.url, prf_menu.ordine, prf_ruolo.id_ruolo, prf_ruolo.descrizione, prf_ruolo.codice
+select prf_menu.id_menu, prf_menu.code, prf_menu.description, prf_menu.url, prf_menu.menu_order, prf_role.id_role, prf_role.description, prf_role.code
     from prf_menu
-        inner join prf_ruolo
-            on prf_menu.id_menu = prf_ruolo.id_ruolo;
+        inner join prf_role
+            on prf_menu.id_menu = prf_role.id_role;
     
     
 create or replace view Menu as
-    select prf_menu.id_menu, prf_menu.codice, prf_menu.descrizione, prf_menu.url, prf_menu.ordine, prf_ruolo.id_ruolo, prf_ruolo.descrizione ruolo_descrizione, prf_ruolo.codice ruolo_codice
+    select prf_menu.id_menu, prf_menu.code, prf_menu.description, prf_menu.url, prf_menu.menu_order, prf_role.id_role, prf_role.description role_description, prf_role.code role_code
         from prf_menu
-            join prf_ruolo
-                on prf_menu.id_menu = prf_ruolo.id_ruolo;
+            join prf_role
+                on prf_menu.id_menu = prf_role.id_role;
     
     
-select prf_funzione.id_funzione, prf_funzione.codice, prf_funzione.descrizione, prf_ruolo.id_ruolo, prf_ruolo.descrizione, prf_ruolo.codice, prf_accesso.id_accesso, 
-       prf_accesso.descrizione, prf_accesso.ordine
-    from((prf_funzione
-        join prf_ruolo
-            on prf_funzione.id_funzione = prf_ruolo.id_ruolo)
-        join prf_accesso
-            on prf_ruolo.id_ruolo = prf_accesso.id_accesso);
+select prf_function.id_function, prf_function.code, prf_function.description, prf_role.id_role, prf_role.description, prf_role.code, prf_access.id_access, 
+       prf_access.description, prf_access.access_order
+    from prf_function
+        join prf_role
+            on prf_function.id_function = prf_role.id_role
+        join prf_access
+            on prf_role.id_role = prf_access.id_access;
     
     
 create or replace view Function as
-    select prf_funzione.id_funzione, prf_funzione.codice, prf_funzione.descrizione, prf_ruolo.id_ruolo, prf_ruolo.descrizione ruolo_descrizione, prf_ruolo.codice ruolo_codice, 
-           prf_accesso.id_accesso, prf_accesso.descrizione accesso_descrizione, prf_accesso.ordine
-        from((prf_funzione
-            join prf_ruolo
-                on prf_funzione.id_funzione = prf_ruolo.id_ruolo)
-            join prf_accesso
-                on prf_ruolo.id_ruolo = prf_accesso.id_accesso);
+    select prf_function.id_function, prf_function.code, prf_function.description, prf_role.id_role, prf_role.description role_description, prf_role.code role_code, 
+           prf_access.id_access, prf_access.description access_description, prf_access.access_order
+        from prf_function
+            join prf_role
+                on prf_function.id_function = prf_role.id_role
+            join prf_access
+                on prf_role.id_role = prf_access.id_access;
   
   
-select prf_accesso.id_accesso, prf_accesso.descrizione, prf_accesso.ordine, prf_funzione.id_funzione, prf_funzione.codice, prf_funzione.descrizione
-    from (prf_accesso
-        join prf_funzione
-            on prf_accesso.id_accesso = prf_funzione.id_funzione);
+select prf_access.id_access, prf_access.description, prf_access.access_order, prf_function.id_function, prf_function.code, prf_function.description
+    from prf_access
+        join prf_function
+            on prf_access.id_access = prf_function.id_function;
     
     
-create or replace view Accesso as
-    select prf_accesso.id_accesso, prf_accesso.descrizione, prf_accesso.ordine, prf_funzione.id_funzione, prf_funzione.codice, prf_funzione.descrizione funzione_descrizione
-        from prf_accesso
-            join prf_funzione
-                on prf_accesso.id_accesso = prf_funzione.id_funzione;
+create or replace view Access_Access as
+    select prf_access.id_access, prf_access.description, prf_access.access_order, prf_function.id_function, prf_function.code, prf_function.description function_description
+        from prf_access
+            join prf_function
+                on prf_access.id_access = prf_function.id_function;
     
     
-select userprofile.id_utente, userprofile.area_codice,userprofile.area_descrizione, userprofile.codice, userprofile.descrizione,userprofile.id_area, 
-       userprofile.id_ruolo, userprofile.username, prf_livello.id_livello, prf_livello.codice, prf_livello.descrizione, prf_livello.ordine, prf_filtro.id_filtro, 
-       prf_filtro.codice, prf_filtro.descrizione, prf_filtro.descrizione_lunga, prf_filtro.id_livello,prf_ruolo.id_ruolo ruolo_id_ruolo, prf_ruolo.codice ruolo_codice, 
-       prf_ruolo.descrizione ruolo_descrizione
+select userprofile.id_user, userprofile.area_code,userprofile.area_description, userprofile.code, userprofile.description,userprofile.id_area, 
+       userprofile.id_role, userprofile.username, prf_level.id_level, prf_level.code, prf_level.description, prf_level.level_order, prf_filter.id_filter, 
+       prf_filter.code, prf_filter.description, prf_filter.long_description, prf_filter.id_level, prf_role.id_role role_id_role, prf_role.code role_code, 
+       prf_role.description role_description
     from userprofile
-        join prf_livello
-            on userprofile.id_utente = prf_livello.id_livello
-        join prf_filtro 
-            on prf_livello.id_livello = prf_filtro.id_filtro
-        join prf_ruolo
-            on prf_filtro.id_filtro = prf_ruolo.id_ruolo;
+        join prf_level
+            on userprofile.id_user = prf_level.id_level
+        join prf_filter
+            on prf_level.id_level = prf_filter.id_filter
+        join prf_role
+            on prf_filter.id_filter = prf_role.id_role;
     
     
 create or replace view ProfileAccessor as 
-    select userprofile.id_utente, userprofile.area_codice,userprofile.area_descrizione, userprofile.codice, userprofile.descrizione,userprofile.id_area, 
-           userprofile.id_ruolo, userprofile.username, prf_livello.id_livello, prf_livello.codice livello_codice, prf_livello.descrizione livello_descrizione, prf_livello.ordine, 
-           prf_filtro.id_filtro, prf_filtro.codice filtro_codice, prf_filtro.descrizione filtro_descrizione, prf_filtro.descrizione_lunga, prf_filtro.id_livello filtro_id_livello, 
-           prf_ruolo.id_ruolo ruolo_id_ruolo, prf_ruolo.codice ruolo_codice, prf_ruolo.descrizione ruolo_descrizione
+    select userprofile.id_user, userprofile.area_code, userprofile.area_description, userprofile.code, userprofile.description, userprofile.id_area, 
+           userprofile.id_role, userprofile.username, prf_level.id_level, prf_level.code level_code, prf_level.description level_description, prf_level.level_order, 
+           prf_filter.id_filter, prf_filter.code filter_code, prf_filter.description filter_description, prf_filter.long_description, prf_filter.id_level filter_id_level, 
+           prf_role.id_role role_id_role, prf_role.code role_code, prf_role.description role_description
         from userprofile
-            join prf_livello
-                on userprofile.id_utente = prf_livello.id_livello
-            join prf_filtro 
-                on prf_livello.id_livello = prf_filtro.id_filtro
-            join prf_ruolo
-                on prf_filtro.id_filtro = prf_ruolo.id_ruolo;
+            join prf_level
+                on userprofile.id_user = prf_level.id_level
+            join prf_filter
+                on prf_level.id_level = prf_filter.id_filter
+            join prf_role
+                on prf_filter.id_filter = prf_role.id_role;

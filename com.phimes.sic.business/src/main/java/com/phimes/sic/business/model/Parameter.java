@@ -18,17 +18,17 @@ public class Parameter {
     @Column(name = "VALUE")
 	private String value;
 
-	@Column(name = "TS_CREATION")
-	private Timestamp tsCreazione;
+	@Column(name = "CREATE_TS")
+	private Timestamp createTs;
 
-	@Column(name = "UT_CREATION")
-	private String utCreazione;
+	@Column(name = "CREATE_UT")
+	private String createUt;
 
-	@Column(name = "TS_MODIFY")
-	private Timestamp tsModifica;
+	@Column(name = "MODIFY_TS")
+	private Timestamp modifyTs;
 
-	@Column(name = "UT_MODIFY")
-	private String utModify;
+	@Column(name = "MODIFY_UT")
+	private String modifyUt;
 
 	public String getIdParameter() {
 		return idParameter;
@@ -54,36 +54,36 @@ public class Parameter {
 		this.value = value;
 	}
 
-	public Timestamp getTsCreazione() {
-		return tsCreazione;
+	public Timestamp getCreateTs() {
+		return createTs;
 	}
 
-	public void setTsCreazione(Timestamp tsCreazione) {
-		this.tsCreazione = tsCreazione;
+	public void setCreateTs(Timestamp createTs) {
+		this.createTs = createTs;
 	}
 
-	public String getUtCreazione() {
-		return utCreazione;
+	public String getCreateut() {
+		return createUt;
 	}
 
-	public void setUtCreazione(String utCreazione) {
-		this.utCreazione = utCreazione;
+	public void setCreateUt(String createUt) {
+		this.createUt = createUt;
 	}
 
-	public Timestamp getTsModifica() {
-		return tsModifica;
+	public Timestamp getModifyTs() {
+		return modifyTs;
 	}
 
-	public void setTsModifica(Timestamp tsModifica) {
-		this.tsModifica = tsModifica;
+	public void setModifyTs(Timestamp modifyTs) {
+		this.modifyTs = modifyTs;
 	}
 
-	public String getUtModify() {
-		return utModify;
+	public String getModifyUt() {
+		return modifyUt;
 	}
 
-	public void setUtModify(String utModify) {
-		this.utModify = utModify;
+	public void setModifyUt(String modifyUt) {
+		this.modifyUt = modifyUt;
 	}
 
 }

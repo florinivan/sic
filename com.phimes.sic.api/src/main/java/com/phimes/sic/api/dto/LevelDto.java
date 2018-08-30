@@ -8,7 +8,7 @@ public class LevelDto {
 
 	private String description;
 
-	private int order;
+	private int levelOrder;
 
 	public String getCode() {
 		return code;
@@ -26,12 +26,12 @@ public class LevelDto {
 		this.description = description;
 	}
 
-	public int getOrder() {
-		return order;
+	public int getLevelOrder() {
+		return levelOrder;
 	}
 
-	public void setOrder(int order) {
-		this.order = order;
+	public void setLevelOrder(int levelOrder) {
+		this.levelOrder = levelOrder;
 	}
 
 	

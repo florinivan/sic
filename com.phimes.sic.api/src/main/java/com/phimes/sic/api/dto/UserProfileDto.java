@@ -9,7 +9,7 @@ public class UserProfileDto {
 
 	private Long serialVersionUID;
 
-	private String userName;
+	private String username;
 
 	private Map<String, String> personalDataMap;
 
@@ -18,11 +18,11 @@ public class UserProfileDto {
 	private AreaDto area;
 
 	public String getUserName() {
-		return userName;
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUserName(String username) {
+		this.username = username;
 	}
 
 	public Map<String, String> getPersonalDataMap() {

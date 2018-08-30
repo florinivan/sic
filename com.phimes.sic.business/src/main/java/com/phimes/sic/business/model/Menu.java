@@ -33,20 +33,20 @@ public class Menu {
 	@Column(name = "URL")
 	private String url;
 
-	@Column(name = "ORDER")
-	private Integer order;
+	@Column(name = "MENU_ORDER")
+	private Integer menuOrder;
 
-	@Column(name = "TS_CREATION")
-	private Timestamp tsCreation;
+	@Column(name = "CREATE_TS")
+	private Timestamp createTs;
 
-	@Column(name = "UT_CREATION")
-	private String utCreation;
+	@Column(name = "CREATE_UT")
+	private String createUt;
 
-	@Column(name = "TS_MODIFY")
-	private Timestamp tsModify;
+	@Column(name = "MODIFY_TS")
+	private Timestamp modifyTs;
 
-	@Column(name = "UT_MODIFY")
-	private String utModify;
+	@Column(name = "MODIFY_UT")
+	private String modifyUt;
 
 	
 }
