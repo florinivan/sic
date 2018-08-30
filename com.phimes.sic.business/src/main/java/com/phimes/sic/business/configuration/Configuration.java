@@ -9,12 +9,16 @@ import java.util.Properties;
 import org.hibernate.boot.archive.internal.UrlInputStreamAccess;
 
 public class Configuration {
-
+	
 	private static Configuration istanza;
 
 	private static String fileProperties = "C:\\Phimes\\eclipse-workspace\\sic\\com.phimes.sic.business\\src\\main\\java\\application.properties";
-
-	private static Configuration getInstance() {
+    
+	private Configuration() {
+		
+	}
+	
+	public static Configuration getInstance() {
 		if (istanza == null) {
 			istanza = new Configuration();
 		}
@@ -36,7 +40,8 @@ public class Configuration {
 	public Configuration load(File file) throws IOException {
 
 		// serve qua transformare il file in imputstream e dopo basta perchè richiama
-		// l'altro metodo load(stream)
+        // l'altro metodo load(stream)
+		
 		InputStream stream = new FileInputStream(file);
 
 		return load(stream);
