@@ -1,8 +1,14 @@
 package com.phimes.sic.api.dto;
 
-public class LevelDto {
+import java.io.Serializable;
 
-	private Long serialVersionUID;
+public class LevelDto implements Serializable {
+
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -312310818937903107L;
 
 	private String code;
 

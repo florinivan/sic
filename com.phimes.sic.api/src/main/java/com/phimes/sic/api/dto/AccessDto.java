@@ -1,8 +1,13 @@
 package com.phimes.sic.api.dto;
 
-public class AccessDto {
+import java.io.Serializable;
 
-	private Long serialVersionUID;
+public class AccessDto implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5668859211653885992L;
 
 	private String code;
 
