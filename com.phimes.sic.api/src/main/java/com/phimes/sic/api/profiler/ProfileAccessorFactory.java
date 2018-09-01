@@ -14,17 +14,17 @@ public class ProfileAccessorFactory {
 		return profileAccessorFactoryInstance;
 	}
 	
-	public ProfileAccessor getProfileAccessor (String applicationCode) {
+	public IProfileAccessor getProfileAccessor (String applicationCode) {
 		
 		return null;
 		
 	}
 	
-	public ProfileAccessor getProfileAccessor() {
+	public IProfileAccessor getProfileAccessor() {
 		return null;
 	}
 	
-	public void setProfileAccessor(ProfileAccessor profileAccessor) {
+	public void setProfileAccessor(IProfileAccessor profileAccessor) {
 		
 	}
 

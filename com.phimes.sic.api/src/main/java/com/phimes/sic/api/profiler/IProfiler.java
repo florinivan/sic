@@ -8,7 +8,7 @@ import com.phimes.sic.api.dto.RoleDto;
 import com.phimes.sic.api.dto.UserProfileDto;
 
 
-public interface Profiler {
+public interface IProfiler {
 
 	//public ApplicationConfig getApplicationConfig(String applicationCode);
 	

@@ -8,11 +8,11 @@ import com.phimes.sic.api.dto.LevelDto;
 import com.phimes.sic.api.dto.RoleDto;
 import com.phimes.sic.api.dto.UserProfileDto;
 
-public interface ProfileAccessor {
+public interface IProfileAccessor {
 	
 	public void setApplicationCode(String applicationCode);
 	
-	public void setProfiler (Profiler profiler);
+	public void setProfiler (IProfiler profiler);
 	
 	//public ApplicationConfig getApplicationConfig();
 	

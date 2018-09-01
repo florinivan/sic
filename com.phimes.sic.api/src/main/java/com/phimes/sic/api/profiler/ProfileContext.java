@@ -15,11 +15,11 @@ public class ProfileContext  {
 		return profileContextInstance;
 	}
 	
-	public ProfileAccessor getCurrentProfileAccessor() {
+	public IProfileAccessor getCurrentProfileAccessor() {
 		return null;
 	}
 	
-	public void setCurrentProfileAccessor (ProfileAccessor profileAccessor) {
+	public void setCurrentProfileAccessor (IProfileAccessor profileAccessor) {
 		
 	}
 
