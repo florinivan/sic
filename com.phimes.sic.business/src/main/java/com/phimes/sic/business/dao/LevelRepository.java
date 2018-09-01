@@ -11,7 +11,7 @@ import com.phimes.sic.business.model.Level;
 
 public interface LevelRepository extends CrudRepository<Level, Long> {
 	
-	@Query("select lv.code, lv.description, lv.order from Level lv join Filter fl")
+	@Query("select lv.code, lv.description, lv.levelOrder from Level lv join Filter fl")
 	Level getLevelFilterBy();
 
 }

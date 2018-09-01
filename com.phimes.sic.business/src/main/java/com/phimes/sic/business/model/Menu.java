@@ -33,20 +33,100 @@ public class Menu {
 	@Column(name = "URL")
 	private String url;
 
-	@Column(name = "ORDER")
-	private Integer order;
+	@Column(name = "MENU_ORDER")
+	private Integer menuOrder;
 
-	@Column(name = "TS_CREATION")
-	private Timestamp tsCreation;
+	@Column(name = "CREATE_TS")
+	private Timestamp createTs;
 
-	@Column(name = "UT_CREATION")
-	private String utCreation;
+	@Column(name = "CREATE_UT")
+	private String createUt;
 
-	@Column(name = "TS_MODIFY")
-	private Timestamp tsModify;
+	@Column(name = "MODIFY_TS")
+	private Timestamp modifyTs;
 
-	@Column(name = "UT_MODIFY")
-	private String utModify;
+	@Column(name = "MODIFY_UT")
+	private String modifyUt;
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+
+	public Application getApplication() {
+		return application;
+	}
+
+	public void setApplication(Application application) {
+		this.application = application;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public Integer getMenuOrder() {
+		return menuOrder;
+	}
+
+	public void setMenuOrder(Integer menuOrder) {
+		this.menuOrder = menuOrder;
+	}
+
+	public Timestamp getCreateTs() {
+		return createTs;
+	}
+
+	public void setCreateTs(Timestamp createTs) {
+		this.createTs = createTs;
+	}
+
+	public String getCreateUt() {
+		return createUt;
+	}
+
+	public void setCreateUt(String createUt) {
+		this.createUt = createUt;
+	}
+
+	public Timestamp getModifyTs() {
+		return modifyTs;
+	}
+
+	public void setModifyTs(Timestamp modifyTs) {
+		this.modifyTs = modifyTs;
+	}
+
+	public String getModifyUt() {
+		return modifyUt;
+	}
+
+	public void setModifyUt(String modifyUt) {
+		this.modifyUt = modifyUt;
+	}
 
 	
 }

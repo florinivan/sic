@@ -16,9 +16,9 @@ public class MenuDto implements Serializable {
 
 	private String url;
 
-	private int order;
+	private int menuOrder;
 
-	private Set<MenuDto> subMenu;
+	private Set<MenuDto> IdSubMenu;
 
 	public String getCode() {
 		return code;
@@ -44,20 +44,20 @@ public class MenuDto implements Serializable {
 		this.url = url;
 	}
 
-	public int getOrder() {
-		return order;
+	public int getMenuOrder() {
+		return menuOrder;
 	}
 
-	public void setOrder(int order) {
-		this.order = order;
+	public void setMenuOrder(int menuOrder) {
+		this.menuOrder = menuOrder;
 	}
 
-	public Set<MenuDto> getSubMenu() {
-		return subMenu;
+	public Set<MenuDto> getIdSubMenu() {
+		return IdSubMenu;
 	}
 
-	public void setSubMenu(Set<MenuDto> subMenu) {
-		this.subMenu = subMenu;
+	public void setIdSubMenu(Set<MenuDto> IdSubMenu) {
+		this.IdSubMenu = IdSubMenu;
 	}
 
 }

@@ -13,7 +13,7 @@ public class UserProfileDto implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private String userName;
+	private String username;
 
 	private Map<String, String> personalDataMap;
 
@@ -22,11 +22,11 @@ public class UserProfileDto implements Serializable {
 	private AreaDto area;
 
 	public String getUserName() {
-		return userName;
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUserName(String username) {
+		this.username = username;
 	}
 
 	public Map<String, String> getPersonalDataMap() {

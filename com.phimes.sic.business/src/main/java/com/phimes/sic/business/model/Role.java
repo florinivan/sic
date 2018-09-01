@@ -43,17 +43,17 @@ public class Role {
 	@Column(name = "DESCRIPTION")
 	private String description;
 
-	@Column(name = "TS_CREATION")
-	private Timestamp tsCreation;
+	@Column(name = "CREATE_TS")
+	private Timestamp createTs;
 
-	@Column(name = "UT_CREATION")
-	private String utCreation;
+	@Column(name = "CREATE_UT")
+	private String createUt;
 
-	@Column(name = "TS_MODIFY")
-	private Timestamp tsModify;
+	@Column(name = "MODIFY_TS")
+	private Timestamp modifyTs;
 
-	@Column(name = "UT_MODIFY")
-	private String utModify;
+	@Column(name = "MODIFY_UT")
+	private String modifyUt;
 
 	public Set<Menu> getMenu() {
 		return menu;
@@ -111,36 +111,36 @@ public class Role {
 		this.description = description;
 	}
 
-	public Timestamp getTsCreation() {
-		return tsCreation;
+	public Timestamp getCreateTs() {
+		return createTs;
 	}
 
-	public void setTsCreation(Timestamp tsCreation) {
-		this.tsCreation = tsCreation;
+	public void setCreateTs(Timestamp createTs) {
+		this.createTs = createTs;
 	}
 
-	public String getUtCreation() {
-		return utCreation;
+	public String getCreateUt() {
+		return createUt;
 	}
 
-	public void setUtCreation(String utCreation) {
-		this.utCreation = utCreation;
+	public void setCreateUt(String createUt) {
+		this.createUt = createUt;
 	}
 
-	public Timestamp getTsModify() {
-		return tsModify;
+	public Timestamp getModifyTs() {
+		return modifyTs;
 	}
 
-	public void setTsModify(Timestamp tsModify) {
-		this.tsModify = tsModify;
+	public void setModifyTs(Timestamp modifyTs) {
+		this.modifyTs = modifyTs;
 	}
 
-	public String getUtModify() {
-		return utModify;
+	public String getModifyUt() {
+		return modifyUt;
 	}
 
-	public void setUtModify(String utModify) {
-		this.utModify = utModify;
+	public void setModifyUt(String modifyUt) {
+		this.modifyUt = modifyUt;
 	}
 
 }
