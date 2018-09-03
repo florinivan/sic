@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: com.phimes.sic.api
 Implementation-Version: 0.0.1
-Built-By: madad
+Built-By: fam.panaite
 Implementation-Vendor-Id: com.phimes.sic
-Build-Jdk: 1.8.0_102
+Build-Jdk: 1.8.0_161
 Implementation-URL: http://projects.spring.io/spring-boot/com.phimes.s
  ic.api/
 Created-By: Maven Integration for Eclipse

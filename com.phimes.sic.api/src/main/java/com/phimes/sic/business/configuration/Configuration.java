@@ -40,9 +40,7 @@ public class Configuration {
 
 	public Configuration load(File file) throws IOException {
 
-		// serve qua transformare il file in imputstream e dopo basta perchè richiama
-        // l'altro metodo load(stream)
-		
+	
 		InputStream stream = new FileInputStream(file);
 
 		return load(stream);
