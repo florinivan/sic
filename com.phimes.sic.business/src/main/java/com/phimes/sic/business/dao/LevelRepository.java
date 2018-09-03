@@ -17,7 +17,7 @@ public interface LevelRepository extends CrudRepository<Level, Long> {
 	List<Level> getLevelListBy(@Param("codeApp")String codeApp);
 	
 	@Query("select lv.code, lv.description, lv.levelOrder from Filter fl join Level lv join Application app  where app.code=:codeApp and fl.code=:codeFl")
-	Stream<Level> findOne(@Param("codeApp")String codeApp, @Param("codeFl") String codeFl);
+	Level findOne(@Param("codeApp")String codeApp, @Param("codeFl") String codeFl);
 	
 
 }
