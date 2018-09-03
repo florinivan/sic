@@ -1,10 +1,15 @@
 package com.phimes.sic.api.dto;
 
+import java.io.Serializable;
+
 import com.phimes.sic.api.dto.LevelDto;
 
-public class FilterDto {
+public class FilterDto implements Serializable {
 
-	private Long serialVersionUID;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8385131801811489568L;
 
 	private String code;
 

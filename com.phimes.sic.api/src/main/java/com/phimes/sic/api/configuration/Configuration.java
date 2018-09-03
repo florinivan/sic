@@ -1,14 +1,22 @@
-package com.phimes.sic.business.configuration;
+package com.phimes.sic.api.configuration;
 
-import java.io.File;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.URL;
+import java.net.URLClassLoader;
+import java.util.Enumeration;
+import java.util.Properties;
+
 
 public class Configuration {
-
+	
 	private static Configuration istanza;
 
+	private static String fileProperties = "C:\\Phimes\\eclipse-workspace\\sic\\com.phimes.sic.business\\src\\main\\java\\application.properties";
+    
+	private Configuration() {
+		
+	}
+	
 	public static Configuration getInstance() {
 		if (istanza == null) {
 			istanza = new Configuration();
@@ -17,24 +25,105 @@ public class Configuration {
 		return istanza;
 	}
 
-	public Configuration load(URL url) {
-		return null;
+	public Configuration load(URL url) throws IOException {
+
+		BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+		// prendere il stream da bufferedReader
+		String inputLine;
+		while ((inputLine = in.readLine()) != null)
+			System.out.println(inputLine);
+		in.close();
+
+		return load(url);
 	}
 
-	public Configuration load(File file) {
-		return null;
+	public Configuration load(File file) throws IOException {
+
+	
+		InputStream stream = new FileInputStream(file);
+
+		return load(stream);
 	}
 
-	public Configuration load(InputStream stream) {
-		return null;
+	public Configuration load(InputStream stream) throws IOException{
+
+		Properties prop = new Properties();
+		try {
+			
+			if (stream == null) {
+				System.out.println("Sorry, unable to find " + fileProperties);
+
+			}
+
+			// load a properties file from class path, inside static method
+			prop.load(stream);
+			Enumeration e = prop.keys();
+
+			while (e.hasMoreElements()) {
+				// key from file properties
+				Object obj = e.nextElement();
+				// value from file properties
+				String result = prop.getProperty(obj.toString());
+				switch (obj.toString()) {
+				case "spring.datasource.url":
+					getInstance().setJndiDataSource(result);
+					break;
+				case "spring.datasource.username":
+					getInstance().setUserDataSource(result);
+					break;
+				case "spring.datasource.password":
+					getInstance().setUserDataSource(result);
+					break;
+				case "spring.datasource.driver-class":
+					getInstance().setUserDataSource(result);
+					break;
+
+				}
+			}
+		} finally {
+			if (stream != null) {
+				try {
+					stream.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return istanza;
 	}
 
-	public void save(File file) {
+	public void save(File file) throws IOException {
+
+		try {
+			ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(fileProperties));
+			os.writeObject(file);
+			os.close();
+		} catch (FileNotFoundException e) {
+
+			e.printStackTrace();
+		} catch (IOException ex) {
+
+			ex.printStackTrace();
+		}
 
 	}
 
 	public void save(OutputStream stream) {
 
+		try {
+			ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(fileProperties));
+			os.writeObject(stream);
+			os.close();
+		} catch (FileNotFoundException e) {
+
+			e.printStackTrace();
+		} catch (IOException ex) {
+
+			ex.printStackTrace();
+		}
+
+		
 	}
 
 	public Class getProfilerConnectorClass() {

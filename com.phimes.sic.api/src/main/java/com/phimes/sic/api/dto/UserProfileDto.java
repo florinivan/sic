@@ -1,13 +1,17 @@
 package com.phimes.sic.api.dto;
 
+import java.io.Serializable;
 import java.util.Map;
 
 import com.phimes.sic.api.dto.AreaDto;
 import com.phimes.sic.api.dto.RoleDto;
 
-public class UserProfileDto {
+public class UserProfileDto implements Serializable {
 
-	private Long serialVersionUID;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private String username;
 

@@ -1,12 +1,16 @@
 package com.phimes.sic.api.dto;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import com.phimes.sic.api.dto.FilterDto;
 
-public class AreaDto {
+public class AreaDto implements Serializable{
 
-	private Long serialVersionUID;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6974789935467679696L;
 
 	private String code;
 

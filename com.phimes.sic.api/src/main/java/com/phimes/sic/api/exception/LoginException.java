@@ -1,4 +1,4 @@
-package com.phimes.sic.business.exception;
+package com.phimes.sic.api.exception;
 
 public class LoginException extends Exception {
 

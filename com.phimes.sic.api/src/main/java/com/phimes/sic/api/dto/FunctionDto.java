@@ -1,12 +1,17 @@
 package com.phimes.sic.api.dto;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import com.phimes.sic.api.dto.AccessDto;
 
-public class FunctionDto {
+public class FunctionDto implements Serializable {
 
-	private Long serialVersionUID;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1404707890622185024L;
 
 	private String code;
 

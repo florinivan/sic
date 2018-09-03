@@ -1,10 +1,14 @@
 package com.phimes.sic.api.dto;
 
+import java.io.Serializable;
 import java.util.Set;
 
-public class MenuDto {
+public class MenuDto implements Serializable {
 
-	private Long serialVersionUID;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6542972626640500478L;
 
 	private String code;
 
