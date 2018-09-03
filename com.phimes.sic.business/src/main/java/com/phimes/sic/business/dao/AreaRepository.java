@@ -1,8 +1,5 @@
 package com.phimes.sic.business.dao;
 
-import java.util.stream.Stream;
-
-import org.jboss.logging.Param;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -12,7 +9,10 @@ import com.phimes.sic.business.model.Area;
 
 public interface AreaRepository extends CrudRepository<Area, Long> {
 	
-	@Query("select ar.code, ar.description, fl from Area ar join Filter fl")
-	Area getAreaFilterBy();
+	@Query("select ar.area, ar.code, ar.description from Area ar join Application app join User usr fl where usr.code =: codeUsr and app.code =: codeApp and ar.code =: codeAr")
+	Area getAreaApplicationUser(String codeUsr, String codeApp, String codeAr);
+
+
+
 
 }

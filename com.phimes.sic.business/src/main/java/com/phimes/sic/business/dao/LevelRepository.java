@@ -13,10 +13,10 @@ import com.phimes.sic.business.model.Level;
 
 public interface LevelRepository extends CrudRepository<Level, Long> {
 	
-	@Query("select lv.code, lv.description, lv.levelOrder from Level lv  join Application app where app.idApplication=:codeApp")
-	List<Level> getLevelListFilterBy(@Param("codeApp")String codeApp);
+	@Query("select lv.code, lv.description, lv.levelOrder from Level lv  join Application app where app.code=:codeApp")
+	List<Level> getLevelListBy(@Param("codeApp")String codeApp);
 	
-	@Query("select lv.code, lv.description, lv.levelOrder from Filter fl join Level lv join Application app  where app.idApplication=:codeApp and fl.code=:codeFl")
+	@Query("select lv.code, lv.description, lv.levelOrder from Filter fl join Level lv join Application app  where app.code=:codeApp and fl.code=:codeFl")
 	Stream<Level> findOne(@Param("codeApp")String codeApp, @Param("codeFl") String codeFl);
 	
 

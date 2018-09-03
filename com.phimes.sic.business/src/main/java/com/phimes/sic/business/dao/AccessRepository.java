@@ -11,7 +11,7 @@ import com.phimes.sic.business.model.Access;
 @org.springframework.stereotype.Repository
 public interface AccessRepository extends CrudRepository<Access, Character> {
 
-	@Query("select acc.idAccess, acc.description from Access acc join Function fz where fz.code= :code_fz")
-	List<Access>  getAccessFunction(@Param("code_fz") String code_fz);
+	@Query("select acc.idAccess, acc.description from Access acc join Function fz where fz.code= :codeFz")
+	List<Access>  getAccessFunction(@Param("codeFz") String codeFz);
 
 }

@@ -28,8 +28,8 @@ public class AccessService extends Service<Access, Character> implements IAccess
 
 	ModelMapper modelMapper = new ModelMapper();
 
-	public List<AccessDto> getAccessDto(String code) {
-		List<Access> access = rep.getAccessFunction(code);
+	public List<AccessDto> getAccessDto(String codeFz) {
+		List<Access> access = rep.getAccessFunction(codeFz);
 		
 		List<AccessDto> retList = new ArrayList<>();
 		/*
