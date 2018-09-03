@@ -1,4 +1,4 @@
-package com.phimes.sic.business.configuration;
+package com.phimes.sic.api.configuration;
 
 import java.io.*;
 import java.net.URL;
@@ -6,7 +6,6 @@ import java.net.URLClassLoader;
 import java.util.Enumeration;
 import java.util.Properties;
 
-import org.hibernate.boot.archive.internal.UrlInputStreamAccess;
 
 public class Configuration {
 	
@@ -40,9 +39,7 @@ public class Configuration {
 
 	public Configuration load(File file) throws IOException {
 
-		// serve qua transformare il file in imputstream e dopo basta perchè richiama
-        // l'altro metodo load(stream)
-		
+	
 		InputStream stream = new FileInputStream(file);
 
 		return load(stream);
