@@ -9,16 +9,16 @@ public class AccessDto implements Serializable {
 	 */
 	private static final long serialVersionUID = 5668859211653885992L;
 
-	private String code;
+	private String idAccess;
 
 	private String description;
 
-	public String getCode() {
-		return code;
+	public String getIdAccess() {
+		return idAccess;
 	}
 
-	public void setCode(String code) {
-		this.code = code;
+	public void setIdAccess(String idAccess) {
+		this.idAccess = idAccess;
 	}
 
 	public String getDescription() {
