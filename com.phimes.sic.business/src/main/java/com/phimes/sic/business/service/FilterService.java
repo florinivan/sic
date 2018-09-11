@@ -23,8 +23,8 @@ public class FilterService extends Service<FilterDto, Long> implements IFilterSe
 	}
 	
 	ModelMapper modelMapper = new ModelMapper();
-	public FilterDto getFilterDto() {
-		Filter filter = rep.getFilterLevelBy();
+	public FilterDto getFilterDto(String codeAr, String codeLv, String codeFl) {
+		Filter filter = rep.findOne(codeAr, codeLv, codeFl);
 		FilterDto filSer = modelMapper.map(filter, FilterDto.class);
 		return filSer;
 	}

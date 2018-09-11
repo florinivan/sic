@@ -7,5 +7,7 @@ import com.phimes.sic.api.dto.AccessDto;
 public interface IAccessService  {
 	
 	public List<AccessDto> getAccessDto(String Code);
+	
+	//public List<AccessDto> getAccessDto(Character idAccess);
 
 }
