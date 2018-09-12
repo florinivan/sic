@@ -5,9 +5,9 @@ import java.util.List;
 import com.phimes.sic.api.dto.FunctionDto;
 
 public interface IFunctionService {
-	public List<FunctionDto> getFunctionDto(String CodeRl);
+	public List<FunctionDto> getFunctionListDto(String codeRl, String codeApp, String codeFz);
 	
-	public FunctionDto getFunctionDto(String CodeApp, String CodeFz);
+	public FunctionDto getFunctionDto(String codeRl, String codeApp, String codeFz);
 	
 	
 

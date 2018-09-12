@@ -29,8 +29,8 @@ public class FilterService extends Service<FilterDto, Long> implements IFilterSe
 
 	ModelMapper modelMapper = new ModelMapper();
 
-	public List<FilterDto> getListFilterDto(String codeAr, String codeLv, String codeFl) {
-		List<Filter> filter = rep.getFilterList(codeAr, codeLv, codeFl);
+	public List<FilterDto> getListFilterDto(String codeAr, String codeLv) {
+		List<Filter> filter = rep.getFilterList(codeAr, codeLv);
 
 		List<FilterDto> retListFl = new ArrayList<>();
 
@@ -41,8 +41,8 @@ public class FilterService extends Service<FilterDto, Long> implements IFilterSe
 		return retListFl;
 	}
 
-	public FilterDto getFilterDto(String codeAr, String codeLv, String codeFl) {
-		Filter filter = rep.findOne(codeAr, codeLv, codeFl);
+	public FilterDto getFilterDto(String codeAr, String codeLv) {
+		Filter filter = rep.findOne(codeAr, codeLv);
 		FilterDto filSer = modelMapper.map(filter, FilterDto.class);
 		return filSer;
 	}

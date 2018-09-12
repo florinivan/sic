@@ -15,11 +15,9 @@ import antlr.collections.List;
 
 public interface FunctionRepository extends CrudRepository<Function, Long> {
 
-	@Query("select fz.code, fz.description, fz.idAccess, from Function fz join Access acc join Role rl where rl.code =: codeRl and acc.idAccess =: idAccessAcc and fz.code =:codeFz")
-	java.util.List<Function> getFunctionRoleBy(@Param("codeRl") String codeRl);
-	java.util.List<Access> getFunctionAccessBy(@Param("idAccess") Character idAccess);
-	
-	@Query("select fz.code, fz.description, fz.idAccess, from Function fz join Application app where app.code =: codeApp and fz.code =: codeFz")
-	Function findOne(@Param("codeApp") String codeApp, @Param("codeFz") String codeFz);
+	@Query("select fz.code, fz.description from Function fz join Role rl join Application app where rl.code =: codeRl and app.code =:codeApp and fz.code =: codeFz")
+	java.util.List<Function> getFunctionRoleBy(@Param("codeRl") String codeRl, @Param("codeApp") String codeApp, @Param("codeFz") String codeFz);
 
+	@Query("select fz.code, fz.description from Function fz join Role rl join Application app where rl.code =: codeRl and app.code =:codeApp and fz.code =: codeFz")
+	Function findOne(@Param("codeRl") String codeRl, @Param("codeApp") String codeApp, @Param("codeFz") String codeFz);
 }

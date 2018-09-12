@@ -31,8 +31,8 @@ public class FunctionService extends Service<FunctionDto, Long> implements IFunc
 
 	ModelMapper modelMapper = new ModelMapper();
 
-	public List<FunctionDto> getFunctionDto(String codeRl) {
-		List<Function> function = rep.getFunctionRoleBy(codeRl);
+	public List<FunctionDto> getFunctionListDto(String codeRl, String codeApp, String codeFz) {
+		List<Function> function = rep.getFunctionRoleBy(codeRl, codeApp, codeFz);
 
 		List<FunctionDto> retListFz = new ArrayList<>();
 
@@ -43,20 +43,10 @@ public class FunctionService extends Service<FunctionDto, Long> implements IFunc
 		return retListFz;
 	}
 
-	public List<AccessDto> getAccessDto(Character idAccess) {
-		List<Access> access = rep.getFunctionAccessBy(idAccess);
+	
 
-		List<AccessDto> retListAcc = new ArrayList<>();
-
-		for (Access item : access) {
-			AccessDto dto = modelMapper.map(item, AccessDto.class);
-			retListAcc.add(dto);
-		}
-		return retListAcc;
-	}
-
-	public FunctionDto getFunctionDto(String codeApp, String codeFz) {
-		Function function = rep.findOne(codeApp, codeFz);
+	public FunctionDto getFunctionDto(String codeRl, String codeApp, String codeFz) {
+		Function function = rep.findOne(codeRl, codeApp, codeFz);
 		FunctionDto fzSer = modelMapper.map(function, FunctionDto.class);
 		return fzSer;
 	}
