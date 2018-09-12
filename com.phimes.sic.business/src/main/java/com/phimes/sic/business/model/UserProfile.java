@@ -2,6 +2,7 @@ package com.phimes.sic.business.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
@@ -11,6 +12,7 @@ public class UserProfile {
 	@Column(name = "USERNAME")
 	private String username;
 	
+	@Id
 	@Column (name = "ID_USER")
 	private Long idUser;
 	
