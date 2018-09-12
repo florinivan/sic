@@ -10,6 +10,7 @@ import org.springframework.data.repository.CrudRepository;
 import com.phimes.sic.business.dao.AccessRepository;
 import com.phimes.sic.business.dao.FilterRepository;
 import com.phimes.sic.business.dao.LevelRepository;
+import com.phimes.sic.api.dto.FilterDto;
 import com.phimes.sic.api.dto.FunctionDto;
 import com.phimes.sic.api.dto.LevelDto;
 import com.phimes.sic.api.dto.RoleDto;
@@ -23,7 +24,7 @@ public class LevelService extends Service<LevelDto, Long> implements ILevelServi
 
 	@Autowired
 	private LevelRepository rep;
-	
+
 	@Autowired
 	private FilterRepository filtroRep;
 
@@ -45,13 +46,10 @@ public class LevelService extends Service<LevelDto, Long> implements ILevelServi
 		return dtos;
 	}
 
-	
-	//da finire di implementare il metodo
-	
-	@Override
-	public LevelDto getLevelDto(Long idFilter) {
-		Filter filtro =  filtroRep.findOne(idFilter);
-		
-		return null;
+	public LevelDto getLevelDto(String codeApp, String codeFl) {
+		Level level = rep.findOne(codeApp, codeFl);
+		LevelDto levSer = modelMapper.map(level, LevelDto.class);
+		return levSer;
 	}
+
 }
