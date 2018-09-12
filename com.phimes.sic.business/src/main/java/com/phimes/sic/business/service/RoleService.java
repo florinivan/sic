@@ -8,10 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 
 import com.phimes.sic.business.dao.RoleRepository;
-import com.phimes.sic.api.dto.FilterDto;
 import com.phimes.sic.api.dto.RoleDto;
 import com.phimes.sic.api.service.IRoleService;
-import com.phimes.sic.business.model.Filter;
 import com.phimes.sic.business.model.Role;
 
 @org.springframework.stereotype.Component
