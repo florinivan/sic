@@ -29,7 +29,7 @@ public class FilterService extends Service<FilterDto, Long> implements IFilterSe
 
 	ModelMapper modelMapper = new ModelMapper();
 
-	public List<FilterDto> getListFilterDto(String codeAr, String codeLv) {
+	public List<FilterDto> getFilterListDto(String codeAr, String codeLv) {
 		List<Filter> filter = rep.getFilterList(codeAr, codeLv);
 
 		List<FilterDto> retListFl = new ArrayList<>();

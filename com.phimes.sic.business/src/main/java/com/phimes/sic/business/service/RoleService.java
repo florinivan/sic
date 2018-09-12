@@ -28,7 +28,7 @@ public class RoleService extends Service<RoleDto, Long> implements IRoleService 
 	
 	ModelMapper modelMapper = new ModelMapper();
 	
-	public List<RoleDto> getRoleDto(String idUser) {
+	/*public List<RoleDto> getRoleDto(String idUser) {
 		List<Role> role = rep.getRoleList(idUser);
 		List<RoleDto> dtos = new ArrayList<RoleDto>();
 		for(Role item: role) {
@@ -38,5 +38,11 @@ public class RoleService extends Service<RoleDto, Long> implements IRoleService 
 		
 		
 		return dtos;
+	}*/
+	
+	public RoleDto getFilterDto(String codeApp, String codeMn, String codeFz, String codeUsr, String codeRl) {
+		Role role = rep.findOne(codeApp, codeMn, codeFz, codeUsr, codeRl);
+		RoleDto RoleSer = modelMapper.map(role, RoleDto.class);
+		return RoleSer;
 	}
 }

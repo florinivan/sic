@@ -13,7 +13,7 @@ import com.phimes.sic.business.model.Role;
 
 public interface RoleRepository  extends CrudRepository<Role, Long> {
 	
-	@Query("select rl.code, rl.description, fz, mn from User usr join Role rl join Function fz join Menu mn where usr.idUser= idUser")
-	List<Role> getRoleList(@Param("idUser")String idUser);
+	@Query("select rl.code, rl.description, from Role rl join User usr join Function fz join Menu mn join Application app where app.code =:codeApp and mn.code =: codeMn and fz.code =: codeFz and usr.code =: codeUsr and rl.code =: codeRl")
+	Role findOne(@Param("codeApp")String codeApp, @Param("codeMn") String codeMn, @Param("codeFz") String codeFz, @Param("codeUsr")String codeUsr, @Param("codeRl") String codeRl);
 
 }

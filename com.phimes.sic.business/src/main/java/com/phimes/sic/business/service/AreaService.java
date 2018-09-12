@@ -25,8 +25,8 @@ public class AreaService extends Service<AreaDto, Long> implements IAreaService 
 
 	ModelMapper modelMapper = new ModelMapper();
 
-	public AreaDto getAreaDto(String codeUsr, String codeApp, String codeAr) {
-		Area area = rep.findOne(codeUsr, codeApp, codeAr);
+	public AreaDto getAreaDto(String codeUsr, String codeApp, String codeAr, Character idStateSt) {
+		Area area = rep.findOne(codeUsr, codeApp, codeAr, idStateSt);
 		AreaDto areaSer = modelMapper.map(area, AreaDto.class);
 		return areaSer;
 	}

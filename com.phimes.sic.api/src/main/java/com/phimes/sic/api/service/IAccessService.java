@@ -8,6 +8,6 @@ public interface IAccessService  {
 	
 	public List<AccessDto> getAccessDto(String Code);
 	
-	//public List<AccessDto> getAccessDto(Character idAccess);
+	
 
 }
