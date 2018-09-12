@@ -2,12 +2,13 @@ package com.phimes.sic.business.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "USER_PROFILE")
 public class UserProfile {
-	
+	@Id
 	@Column(name = "USERNAME")
 	private String username;
 	

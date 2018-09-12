@@ -12,7 +12,7 @@ public class Level {
 
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_LEV_SEQ")
 
-	@OneToMany(mappedBy = "levels")
+	@OneToMany(mappedBy = "level")
 	private Set<Filter> filters;
 
 	@ManyToOne
