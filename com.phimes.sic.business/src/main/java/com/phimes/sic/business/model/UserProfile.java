@@ -12,6 +12,7 @@ public class UserProfile {
 	@Column(name = "USERNAME")
 	private String username;
 	
+	@Id
 	@Column (name = "ID_USER")
 	private Long idUser;
 	
