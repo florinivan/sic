@@ -1,7 +1,6 @@
 package com.phimes.sic.business.dao;
 
 import java.util.List;
-import java.util.stream.Stream;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -13,10 +12,10 @@ import com.phimes.sic.business.model.Level;
 
 public interface LevelRepository extends CrudRepository<Level, Long> {
 	
-	@Query("select lv.code, lv.description, lv.levelOrder from Level lv  join Application app where app.code=:codeApp")
+	@Query("select lv from Level lv  join Application app where app.code=:codeApp")
 	List<Level> getLevelListBy(@Param("codeApp")String codeApp);
 	
-	@Query("select lv.code, lv.description, lv.levelOrder from Filter fl join Level lv join Application app  where app.code=:codeApp and fl.code=:codeFl")
+	@Query("select fl.level from Filter fl join Level lv join Application app  where app.code=:codeApp and fl.code=:codeFl")
 	Level findOne(@Param("codeApp")String codeApp, @Param("codeFl") String codeFl);
 	
 

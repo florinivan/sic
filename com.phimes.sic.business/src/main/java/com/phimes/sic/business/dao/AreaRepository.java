@@ -10,7 +10,7 @@ import com.phimes.sic.business.model.Area;
 
 public interface AreaRepository extends CrudRepository<Area, Long> {
 	
-	@Query("select ar from  User usr join Area ar join Application app join State st where usr.code =: codeUsr and app.code =: codeApp and ar.code =: codeAr and st.idState =: idStateSt ")
+	@Query("select a from  User usr join Area a join Application app join State st where usr.idUser = :codeUsr and app.code = :codeApp and a.code = :codeAr and st.idState = :idStateSt ")
 	Area findOne(@Param("codeUsr") String codeUsr, @Param("codeApp") String codeApp, @Param("codeAr") String codeAr, @Param("idStateSt") Character idStateSt);
 
 

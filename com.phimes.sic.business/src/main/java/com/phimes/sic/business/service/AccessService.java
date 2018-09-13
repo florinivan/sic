@@ -3,6 +3,7 @@ package com.phimes.sic.business.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class AccessService extends Service<Access, Character> implements IAccess
 	ModelMapper modelMapper = new ModelMapper();
 
 	public List<AccessDto> getAccessDto(String codeFz) {
-		List<Access> access = rep.getAccessFunction(codeFz);
+		Set<Access> access = rep.getAccessFunction(codeFz);
 		
 		List<AccessDto> retList = new ArrayList<>();
 		/*

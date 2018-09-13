@@ -10,8 +10,6 @@ import javax.persistence.*;
 @SequenceGenerator(sequenceName = "prf_level_seq", initialValue = 1, allocationSize = 1, name = "PRF_LEV_SEQ")
 public class Level {
 
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_LEV_SEQ")
-
 	@OneToMany(mappedBy = "level")
 	private Set<Filter> filters;
 
@@ -20,6 +18,7 @@ public class Level {
 	private Application application;
 
 	@Column(name = "ID_LEVEL")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_LEV_SEQ")
 	@Id
 	private Long idLevel;
 
