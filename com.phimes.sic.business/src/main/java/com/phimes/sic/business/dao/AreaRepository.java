@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+import com.phimes.sic.api.dto.AreaDto;
 import com.phimes.sic.business.model.Area;
 
 @org.springframework.stereotype.Repository
@@ -13,7 +14,7 @@ import com.phimes.sic.business.model.Area;
 public interface AreaRepository extends CrudRepository<Area, Long> {
 	
 	@Query("select usr.areas from  User usr join usr.areas r where usr.idUser = :codeUsr and r.application.code = :codeApp")
-	Set<Area> getAreaList(@Param("codeUsr") String codeUsr, @Param("codeApp") String codeApp);
+	Set<Area> getAreaList(@Param("codeUsr") Long codeUsr, @Param("codeApp") String codeApp);
 
 
 

@@ -5,16 +5,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 public abstract class Service<T, ID extends Serializable> implements IService<T, ID> {
 
 	protected abstract CrudRepository<T, ID> getCrudRep();
 
+	@Transactional
 	public T saveOrUpdate(T t) {
 		return getCrudRep().save(t);
 
 	}
 
+	@Transactional
 	public void delete(T t) {
 		getCrudRep().delete(t);
 	}

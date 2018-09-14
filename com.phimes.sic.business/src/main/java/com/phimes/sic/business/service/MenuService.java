@@ -13,7 +13,7 @@ import com.phimes.sic.api.service.IMenuService;
 import com.phimes.sic.business.model.Menu;
 
 @org.springframework.stereotype.Service
-public class MenuService extends Service<MenuDto, Long> implements IMenuService {
+public class MenuService extends Service<Menu, Long> implements IMenuService {
 
 	@Autowired
 	private MenuRepository rep;

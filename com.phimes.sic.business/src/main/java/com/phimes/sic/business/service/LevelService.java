@@ -14,7 +14,7 @@ import com.phimes.sic.api.service.ILevelService;
 import com.phimes.sic.business.model.Level;
 
 @org.springframework.stereotype.Service
-public class LevelService extends Service<LevelDto, Long> implements ILevelService {
+public class LevelService extends Service<Level, Long> implements ILevelService {
 
 	@Autowired
 	private LevelRepository rep;
@@ -29,7 +29,7 @@ public class LevelService extends Service<LevelDto, Long> implements ILevelServi
 
 	ModelMapper modelMapper = new ModelMapper();
 
-	public List<LevelDto> getLevelDto(String codeApp) {
+	/*public List<LevelDto> getLevelDto(String codeApp) {
 		List<Level> level = rep.getLevelListBy(codeApp);
 		List<LevelDto> dtos = new ArrayList<LevelDto>();
 		for (Level item : level) {
@@ -38,7 +38,7 @@ public class LevelService extends Service<LevelDto, Long> implements ILevelServi
 		}
 
 		return dtos;
-	}
+	}*/
 
 	public LevelDto getLevelDto(String codeApp, String codeFl) {
 		Level level = rep.findOne(codeApp, codeFl);

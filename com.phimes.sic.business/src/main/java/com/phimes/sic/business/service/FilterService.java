@@ -17,7 +17,7 @@ import com.phimes.sic.business.model.Filter;
 import com.phimes.sic.business.model.Function;
 
 @org.springframework.stereotype.Service
-public class FilterService extends Service<FilterDto, Long> implements IFilterService {
+public class FilterService extends Service<Filter, Long> implements IFilterService {
 
 	@Autowired
 	private FilterRepository rep;
@@ -40,12 +40,6 @@ public class FilterService extends Service<FilterDto, Long> implements IFilterSe
 			retListFl.add(dto);
 		}
 		return retListFl;
-	}
-
-	public FilterDto getFilterDto(String codeFl) {
-		Filter filter = rep.findOne(codeFl);
-		FilterDto filSer = modelMapper.map(filter, FilterDto.class);
-		return filSer;
 	}
 
 }

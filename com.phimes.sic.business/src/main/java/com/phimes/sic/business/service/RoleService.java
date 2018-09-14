@@ -10,7 +10,7 @@ import com.phimes.sic.business.dao.RoleRepository;
 import com.phimes.sic.business.model.Role;
 
 @org.springframework.stereotype.Component
-public class RoleService extends Service<RoleDto, Long> implements IRoleService {
+public class RoleService extends Service<Role, Long> implements IRoleService {
 
 	@Autowired
 	private RoleRepository rep;

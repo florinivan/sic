@@ -14,7 +14,7 @@ import com.phimes.sic.business.dao.FunctionRepository;
 import com.phimes.sic.business.model.Function;
 
 @org.springframework.stereotype.Service
-public class FunctionService extends Service<FunctionDto, Long> implements IFunctionService {
+public class FunctionService extends Service<Function, Long> implements IFunctionService {
 
 	@Autowired
 	private FunctionRepository rep;
@@ -40,10 +40,10 @@ public class FunctionService extends Service<FunctionDto, Long> implements IFunc
 
 	
 
-	public FunctionDto getFunctionDto(String codeApp, String codeFz) {
+/*	public FunctionDto getFunctionDto(String codeApp, String codeFz) {
 		Function function = rep.findOne(codeApp, codeFz);
 		FunctionDto fzSer = modelMapper.map(function, FunctionDto.class);
 		return fzSer;
-	}
+	}*/
 
 }

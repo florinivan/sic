@@ -1,5 +1,7 @@
 package com.phimes.sic.business.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "USER_PROFILE")
-public class UserProfile {
+public class UserProfile implements Serializable {
 	@Id
 	@Column(name = "USERNAME")
 	private String username;

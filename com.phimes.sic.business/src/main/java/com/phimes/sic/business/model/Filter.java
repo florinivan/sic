@@ -16,7 +16,7 @@ public class Filter {
 	private Level level;
 
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(name = "prf_filter_area", joinColumns = @JoinColumn(name = "id_filter"), inverseJoinColumns = @JoinColumn(name = "id_area"))
+	@JoinTable(name = "prf_area_filter", joinColumns = @JoinColumn(name = "id_area"), inverseJoinColumns = @JoinColumn(name = "id_filter"))
 	private Set<Area> areas = new HashSet<>();
 
 	@Column(name = "ID_FILTER")

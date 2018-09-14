@@ -14,7 +14,7 @@ import com.phimes.sic.business.dao.AreaRepository;
 import com.phimes.sic.business.model.Area;
 
 @org.springframework.stereotype.Service
-public class AreaService extends Service<AreaDto, Long> implements IAreaService  {
+public class AreaService extends Service<Area, Long> implements IAreaService  {
 
 	@Autowired
 	private AreaRepository rep;
@@ -23,10 +23,21 @@ public class AreaService extends Service<AreaDto, Long> implements IAreaService 
 	protected CrudRepository getCrudRep() {
 		return rep;
 	}
-
+	//FILTRO PER FILTRARE AreaDto 
 	ModelMapper modelMapper = new ModelMapper();
+	
+	public AreaDto getAreaDto(Long codeUsr, String codeApp, String codeAr) {
+		List<AreaDto> l = getListAreaDto(codeUsr, codeApp);
+		AreaDto arDto=new AreaDto();
+		for(AreaDto areaDto: l) {
+			if(areaDto.getCode()==codeAr)
+				 arDto=areaDto;
+			
+		}
+		return arDto;
+	}
 
-	public List<AreaDto> getAreaDto(String codeUsr, String codeApp, String codeAr, Character idStateSt) {
+	public List<AreaDto> getListAreaDto(Long codeUsr, String codeApp) {
 		Set<Area> areaset = rep.getAreaList(codeUsr, codeApp);
 		
 		List<AreaDto> retList = new ArrayList<>();
