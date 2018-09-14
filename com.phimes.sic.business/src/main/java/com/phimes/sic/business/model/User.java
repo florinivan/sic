@@ -11,8 +11,7 @@ import javax.persistence.*;
 @SequenceGenerator(sequenceName = "prf_user_seq", initialValue = 1, allocationSize = 1, name = "PRF_USE_SEQ")
 public class User {
 
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_USE_SEQ")
-	
+		
 	@ManyToOne
 	@JoinColumn(name = "ID_STATE")
 	private State state;
@@ -25,6 +24,7 @@ public class User {
 	private Set<Role> roles = new HashSet<>();
 
 	@Column(name = "ID_USER")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_USE_SEQ")
 	@Id
 	private Long idUser;
 

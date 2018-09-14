@@ -10,8 +10,6 @@ import java.util.Set;
 @Table(name = "PRF_FILTER")
 @SequenceGenerator(sequenceName = "prf_filter_seq", initialValue = 1, allocationSize = 1, name = "PRF_FIL_SEQ")
 public class Filter {
-
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_FIL_SEQ")
 	
 	@ManyToOne
 	@JoinColumn(name = "ID_LEVEL")
@@ -22,6 +20,7 @@ public class Filter {
 	private Set<Area> areas = new HashSet<>();
 
 	@Column(name = "ID_FILTER")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_FIL_SEQ")
 	@Id
 	private Long idFilter;
 

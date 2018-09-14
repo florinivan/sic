@@ -2,20 +2,15 @@ package com.phimes.sic.business.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 
-import com.phimes.sic.business.dao.AccessRepository;
-import com.phimes.sic.business.dao.FunctionRepository;
-import com.phimes.sic.api.dto.AccessDto;
-import com.phimes.sic.api.dto.FilterDto;
 import com.phimes.sic.api.dto.FunctionDto;
 import com.phimes.sic.api.service.IFunctionService;
-import com.phimes.sic.business.model.Access;
-import com.phimes.sic.business.model.Area;
-import com.phimes.sic.business.model.Filter;
+import com.phimes.sic.business.dao.FunctionRepository;
 import com.phimes.sic.business.model.Function;
 
 @org.springframework.stereotype.Service
@@ -31,8 +26,8 @@ public class FunctionService extends Service<FunctionDto, Long> implements IFunc
 
 	ModelMapper modelMapper = new ModelMapper();
 
-	public List<FunctionDto> getFunctionListDto(String codeRl, String codeApp, String codeFz) {
-		List<Function> function = rep.getFunctionRoleBy(codeRl, codeApp, codeFz);
+	public List<FunctionDto> getFunctionListDto(String codeRl, String codeApp) {
+		Set<Function> function = rep.getFunctionRoleBy(codeRl, codeApp);
 
 		List<FunctionDto> retListFz = new ArrayList<>();
 
@@ -45,8 +40,8 @@ public class FunctionService extends Service<FunctionDto, Long> implements IFunc
 
 	
 
-	public FunctionDto getFunctionDto(String codeRl, String codeApp, String codeFz) {
-		Function function = rep.findOne(codeRl, codeApp, codeFz);
+	public FunctionDto getFunctionDto(String codeApp, String codeFz) {
+		Function function = rep.findOne(codeApp, codeFz);
 		FunctionDto fzSer = modelMapper.map(function, FunctionDto.class);
 		return fzSer;
 	}

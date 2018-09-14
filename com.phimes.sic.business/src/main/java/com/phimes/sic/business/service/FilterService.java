@@ -2,6 +2,7 @@ package com.phimes.sic.business.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class FilterService extends Service<FilterDto, Long> implements IFilterSe
 	ModelMapper modelMapper = new ModelMapper();
 
 	public List<FilterDto> getFilterListDto(String codeAr, String codeLv) {
-		List<Filter> filter = rep.getFilterList(codeAr, codeLv);
+		Set<Filter> filter = rep.getFilterList(codeAr, codeLv);
 
 		List<FilterDto> retListFl = new ArrayList<>();
 
@@ -41,8 +42,8 @@ public class FilterService extends Service<FilterDto, Long> implements IFilterSe
 		return retListFl;
 	}
 
-	public FilterDto getFilterDto(String codeAr, String codeLv) {
-		Filter filter = rep.findOne(codeAr, codeLv);
+	public FilterDto getFilterDto(String codeFl) {
+		Filter filter = rep.findOne(codeFl);
 		FilterDto filSer = modelMapper.map(filter, FilterDto.class);
 		return filSer;
 	}
