@@ -1,5 +1,7 @@
 package com.phimes.sic.business.dao;
 
+import java.util.Set;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -10,8 +12,8 @@ import com.phimes.sic.business.model.Area;
 
 public interface AreaRepository extends CrudRepository<Area, Long> {
 	
-	@Query("select a from  User usr join Area a join Application app join State st where usr.idUser = :codeUsr and app.code = :codeApp and a.code = :codeAr and st.idState = :idStateSt ")
-	Area findOne(@Param("codeUsr") String codeUsr, @Param("codeApp") String codeApp, @Param("codeAr") String codeAr, @Param("idStateSt") Character idStateSt);
+	@Query("select usr.areas from  User usr join usr.areas r where usr.idUser = :codeUsr and r.application.code = :codeApp")
+	Set<Area> getAreaList(@Param("codeUsr") String codeUsr, @Param("codeApp") String codeApp);
 
 
 

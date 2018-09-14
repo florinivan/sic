@@ -14,6 +14,6 @@ import com.phimes.sic.business.model.Menu;
 
 public interface MenuRepository  extends CrudRepository<Menu, Long> {
 	
-	@Query("select mn from Menu mn join Role rl join Application app where rl.code = :codeRl and app.code = :codeApp and mn.code = :codePadre") 
+	@Query("select mn from Menu mn join mn.roles rl where rl.code = :codeRl and rl.application.code = :codeApp and mn.code = :codePadre") 
 	List<Menu> getAllMenuSubMenu(@Param("codeRl") String codeRl, @Param("codeApp")String codeApp, @Param("codePadre")String codePadre);
 }

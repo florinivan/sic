@@ -1,15 +1,16 @@
 package com.phimes.sic.business.service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 
-import com.phimes.sic.business.dao.AccessRepository;
-import com.phimes.sic.business.dao.AreaRepository;
-import com.phimes.sic.api.dto.AccessDto;
 import com.phimes.sic.api.dto.AreaDto;
 import com.phimes.sic.api.service.IAreaService;
-import com.phimes.sic.business.model.Access;
+import com.phimes.sic.business.dao.AreaRepository;
 import com.phimes.sic.business.model.Area;
 
 @org.springframework.stereotype.Service
@@ -25,9 +26,16 @@ public class AreaService extends Service<AreaDto, Long> implements IAreaService 
 
 	ModelMapper modelMapper = new ModelMapper();
 
-	public AreaDto getAreaDto(String codeUsr, String codeApp, String codeAr, Character idStateSt) {
-		Area area = rep.findOne(codeUsr, codeApp, codeAr, idStateSt);
-		AreaDto areaSer = modelMapper.map(area, AreaDto.class);
-		return areaSer;
+	public List<AreaDto> getAreaDto(String codeUsr, String codeApp, String codeAr, Character idStateSt) {
+		Set<Area> areaset = rep.getAreaList(codeUsr, codeApp);
+		
+		List<AreaDto> retList = new ArrayList<>();
+		
+		for(Area item:areaset){
+			AreaDto dto = modelMapper.map(item, AreaDto.class);
+			retList.add(dto);
+		}
+		
+		return retList;
 	}
 }

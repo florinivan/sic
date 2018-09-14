@@ -15,7 +15,7 @@ public interface FilterRepository extends CrudRepository<Filter, Long> {
 	@Query("select fl from Filter fl where fl.code = :codeFl")
 	Filter findOne(@Param("codeFl") String codeFl);
 
-	@Query("select lv.filters from Level lv join Filter fl join Area ar where ar.code = :codeAr and lv.code = :codeLv")
+	@Query("select lv.filters from Level lv join lv.filters fl join fl.areas ar where ar.code = :codeAr and lv.code = :codeLv")
 	Set<Filter> getFilterList(@Param("codeAr") String codeAr, @Param("codeLv") String codeLv);
 
 }
