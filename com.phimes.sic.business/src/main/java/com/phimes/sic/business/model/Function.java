@@ -11,7 +11,7 @@ import javax.persistence.*;
 @SequenceGenerator(sequenceName = "prf_function_seq", initialValue = 1, allocationSize = 1, name = "PRF_FUN_SEQ")
 public class Function {
 	
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "prf_role_function", joinColumns = @JoinColumn(name = "id_function"), inverseJoinColumns = @JoinColumn(name = "id_access"))
 	private Set<Access> accesses = new HashSet<>();
 
