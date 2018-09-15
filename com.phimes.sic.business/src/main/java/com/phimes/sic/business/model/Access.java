@@ -11,7 +11,7 @@ import javax.persistence.*;
 
 public class Access {
 
-	@ManyToMany(mappedBy = "accesses")
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "accesses")
 	private Set<Function> functions = new HashSet<>();
 
 	@Column(name = "ID_ACCESS")
