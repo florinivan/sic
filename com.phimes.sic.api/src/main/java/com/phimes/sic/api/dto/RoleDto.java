@@ -34,7 +34,7 @@ public class RoleDto implements Serializable {
 		return description;
 	}
 
-	public void setDescrizione(String description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
@@ -42,7 +42,7 @@ public class RoleDto implements Serializable {
 		return functions;
 	}
 
-	public void setFunzioni(Set<FunctionDto> functions) {
+	public void setFunctions(Set<FunctionDto> functions) {
 		this.functions = functions;
 	}
 

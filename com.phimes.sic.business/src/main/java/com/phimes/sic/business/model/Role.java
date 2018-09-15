@@ -11,25 +11,6 @@ import javax.persistence.*;
 @SequenceGenerator(sequenceName = "prf_role_seq", initialValue = 1, allocationSize = 1, name = "PRF_ROL_SEQ")
 public class Role {
 
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(name = "prf_role_menu", joinColumns = @JoinColumn(name = "id_role"), inverseJoinColumns = @JoinColumn(name = "id_menu"))
-	private Set<Menu> menu = new HashSet<>();
-
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(name = "prf_role_function", joinColumns = @JoinColumn(name = "id_role"), inverseJoinColumns = @JoinColumn(name = "id_function"))
-	private Set<Function> functions = new HashSet<>();
-
-	@ManyToMany(mappedBy = "roles")
-	private Set<User> users = new HashSet<>();
-
-	@ManyToOne
-	@JoinColumn(name = "ID_STATE")
-	private State state;
-
-	@ManyToOne
-	@JoinColumn(name = "ID_APPLICATION")
-	private Application application;
-
 	@Column(name = "ID_ROLE")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRF_ROL_SEQ")
 	@Id
@@ -52,6 +33,25 @@ public class Role {
 
 	@Column(name = "MODIFY_UT")
 	private String modifyUt;
+	
+	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "prf_role_menu", joinColumns = @JoinColumn(name = "id_role"), inverseJoinColumns = @JoinColumn(name = "id_menu"))
+	private Set<Menu> menu = new HashSet<>();
+
+	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "prf_role_function", joinColumns = @JoinColumn(name = "id_role"), inverseJoinColumns = @JoinColumn(name = "id_function"))
+	private Set<Function> functions = new HashSet<>();
+
+	@ManyToMany(mappedBy = "roles")
+	private Set<User> users = new HashSet<>();
+
+	@ManyToOne
+	@JoinColumn(name = "ID_STATE")
+	private State state;
+
+	@ManyToOne
+	@JoinColumn(name = "ID_APPLICATION")
+	private Application application;
 
 	public Set<Menu> getMenu() {
 		return menu;

@@ -1,9 +1,14 @@
 package com.phimes.sic.business.service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 
+import com.phimes.sic.api.dto.AreaDto;
 import com.phimes.sic.api.dto.RoleDto;
 import com.phimes.sic.api.service.IRoleService;
 import com.phimes.sic.business.dao.RoleRepository;
@@ -20,24 +25,30 @@ public class RoleService extends Service<Role, Long> implements IRoleService {
 
 		return rep;
 	}
-	
+
 	ModelMapper modelMapper = new ModelMapper();
-	
-	/*public List<RoleDto> getRoleDto(String idUser) {
-		List<Role> role = rep.getRoleList(idUser);
+
+	public List<RoleDto> getRoleListDto(String codeApp, String codeUsr, Character idStateRl) {
+		Set<Role> role = rep.getRoleList(codeApp, codeUsr, idStateRl);
 		List<RoleDto> dtos = new ArrayList<RoleDto>();
-		for(Role item: role) {
+		for (Role item : role) {
 			RoleDto roleSer = modelMapper.map(item, RoleDto.class);
 			dtos.add(roleSer);
 		}
-		
-		
+
 		return dtos;
-	}*/
-	
-	public RoleDto getFilterDto(String codeApp, String codeUsr, String codeRl) {
-		Role role = rep.findOne(codeApp, codeUsr, codeRl);
-		RoleDto RoleSer = modelMapper.map(role, RoleDto.class);
-		return RoleSer;
+
+	}
+
+	public RoleDto getFilterDto(String codeApp, String codeUsr, String codeRl, Character idStateRl) {
+		List<RoleDto> roles = getRoleListDto(codeApp, codeUsr, idStateRl);
+		RoleDto roleSer = null;
+		for (RoleDto roleDto : roles) {
+			if (roleDto.getCode() == codeRl)
+				roleSer = roleDto;
+
+		}
+
+		return roleSer;
 	}
 }
