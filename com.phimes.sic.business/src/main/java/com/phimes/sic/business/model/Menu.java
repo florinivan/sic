@@ -24,9 +24,8 @@ public class Menu {
 	@Id
 	private Long idMenu;
 
-	/*
-	 * @Column(name = "ID_SUB_MENU") private Long idSubMenu;
-	 */
+	@Column(name = "ID_SUB_MENU")
+	private Long idSubMenu;
 
 	@Column(name = "CODE")
 	private String code;
