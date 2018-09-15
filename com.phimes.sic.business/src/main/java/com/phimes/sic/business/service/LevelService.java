@@ -29,17 +29,6 @@ public class LevelService extends Service<Level, Long> implements ILevelService 
 
 	ModelMapper modelMapper = new ModelMapper();
 
-	/*public List<LevelDto> getLevelDto(String codeApp) {
-		List<Level> level = rep.getLevelListBy(codeApp);
-		List<LevelDto> dtos = new ArrayList<LevelDto>();
-		for (Level item : level) {
-			LevelDto levSer = modelMapper.map(item, LevelDto.class);
-			dtos.add(levSer);
-		}
-
-		return dtos;
-	}*/
-
 	public LevelDto getLevelDto(String codeApp, String codeFl) {
 		Level level = rep.findOne(codeApp, codeFl);
 		LevelDto levSer = modelMapper.map(level, LevelDto.class);

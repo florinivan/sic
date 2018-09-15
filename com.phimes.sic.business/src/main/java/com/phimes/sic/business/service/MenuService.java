@@ -2,6 +2,7 @@ package com.phimes.sic.business.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,8 @@ public class MenuService extends Service<Menu, Long> implements IMenuService {
 
 	ModelMapper modelMapper = new ModelMapper();
 
-	public List<MenuDto> getMenuDto(String codeRl, String codeApp, String codeMn) {
-		List<Menu> menu = rep.getAllMenuSubMenu(codeRl, codeApp, codeMn);
+	public List<MenuDto> getMenuDto(String codeRl, String codeApp, Long idSubMenu) {
+		Set<Menu> menu = rep.getAllMenuSubMenu(codeRl, codeApp, idSubMenu);
 		List<MenuDto> retListMn = new ArrayList<>();
 
 		for (Menu item : menu) {

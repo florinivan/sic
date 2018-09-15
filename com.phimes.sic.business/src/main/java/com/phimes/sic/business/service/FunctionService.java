@@ -40,10 +40,6 @@ public class FunctionService extends Service<Function, Long> implements IFunctio
 
 	
 
-/*	public FunctionDto getFunctionDto(String codeApp, String codeFz) {
-		Function function = rep.findOne(codeApp, codeFz);
-		FunctionDto fzSer = modelMapper.map(function, FunctionDto.class);
-		return fzSer;
-	}*/
+
 
 }

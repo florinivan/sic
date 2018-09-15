@@ -1,6 +1,7 @@
 package com.phimes.sic.api.dto;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 public class MenuDto implements Serializable {
@@ -18,7 +19,7 @@ public class MenuDto implements Serializable {
 
 	private int menuOrder;
 
-	private Set<MenuDto> IdSubMenu;
+	private List<MenuDto> idSubMenu;
 
 	public String getCode() {
 		return code;
@@ -52,12 +53,13 @@ public class MenuDto implements Serializable {
 		this.menuOrder = menuOrder;
 	}
 
-	public Set<MenuDto> getIdSubMenu() {
-		return IdSubMenu;
+	public List<MenuDto> getIdSubMenu() {
+		return idSubMenu;
 	}
 
-	public void setIdSubMenu(Set<MenuDto> IdSubMenu) {
-		this.IdSubMenu = IdSubMenu;
+	public void setIdSubMenu(List<MenuDto> idSubMenu) {
+		this.idSubMenu = idSubMenu;
 	}
 
+	
 }

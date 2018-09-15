@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class Function {
 	
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(name = "prf_function_access", joinColumns = @JoinColumn(name = "id_function"), inverseJoinColumns = @JoinColumn(name = "id_access"))
+	@JoinTable(name = "prf_role_function", joinColumns = @JoinColumn(name = "id_function"), inverseJoinColumns = @JoinColumn(name = "id_access"))
 	private Set<Access> accesses = new HashSet<>();
 
 	@ManyToMany(mappedBy = "functions")
