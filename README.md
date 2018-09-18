@@ -5,7 +5,7 @@ create tablespace PHIMESTABLESPACE datafile 'C:\oraclexe\app\oracle\oradata\XE\P
 size 32m autoextend on 
 next 32m maxsize 2048m extent management local;
 
-CREATE USER phimes IDENTIFIED BY "Start@123" 
+CREATE USER phimes IDENTIFIED BY "phimes" 
 DEFAULT TABLESPACE "PHIMESTABLESPACE" 
 TEMPORARY TABLESPACE "TEMP";
 
