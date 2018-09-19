@@ -11,9 +11,6 @@ import com.phimes.sic.api.service.IProfileAccessorService;
 
 @org.springframework.stereotype.Service
 public class ProfileAccessorService implements IProfileAccessorService {
-	
-	@Autowired
-	RoleService roleService;
 
 	@Override
 	public List<String> getDomainList() {

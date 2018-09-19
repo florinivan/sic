@@ -7,6 +7,8 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.phimes.sic.api.service.IService;
+
 public abstract class Service<T, ID extends Serializable> implements IService<T, ID> {
 
 	protected abstract CrudRepository<T, ID> getCrudRep();
