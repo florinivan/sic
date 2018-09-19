@@ -18,7 +18,7 @@ import com.phimes.sic.business.model.Access;
 import com.phimes.sic.business.model.Customer;
 import com.phimes.sic.business.service.AccessService;
 
-@SpringBootApplication
+//@SpringBootApplication
 public class TestCustumer implements CommandLineRunner {
 
     private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -27,7 +27,7 @@ public class TestCustumer implements CommandLineRunner {
 
     CustomerRepository customerRepository;
 
-    @Transactional(readOnly = true)
+    //@Transactional(readOnly = true)
     @Override
     public void run(String... args) throws Exception {
 

@@ -4,9 +4,8 @@ import java.util.List;
 
 	public interface IService <T, ID extends Serializable> {
 	
-
 	public T saveOrUpdate(T t); 
-	
+
 	public void delete (T t);
 	
 	public T get(ID id );
