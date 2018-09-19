@@ -2,8 +2,6 @@ package com.phimes.sic.business.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.phimes.sic.api.dto.FilterDto;
 import com.phimes.sic.api.dto.LevelDto;
 import com.phimes.sic.api.dto.RoleDto;
