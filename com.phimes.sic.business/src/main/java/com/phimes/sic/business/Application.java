@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 
 import com.phimes.sic.api.dto.AccessDto;
 import com.phimes.sic.api.dto.AreaDto;
@@ -26,6 +27,7 @@ import com.phimes.sic.api.service.IFunctionService;
 import com.phimes.sic.api.service.ILevelService;
 import com.phimes.sic.api.service.IMenuService;
 import com.phimes.sic.api.service.IRoleService;
+import com.phimes.sic.api.service.IUserService;
 import com.phimes.sic.business.model.Access;
 import com.phimes.sic.business.model.Area;
 import com.phimes.sic.business.model.Filter;
