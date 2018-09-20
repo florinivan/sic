@@ -20,7 +20,7 @@ public interface LevelRepository extends CrudRepository<Level, Long> {
 	Set<Level> getLevelList(@Param("codeApp") String codeApp, @Param("codeFl") String codeFl);
 	
 	//Per ProfileAccessor 
-	@Query("select lv from Filter fl join fl.level lv where fl.areas.code = :codeArea")
-	Set<Level> getLevelListByArea(@Param("codeArea") String codeAr);
+	@Query("select lv from Level lv where lv.application.code = :codeApp")
+	Set<Level> getLevelListByApp(@Param("codeApp") String codeApp);
 
 }

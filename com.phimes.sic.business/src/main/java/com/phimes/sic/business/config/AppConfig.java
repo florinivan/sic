@@ -81,7 +81,7 @@ public class AppConfig {
 		hibernateProperties.setProperty("hibernate.format_sql", env.getProperty("hibernate.format_sql"));
 		hibernateProperties.setProperty("hibernate.generate_statistics",
 				env.getProperty("hibernate.generate_statistics"));
-		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "none");
 		return hibernateProperties;
 	}
 

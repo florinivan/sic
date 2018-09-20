@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import com.phimes.sic.api.dto.LevelDto;
 import com.phimes.sic.api.dto.RoleDto;
 import com.phimes.sic.api.dto.UserProfileDto;
+import com.phimes.sic.api.service.IUserService;
 import com.phimes.sic.business.dao.UserRepository;
 import com.phimes.sic.business.model.Level;
 import com.phimes.sic.business.model.Role;
@@ -19,7 +20,7 @@ import com.phimes.sic.business.model.User;
 
 @org.springframework.stereotype.Service
 @Component
-public class UserService extends Service<User, Long> {
+public class UserService extends Service<User, Long> implements IUserService {
 
 	@Autowired
 	private UserRepository rep;
