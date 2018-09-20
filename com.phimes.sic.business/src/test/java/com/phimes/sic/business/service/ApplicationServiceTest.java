@@ -16,7 +16,7 @@ import com.phimes.sic.business.config.AppConfig;
 @SpringBootTest(classes = {AppConfig.class})
 public class ApplicationServiceTest {
 
-	// DI
+	// DI usiamo l'interfaccia
 	@Autowired
 	IService applicationService;
 	
@@ -34,8 +34,8 @@ public class ApplicationServiceTest {
 		//usiamo Mockito
 		Mockito.when(appRep.findAll()).thenReturn(applist);*/
 		
-		// assert not null
-		assertThat(applicationService.get(1L)).hasFieldOrPropertyWithValue("description", "");
+		// assert that has field description with value 'acc_description_test'
+		assertThat(applicationService.get(1L)).hasFieldOrPropertyWithValue("description", "acc_description_test");
 
 	}
 
