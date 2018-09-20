@@ -1,143 +1,362 @@
-ALTER TABLE PRF_APPLICATION DROP CONSTRAINT FK_PRF_APPLICATION;
-ALTER TABLE PRF_AREA DROP CONSTRAINT FK_PRF_AREA_APP;
-ALTER TABLE PRF_AREA DROP CONSTRAINT FK_PRF_AREA_STA;
-ALTER TABLE PRF_AREA_FILTER DROP CONSTRAINT FK_PRF_AREA_FILTER_APP;
-ALTER TABLE PRF_AREA_FILTER DROP CONSTRAINT FK_PRF_AREA_FILTER_AREA;
-ALTER TABLE PRF_AREA_FILTER DROP CONSTRAINT FK_PRF_AREA_FILTER_LEV;
-ALTER TABLE PRF_AREA_FILTER DROP CONSTRAINT FK_PRF_AREA_FILTER_FIL;
-ALTER TABLE PRF_FILTER DROP CONSTRAINT FK_PRF_FILTER_APP;
-ALTER TABLE PRF_FILTER DROP CONSTRAINT FK_PRF_FILTER_LEV;
-ALTER TABLE PRF_FUNCTION DROP CONSTRAINT FK_PRF_FUNCTION_APP;
-ALTER TABLE PRF_LEVEL DROP CONSTRAINT FK_PRF_LEVEL_APP;
-ALTER TABLE PRF_MENU DROP CONSTRAINT FK_PRF_MENU_APP;
-ALTER TABLE PRF_MENU DROP CONSTRAINT FK_PRF_SUB_MENU;
-ALTER TABLE PRF_PARAMETER DROP CONSTRAINT FK_PRF_PARAMETER_APP;
-ALTER TABLE PRF_ROLE DROP CONSTRAINT FK_PRF_ROLE_APP;
-ALTER TABLE PRF_ROLE DROP CONSTRAINT FK_PRF_ROLE_STA;
-ALTER TABLE PRF_ROLE_FUNCTION DROP CONSTRAINT FK_PRF_ROLE_FUNCTION_APP;
-ALTER TABLE PRF_ROLE_FUNCTION DROP CONSTRAINT FK_PRF_ROLE_FUNCTION_ROLE;
-ALTER TABLE PRF_ROLE_FUNCTION DROP CONSTRAINT FK_PRF_ROLE_FUNCTION_FUN;
-ALTER TABLE PRF_ROLE_FUNCTION DROP CONSTRAINT FK_PRF_ROLE_FUNCTION_ACC;
-ALTER TABLE PRF_ROLE_MENU DROP CONSTRAINT FK_PRF_ROLE_MENU_APP;
-ALTER TABLE PRF_ROLE_MENU DROP CONSTRAINT FK_PRF_ROLE_MENU_ROLE;
-ALTER TABLE PRF_ROLE_MENU DROP CONSTRAINT FK_PRF_ROLE_MENU_MENU;
-ALTER TABLE PRF_USER DROP CONSTRAINT FK_PRF_USER_STA;
-ALTER TABLE PRF_USER_AREA DROP CONSTRAINT FK_PRF_USER_AREA_APP;
-ALTER TABLE PRF_USER_AREA DROP CONSTRAINT FK_PRF_USER_AREA_USER;
-ALTER TABLE PRF_USER_AREA DROP CONSTRAINT FK_PRF_USER_AREA_AREA;
-ALTER TABLE PRF_USER_ROLE DROP CONSTRAINT FK_PRF_USER_ROLE_APP;
-ALTER TABLE PRF_USER_ROLE DROP CONSTRAINT FK_PRF_USER_ROLE_USER;
-ALTER TABLE PRF_USER_ROLE DROP CONSTRAINT FK_PRF_USER_ROLE_ROLE;
-DELETE FROM PRF_ACCESS WHERE ID_ACCESS= 'a' AND DESCRIPTION = 'acc_description_test' AND ACCESS_ORDER = '1';
-DELETE FROM PRF_APPLICATION WHERE ID_STATE= 'c' AND CODE = 'app_code_test' AND DESCRIPTION = 'app_description_test' AND DOMAIN_CODE = 'dom_code_test' AND JUMP_PROFILING = 'Y' AND JUMP_PROFILING = 'N';
-DELETE FROM PRF_AREA WHERE ID_APPLICATION= '1' AND ID_STATE = 'c' AND CODE = 'ar_code_test' AND DESCRIPTION = 'ar_description_test';                                                
-DELETE FROM PRF_AREA_FILTER WHERE ID_APPLICATION = '1' AND ID_AREA = '1' AND ID_LEVEL = '1' AND ID_FILTER = '1'; 
-DELETE FROM PRF_FILTER WHERE ID_APPLICATION = '1' AND ID_LEVEL = '1' AND CODE = 'fil_code_test' AND DESCRIPTION = 'fil_description_test' AND LONG_DESCRIPTION = 'fil_long_description_test';
-DELETE FROM PRF_FUNCTION WHERE ID_APPLICATION = '1' AND CODE = 'fun_code_test' AND DESCRIPTION = 'fun_description_test';
-DELETE FROM PRF_LEVEL WHERE ID_APPLICATION = '1' AND CODE = 'lev_code_test' AND DESCRIPTION = 'lev_description_test' AND LEVEL_ORDER = '2';
-DELETE FROM PRF_MENU WHERE ID_APPLICATION = '1' AND ID_SUB_MENU = '1' AND CODE = 'mn_code_test' AND DESCRIPTION = 'mn_description_test' AND URL = 'url_test' AND MENU_ORDER = '3';
-DELETE FROM PRF_PARAMETER WHERE ID_APPLICATION = '1' AND ID_PARAMETER = 'd' AND VALUE = 'par_value_test';
-DELETE FROM PRF_ROLE WHERE ID_APPLICATION = '1' AND ID_STATE = 'c' AND CODE = 'rl_code_test' AND DESCRIPTION = 'rl_description_test';
-DELETE FROM PRF_ROLE_FUNCTION WHERE ID_APPLICATION = '1' AND ID_ROLE = '1' AND ID_FUNCTION = '1' AND ID_ACCESS = 'a'; 
-DELETE FROM PRF_ROLE_MENU WHERE ID_APPLICATION = '1' AND ID_ROLE = '1' AND ID_MENU = '1';
-DELETE FROM PRF_STATE WHERE ID_STATE = 'c' AND DESCRIPTION = 'st_description_test' AND STATE_ORDER = '4';
-DELETE FROM PRF_USER WHERE ID_STATE = 'c' AND USERNAME = 'us_username_test' AND DOMAIN_CODE = 'us_dom_code';
-DELETE FROM PRF_USER_AREA WHERE ID_APPLICATION = '1' AND ID_USER = '1' AND ID_AREA = '1';
-DELETE FROM PRF_USER_ROLE WHERE ID_APPLICATION = '1' AND ID_USER = '1' AND ID_ROLE = '1';
-ALTER TABLE PRF_ACCESS DROP CONSTRAINT PRF_ACCESS_PK;
-ALTER TABLE PRF_APPLICATION DROP CONSTRAINT PRF_APPLICATION_PK;
-ALTER TABLE PRF_AREA DROP CONSTRAINT PRF_AREA_PK;
-ALTER TABLE PRF_FILTER DROP CONSTRAINT PRF_FILTER_PK;
-ALTER TABLE PRF_FUNCTION DROP CONSTRAINT PRF_FUNCTION_PK;
-ALTER TABLE PRF_LEVEL DROP CONSTRAINT PRF_LEVEL_PK;
-ALTER TABLE PRF_MENU DROP CONSTRAINT PRF_MENU_PK;
-ALTER TABLE PRF_PARAMETER DROP CONSTRAINT PRF_PARAMETER_PK;
-ALTER TABLE PRF_ROLE DROP CONSTRAINT PRF_ROLE_PK;
-ALTER TABLE PRF_STATE DROP CONSTRAINT PRF_STATE_PK;
-ALTER TABLE PRF_USER DROP CONSTRAINT PRF_USER_PK;
-ALTER TABLE PRF_ACCESS DROP CONSTRAINT PRF_ACCESS_UQ;
-ALTER TABLE PRF_APPLICATION DROP CONSTRAINT PRF_APPLICATION_UQ;
-ALTER TABLE PRF_APPLICATION DROP CONSTRAINT PRF_AREA_UQ;
-ALTER TABLE PRF_FILTER DROP CONSTRAINT PRF_FILTER_UQ;
-ALTER TABLE PRF_FUNCTION DROP CONSTRAINT PRF_FUNCTION_UQ;
-ALTER TABLE PRF_LEVEL DROP CONSTRAINT PRF_LEVEL_UK;
-ALTER TABLE PRF_MENU DROP CONSTRAINT PRF_MENU_UK;
-ALTER TABLE PRF_ROLE DROP CONSTRAINT PRF_ROLE_UK;
-ALTER TABLE PRF_STATE DROP CONSTRAINT PRF_STATO_UQ;
-ALTER TABLE PRF_UTENTE DROP CONSTRAINT PRF_USER_UK;
-DROP INDEX PRF_AREA_FILTER_APPLICA_LEVEL;
-DROP INDEX PRF_ROLE_FUNCTION_UQ;
-DROP INDEX PRF_ROLE_MENU_UQ;
-DROP INDEX PRF_USER_AREA_UQ;
-DROP INDEX PRF_USER_ROLE_UQ;
-ALTER TABLE PRF_APPLICATION DROP CONSTRAINT PRF_CK_APP_PROFILING_DATES;
-ALTER TABLE PRF_APPLICATION DROP CONSTRAINT PRF_CK_APP_JUMP_PROFILING;
-DROP TRIGGER PRF_ACCESS_CREATE_TS;
-DROP TRIGGER PRF_ACCESS_MODIFY_TS;
-DROP TRIGGER PRF_APPLICATION_TRG;
-DROP TRIGGER PRF_APPLICATION_CREATE_TS;
-DROP TRIGGER PRF_APPLICATION_MODIFY_TS;
-DROP TRIGGER PRF_AREA_TRG;
-DROP TRIGGER PRF_AREA_CREATE_TS;
-DROP TRIGGER PRF_AREA_MODIFY_TS;
-DROP TRIGGER PRF_AREA_FILTER_CREATE_TS;
-DROP TRIGGER PRF_AREA_FILTER_MODIFY_TS;
-DROP TRIGGER PRF_FILTER_TRG;
-DROP TRIGGER PRF_FILTER_CREATE_TS;
-DROP TRIGGER PRF_FILTER_MODIFY_TS;
-DROP TRIGGER PRF_FUNCTION_TRG;
-DROP TRIGGER PRF_FUNCTION_CREATE_TS;
-DROP TRIGGER PRF_FUNCTION_MODIFY_TS;
-DROP TRIGGER PRF_LEVEL_TRG;
-DROP TRIGGER PRF_LEVEL_CREATE_TS;
-DROP TRIGGER PRF_LEVEL_MODIFY_TS;
-DROP TRIGGER PRF_MENU_TRG;
-DROP TRIGGER PRF_MENU_CREATE_TS;
-DROP TRIGGER PRF_MENU_MODIFY_TS;
-DROP TRIGGER PRF_PARAMETER_CREATE_TS;
-DROP TRIGGER PRF_PARAMETER_MODIFY_TS;
-DROP TRIGGER PRF_ROLE_TRG;
-DROP TRIGGER PRF_ROLE_CREATE_TS;
-DROP TRIGGER PRF_ROLE_MODIFY_TS;
-DROP TRIGGER PRF_ROLE_FUNCTION_CREATE_TS;
-DROP TRIGGER PRF_ROLE_MENU_CREATE_TS;
-DROP TRIGGER PRF_STATE_CREATE_TS;
-DROP TRIGGER PRF_STATE_MODIFY_TS;
-DROP TRIGGER PRF_USER_TRG;
-DROP TRIGGER PRF_USER_CREATE_TS;
-DROP TRIGGER PRF_USER_MODIFY_TS;
-DROP TRIGGER PRF_USER_AREA_CREATE_TS;
-DROP TRIGGER PRF_USER_ROLE_CREATE_TS;
-DROP SEQUENCE PRF_APPLICATION_SEQ;
-DROP SEQUENCE PRF_AREA_SEQ;
-DROP SEQUENCE PRF_FILTER_SEQ;
-DROP SEQUENCE PRF_FUNCTION_SEQ;
-DROP SEQUENCE PRF_LEVEL_SEQ;
-DROP SEQUENCE PRF_MENU_SEQ;
-DROP SEQUENCE PRF_ROLE_SEQ;
-DROP SEQUENCE PRF_USER_SEQ;
-DROP VIEW ACCESS_ACCESS;
-DROP VIEW FILTER;
-DROP VIEW FUNCTION;
-DROP VIEW AREA;
-DROP VIEW LEVEL_LEVEL;
-DROP VIEW MENU;
-DROP VIEW PROFILEACCESSOR;
-DROP VIEW ROLE;
-DROP VIEW USERPROFILE;
-DROP TABLE PRF_ACCESS;
-DROP TABLE PRF_APPLICATION;
-DROP TABLE PRF_AREA;
-DROP TABLE PRF_AREA_FILTER;
-DROP TABLE PRF_FILTER;
-DROP TABLE PRF_FUNCTION;
-DROP TABLE PRF_LEVEL;
-DROP TABLE PRF_MENU;
-DROP TABLE PRF_PARAMETER;
-DROP TABLE PRF_ROLE;
-DROP TABLE PRF_ROLE_FUNCTION;
-DROP TABLE PRF_ROLE_MENU;
-DROP TABLE PRF_STATE;
-DROP TABLE PRF_USER;
-DROP TABLE PRF_USER_AREA;
-DROP TABLE PRF_USER_ROLE;
+ALTER TABLE prf_application DROP CONSTRAINT fk_prf_application;
+
+ALTER TABLE prf_area DROP CONSTRAINT fk_prf_area_app;
+
+ALTER TABLE prf_area DROP CONSTRAINT fk_prf_area_sta;
+
+ALTER TABLE prf_area_filter DROP CONSTRAINT fk_prf_area_filter_app;
+
+ALTER TABLE prf_area_filter DROP CONSTRAINT fk_prf_area_filter_area;
+
+ALTER TABLE prf_area_filter DROP CONSTRAINT fk_prf_area_filter_lev;
+
+ALTER TABLE prf_area_filter DROP CONSTRAINT fk_prf_area_filter_fil;
+
+ALTER TABLE prf_filter DROP CONSTRAINT fk_prf_filter_app;
+
+ALTER TABLE prf_filter DROP CONSTRAINT fk_prf_filter_lev;
+
+ALTER TABLE prf_function DROP CONSTRAINT fk_prf_function_app;
+
+ALTER TABLE prf_level DROP CONSTRAINT fk_prf_level_app;
+
+ALTER TABLE prf_menu DROP CONSTRAINT fk_prf_menu_app;
+
+ALTER TABLE prf_menu DROP CONSTRAINT fk_prf_sub_menu;
+
+ALTER TABLE prf_parameter DROP CONSTRAINT fk_prf_parameter_app;
+
+ALTER TABLE prf_role DROP CONSTRAINT fk_prf_role_app;
+
+ALTER TABLE prf_role DROP CONSTRAINT fk_prf_role_sta;
+
+ALTER TABLE prf_role_function DROP CONSTRAINT fk_prf_role_function_app;
+
+ALTER TABLE prf_role_function DROP CONSTRAINT fk_prf_role_function_role;
+
+ALTER TABLE prf_role_function DROP CONSTRAINT fk_prf_role_function_fun;
+
+ALTER TABLE prf_role_function DROP CONSTRAINT fk_prf_role_function_acc;
+
+ALTER TABLE prf_role_menu DROP CONSTRAINT fk_prf_role_menu_app;
+
+ALTER TABLE prf_role_menu DROP CONSTRAINT fk_prf_role_menu_role;
+
+ALTER TABLE prf_role_menu DROP CONSTRAINT fk_prf_role_menu_menu;
+
+ALTER TABLE prf_user DROP CONSTRAINT fk_prf_user_sta;
+
+ALTER TABLE prf_user_area DROP CONSTRAINT fk_prf_user_area_app;
+
+ALTER TABLE prf_user_area DROP CONSTRAINT fk_prf_user_area_user;
+
+ALTER TABLE prf_user_area DROP CONSTRAINT fk_prf_user_area_area;
+
+ALTER TABLE prf_user_role DROP CONSTRAINT fk_prf_user_role_app;
+
+ALTER TABLE prf_user_role DROP CONSTRAINT fk_prf_user_role_user;
+
+ALTER TABLE prf_user_role DROP CONSTRAINT fk_prf_user_role_role;
+
+DELETE FROM prf_access
+WHERE
+    id_access = 'a'
+    AND description = 'acc_description_test'
+    AND access_order = '1';
+
+DELETE FROM prf_application
+WHERE
+    id_state = 'c'
+    AND code = 'app_code_test'
+    AND description = 'app_description_test'
+    AND domain_code = 'dom_code_test'
+    AND jump_profiling = 'Y'
+    AND jump_profiling = 'N';
+
+DELETE FROM prf_area
+WHERE
+    id_application = '1'
+    AND id_state = 'c'
+    AND code = 'ar_code_test'
+    AND description = 'ar_description_test';
+
+DELETE FROM prf_area_filter
+WHERE
+    id_application = '1'
+    AND id_area = '1'
+    AND id_level = '1'
+    AND id_filter = '1';
+
+DELETE FROM prf_filter
+WHERE
+    id_application = '1'
+    AND id_level = '1'
+    AND code = 'fil_code_test'
+    AND description = 'fil_description_test'
+    AND long_description = 'fil_long_description_test';
+
+DELETE FROM prf_function
+WHERE
+    id_application = '1'
+    AND code = 'fun_code_test'
+    AND description = 'fun_description_test';
+
+DELETE FROM prf_level
+WHERE
+    id_application = '1'
+    AND code = 'lev_code_test'
+    AND description = 'lev_description_test'
+    AND level_order = '2';
+
+DELETE FROM prf_menu
+WHERE
+    id_application = '1'
+    AND id_sub_menu = '1'
+    AND code = 'mn_code_test'
+    AND description = 'mn_description_test'
+    AND url = 'url_test'
+    AND menu_order = '3';
+
+DELETE FROM prf_parameter
+WHERE
+    id_application = '1'
+    AND id_parameter = 'd'
+    AND value = 'par_value_test';
+
+DELETE FROM prf_role
+WHERE
+    id_application = '1'
+    AND id_state = 'c'
+    AND code = 'rl_code_test'
+    AND description = 'rl_description_test';
+
+DELETE FROM prf_role_function
+WHERE
+    id_application = '1'
+    AND id_role = '1'
+    AND id_function = '1'
+    AND id_access = 'a';
+
+DELETE FROM prf_role_menu
+WHERE
+    id_application = '1'
+    AND id_role = '1'
+    AND id_menu = '1';
+
+DELETE FROM prf_state
+WHERE
+    id_state = 'c'
+    AND description = 'st_description_test'
+    AND state_order = '4';
+
+DELETE FROM prf_user
+WHERE
+    id_state = 'c'
+    AND username = 'us_username_test'
+    AND domain_code = 'us_dom_code';
+
+DELETE FROM prf_user_area
+WHERE
+    id_application = '1'
+    AND id_user = '1'
+    AND id_area = '1';
+
+DELETE FROM prf_user_role
+WHERE
+    id_application = '1'
+    AND id_user = '1'
+    AND id_role = '1';
+
+ALTER TABLE prf_access DROP CONSTRAINT prf_access_pk;
+
+ALTER TABLE prf_application DROP CONSTRAINT prf_application_pk;
+
+ALTER TABLE prf_area DROP CONSTRAINT prf_area_pk;
+
+ALTER TABLE prf_filter DROP CONSTRAINT prf_filter_pk;
+
+ALTER TABLE prf_function DROP CONSTRAINT prf_function_pk;
+
+ALTER TABLE prf_level DROP CONSTRAINT prf_level_pk;
+
+ALTER TABLE prf_menu DROP CONSTRAINT prf_menu_pk;
+
+ALTER TABLE prf_parameter DROP CONSTRAINT prf_parameter_pk;
+
+ALTER TABLE prf_role DROP CONSTRAINT prf_role_pk;
+
+ALTER TABLE prf_state DROP CONSTRAINT prf_state_pk;
+
+ALTER TABLE prf_user DROP CONSTRAINT prf_user_pk;
+
+ALTER TABLE prf_access DROP CONSTRAINT prf_access_uq;
+
+ALTER TABLE prf_application DROP CONSTRAINT prf_application_uq;
+
+ALTER TABLE prf_application DROP CONSTRAINT prf_area_uq;
+
+ALTER TABLE prf_filter DROP CONSTRAINT prf_filter_uq;
+
+ALTER TABLE prf_function DROP CONSTRAINT prf_function_uq;
+
+ALTER TABLE prf_level DROP CONSTRAINT prf_level_uk;
+
+ALTER TABLE prf_menu DROP CONSTRAINT prf_menu_uk;
+
+ALTER TABLE prf_role DROP CONSTRAINT prf_role_uk;
+
+ALTER TABLE prf_state DROP CONSTRAINT prf_stato_uq;
+
+ALTER TABLE prf_utente DROP CONSTRAINT prf_user_uk;
+
+DROP INDEX prf_area_filter_applica_level;
+
+DROP INDEX prf_role_function_uq;
+
+DROP INDEX prf_role_menu_uq;
+
+DROP INDEX prf_user_area_uq;
+
+DROP INDEX prf_user_role_uq;
+
+ALTER TABLE prf_application DROP CONSTRAINT prf_ck_app_profiling_dates;
+
+ALTER TABLE prf_application DROP CONSTRAINT prf_ck_app_jump_profiling;
+
+DROP TRIGGER prf_access_create_ts;
+
+DROP TRIGGER prf_access_modify_ts;
+
+DROP TRIGGER prf_application_trg;
+
+DROP TRIGGER prf_application_create_ts;
+
+DROP TRIGGER prf_application_modify_ts;
+
+DROP TRIGGER prf_area_trg;
+
+DROP TRIGGER prf_area_create_ts;
+
+DROP TRIGGER prf_area_modify_ts;
+
+DROP TRIGGER prf_area_filter_create_ts;
+
+DROP TRIGGER prf_area_filter_modify_ts;
+
+DROP TRIGGER prf_filter_trg;
+
+DROP TRIGGER prf_filter_create_ts;
+
+DROP TRIGGER prf_filter_modify_ts;
+
+DROP TRIGGER prf_function_trg;
+
+DROP TRIGGER prf_function_create_ts;
+
+DROP TRIGGER prf_function_modify_ts;
+
+DROP TRIGGER prf_level_trg;
+
+DROP TRIGGER prf_level_create_ts;
+
+DROP TRIGGER prf_level_modify_ts;
+
+DROP TRIGGER prf_menu_trg;
+
+DROP TRIGGER prf_menu_create_ts;
+
+DROP TRIGGER prf_menu_modify_ts;
+
+DROP TRIGGER prf_parameter_create_ts;
+
+DROP TRIGGER prf_parameter_modify_ts;
+
+DROP TRIGGER prf_role_trg;
+
+DROP TRIGGER prf_role_create_ts;
+
+DROP TRIGGER prf_role_modify_ts;
+
+DROP TRIGGER prf_role_function_create_ts;
+
+DROP TRIGGER prf_role_menu_create_ts;
+
+DROP TRIGGER prf_state_create_ts;
+
+DROP TRIGGER prf_state_modify_ts;
+
+DROP TRIGGER prf_user_trg;
+
+DROP TRIGGER prf_user_create_ts;
+
+DROP TRIGGER prf_user_modify_ts;
+
+DROP TRIGGER prf_user_area_create_ts;
+
+DROP TRIGGER prf_user_role_create_ts;
+
+DROP SEQUENCE prf_application_seq;
+
+DROP SEQUENCE prf_area_seq;
+
+DROP SEQUENCE prf_filter_seq;
+
+DROP SEQUENCE prf_function_seq;
+
+DROP SEQUENCE prf_level_seq;
+
+DROP SEQUENCE prf_menu_seq;
+
+DROP SEQUENCE prf_role_seq;
+
+DROP SEQUENCE prf_user_seq;
+
+DROP VIEW access_access;
+
+DROP VIEW filter;
+
+DROP VIEW function;
+
+DROP VIEW area;
+
+DROP VIEW level_level;
+
+DROP VIEW menu;
+
+DROP VIEW profileaccessor;
+
+DROP VIEW role;
+
+DROP VIEW userprofile;
+
+DROP TABLE prf_access;
+
+DROP TABLE prf_application;
+
+DROP TABLE prf_area;
+
+DROP TABLE prf_area_filter;
+
+DROP TABLE prf_filter;
+
+DROP TABLE prf_function;
+
+DROP TABLE prf_level;
+
+DROP TABLE prf_menu;
+
+DROP TABLE prf_parameter;
+
+DROP TABLE prf_role;
+
+DROP TABLE prf_role_function;
+
+DROP TABLE prf_role_menu;
+
+DROP TABLE prf_state;
+
+DROP TABLE prf_user;
+
+DROP TABLE prf_user_area;
+
+DROP TABLE prf_user_role;
