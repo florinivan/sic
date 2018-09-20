@@ -14,7 +14,7 @@ public interface IProfiler {
 	
 	public List<String> getDomainList(String applicationCode);
 	
-	public UserProfileDto logIn(String applicationCode, String password, String domain);
+	public UserProfileDto logIn(String applicationCode, String password, String domainCodeUsr);
 	
 	public List<LevelDto> getLevelList(String applicationCode);
 	

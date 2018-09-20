@@ -18,7 +18,7 @@ public interface IProfileAccessor {
 	
 	public List<String> getDomainList();
 	
-	public void logIn (String user,String password ,String domainCode);
+	public void logIn (String usernameUsr,String password ,String domainCodeUsr);
 	
 	public List<RoleDto> getRoleList();
 	

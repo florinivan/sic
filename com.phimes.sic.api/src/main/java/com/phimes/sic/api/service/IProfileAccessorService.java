@@ -7,7 +7,9 @@ import com.phimes.sic.api.dto.LevelDto;
 import com.phimes.sic.api.dto.RoleDto;
 
 public interface IProfileAccessorService {
-	public List<String> getDomainList();
+	
+	//Ho modificato tutti i metodi, aggiungendo i parametri in entrata (Mada)
+	public List<String> getDomainCodeList(String usernameUsr);
 	
 	public void logIn (String user,String password ,String domainCode);
 	
@@ -15,7 +17,7 @@ public interface IProfileAccessorService {
 	
 	public List<LevelDto> getLevelList();
 	
-	public List<FilterDto> getFilterlList(String codeLevel);
+	public List<FilterDto> getFilterList();
 	
 	public List<FilterDto> getFilterList (LevelDto levelDto);
 
