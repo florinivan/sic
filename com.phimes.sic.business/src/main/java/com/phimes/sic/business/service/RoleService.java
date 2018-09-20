@@ -7,6 +7,7 @@ import java.util.Set;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Component;
 
 import com.phimes.sic.api.dto.RoleDto;
 import com.phimes.sic.api.service.IRoleService;
@@ -14,6 +15,7 @@ import com.phimes.sic.business.dao.RoleRepository;
 import com.phimes.sic.business.model.Role;
 
 @org.springframework.stereotype.Service
+@Component
 public class RoleService extends Service<Role, Long> implements IRoleService {
 
 	@Autowired

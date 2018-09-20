@@ -38,8 +38,21 @@ public class FilterService extends Service<Filter, Long> implements IFilterServi
 		for (Filter item : filter) {
 			FilterDto dto = modelMapper.map(item, FilterDto.class);
 			retListFl.add(dto);
+
 		}
 		return retListFl;
+	}
+
+	public List<FilterDto> getFilterListDto(String codeAr) {
+		Set<Filter> filter = rep.getFilterList(codeAr);
+
+		List<FilterDto> retListFlByArea = new ArrayList<>();
+
+		for (Filter item : filter) {
+			FilterDto dto = modelMapper.map(item, FilterDto.class);
+			retListFlByArea.add(dto);
+		}
+		return retListFlByArea;
 	}
 
 }
