@@ -36,16 +36,13 @@ import com.phimes.sic.business.model.Level;
 import com.phimes.sic.business.model.Menu;
 import com.phimes.sic.business.model.Role;
 
-
 //for jsr310 java 8 java.time.*
 //@EntityScan(
 //        basePackageClasses = { SpringBootConsoleApplication.class, Jsr310JpaConverters.class }
 //)
 //@SpringBootApplication()
 public class Application {
-	@Autowired IUserService usrSer;
-	public void run(String... args) throws Exception {
-	
+
 	/*
 	 * @Autowired public DataSource dataSource;
 	 * 
@@ -130,28 +127,6 @@ public class Application {
 	 * 
 	 * }
 	 */
-		
-		List<String> listStringDomain; String domTest = new String(); 
-		listStringDomain = usrSer.getDomainCodeList("us_username_test");
-				  
-		for (String x : listStringDomain) {
-			
-		System.out.println(x.toString() + " " + x.toString()); }
-		///////////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		User usrTest = usrSer.getUsername("us_dom_code", "us_username_test");
-		 User userTest = new User(); userTest.getName();
-		  
-		  System.out.println(usrTest.getName() + " " + usrTest.getPassword());
-		
-		
-		
-		
-		System.out.println("Done!");
-		
-		exit(0);
-		
-	}
 
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(Application.class, args);
