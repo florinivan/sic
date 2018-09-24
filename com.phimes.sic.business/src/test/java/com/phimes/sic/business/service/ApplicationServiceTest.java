@@ -35,7 +35,7 @@ public class ApplicationServiceTest {
 		Mockito.when(appRep.findAll()).thenReturn(applist);*/
 		
 		// assert that has field description with value 'acc_description_test'
-		assertThat(applicationService.get(1L)).hasFieldOrPropertyWithValue("description", "acc_description_test");
+		assertThat(applicationService.get(1L)).hasFieldOrPropertyWithValue("description", "app_description_test");
 
 	}
 
