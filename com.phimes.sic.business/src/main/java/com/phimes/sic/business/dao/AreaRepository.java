@@ -11,10 +11,10 @@ import com.phimes.sic.business.model.Area;
 
 @org.springframework.stereotype.Repository
 
-public interface AreaRepository extends CrudRepository<Area, Long> {
+public interface AreaRepository extends CrudRepository<Area, String> {
 	
-	@Query("select usr.areas from  User usr join usr.areas r where usr.idUser = :codeUsr and r.application.code = :codeApp")
-	Set<Area> getAreaList(@Param("codeUsr") Long codeUsr, @Param("codeApp") String codeApp);
+	@Query("select usr.areas from  User usr join usr.areas r where usr.username = :codeUsr and r.application.code = :codeApp")
+	Set<Area> getAreaList(@Param("codeUsr") String username, @Param("codeApp") String codeApp);
 
 
 

@@ -26,8 +26,8 @@ public class AreaService extends Service<Area, Long> implements IAreaService  {
 	//FILTRO PER FILTRARE AreaDto 
 	ModelMapper modelMapper = new ModelMapper();
 	
-	public AreaDto getAreaDto(Long codeUsr, String codeApp, String codeAr) {
-		List<AreaDto> l = getListAreaDto(codeUsr, codeApp);
+	public AreaDto getAreaDto(String username, String codeApp, String codeAr) {
+		List<AreaDto> l = getListAreaDto(username, codeApp);
 		AreaDto arDto=new AreaDto();
 		for(AreaDto areaDto: l) {
 			if(areaDto.getCode()==codeAr)
@@ -37,8 +37,8 @@ public class AreaService extends Service<Area, Long> implements IAreaService  {
 		return arDto;
 	}
 
-	public List<AreaDto> getListAreaDto(Long codeUsr, String codeApp) {
-		Set<Area> areaset = rep.getAreaList(codeUsr, codeApp);
+	public List<AreaDto> getListAreaDto(String username, String codeApp) {
+		Set<Area> areaset = rep.getAreaList(username, codeApp);
 		
 		List<AreaDto> retList = new ArrayList<>();
 		

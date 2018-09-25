@@ -5,10 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.phimes.sic.api.dto.AreaDto;
 import com.phimes.sic.api.dto.FilterDto;
 import com.phimes.sic.api.dto.LevelDto;
 import com.phimes.sic.api.dto.RoleDto;
 import com.phimes.sic.api.dto.UserProfileDto;
+import com.phimes.sic.api.service.IAreaService;
 import com.phimes.sic.api.service.IFilterService;
 import com.phimes.sic.api.service.ILevelService;
 import com.phimes.sic.api.service.IProfileAccessorService;
@@ -39,6 +41,9 @@ public class ProfileAccessorService implements IProfileAccessorService {
 	ILevelService levelService;
 	@Autowired
 	IFilterService filterService;
+	@Autowired
+	IAreaService areaService;
+	
 	
 
 	@Override
@@ -50,6 +55,11 @@ public class ProfileAccessorService implements IProfileAccessorService {
 	@Override
 	public void logIn(String usernameUsr, String password, String domainCodeUsr) {
 		this.userProfileDto=userService.getUsername(domainCodeUsr, usernameUsr);
+		List<RoleDto> listRoleDto = getRoleList();
+		List<AreaDto> listAreaDto = areaService.getListAreaDto(userProfileDto.getUserName(), CODE_APP);
+		userProfileDto.setRole(listRoleDto.get(0));  
+		userProfileDto.setArea(listAreaDto.get(0));
+		
 		// setare anche il primo role e prima area del utente
 		
 	}
@@ -80,8 +90,9 @@ public class ProfileAccessorService implements IProfileAccessorService {
 	@Override
 	//Deve restituire lista di filtri in base al code livello.
 	public List<FilterDto> getFilterList(LevelDto levelDto) {
+		this.filterDtoList = filterService.getFilterListDtoByLevel(levelDto.getCode());
 		
-		return null;
+		return filterDtoList;
 	}
 	
 

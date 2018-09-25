@@ -54,5 +54,17 @@ public class FilterService extends Service<Filter, Long> implements IFilterServi
 		}
 		return retListFlByArea;
 	}
+	
+	
+	public List<FilterDto> getFilterListDtoByLevel(String codeLv) {
+		Set<Filter> filter = rep.getFilterList(codeLv);
 
+		List<FilterDto> retListFlByLevel = new ArrayList<>();
+
+		for (Filter item : filter) {
+			FilterDto dto = modelMapper.map(item, FilterDto.class);
+			retListFlByLevel.add(dto);
+		}
+		return retListFlByLevel;
+	}
 }
