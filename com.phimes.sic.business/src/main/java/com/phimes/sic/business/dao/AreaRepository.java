@@ -13,8 +13,8 @@ import com.phimes.sic.business.model.Area;
 
 public interface AreaRepository extends CrudRepository<Area, String> {
 	
-	@Query("select usr.areas from  User usr join usr.areas r where usr.username = :codeUsr and r.application.code = :codeApp")
-	Set<Area> getAreaList(@Param("codeUsr") String username, @Param("codeApp") String codeApp);
+	@Query("select usr.areas from  User usr join usr.areas r where usr.username = :username and r.application.code = :codeApp")
+	Set<Area> getAreaList(@Param("username") String username, @Param("codeApp") String codeApp);
 
 
 
