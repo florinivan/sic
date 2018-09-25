@@ -45,6 +45,10 @@ public class ProfileAccessorService implements IProfileAccessorService {
 	IAreaService areaService;
 	
 	
+	
+	public UserProfileDto getUserProfileDto() {
+		return this.userProfileDto;
+	}
 
 	@Override
 	public List<String> getDomainCodeList(String usernameUsr) {
@@ -54,13 +58,20 @@ public class ProfileAccessorService implements IProfileAccessorService {
 
 	@Override
 	public void logIn(String usernameUsr, String password, String domainCodeUsr) {
+		// instanziare userProfileDto e setare il username;
 		this.userProfileDto=userService.getUsername(domainCodeUsr, usernameUsr);
-		List<RoleDto> listRoleDto = getRoleList();
-		List<AreaDto> listAreaDto = areaService.getListAreaDto(userProfileDto.getUserName(), CODE_APP);
-		userProfileDto.setRole(listRoleDto.get(0));  
-		userProfileDto.setArea(listAreaDto.get(0));
 		
-		// setare anche il primo role e prima area del utente
+		// setare il primo rolo del utente
+		List<RoleDto> listRoleDto = getRoleList();
+		if(!listRoleDto.isEmpty()) {
+			userProfileDto.setRole(listRoleDto.get(0));  
+		}
+		
+		// setare prima area del utente
+		List<AreaDto> listAreaDto = areaService.getListAreaDto(userProfileDto.getUserName(), CODE_APP);
+		if(!listAreaDto.isEmpty()) {
+			userProfileDto.setArea(listAreaDto.get(0));
+		}
 		
 	}
 
