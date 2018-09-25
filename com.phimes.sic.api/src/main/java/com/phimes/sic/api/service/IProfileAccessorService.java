@@ -5,9 +5,11 @@ import java.util.List;
 import com.phimes.sic.api.dto.FilterDto;
 import com.phimes.sic.api.dto.LevelDto;
 import com.phimes.sic.api.dto.RoleDto;
+import com.phimes.sic.api.dto.UserProfileDto;
 
 public interface IProfileAccessorService {
 	
+	public UserProfileDto getUserProfileDto();
 	//Ho modificato tutti i metodi, aggiungendo i parametri in entrata (Mada)
 	public List<String> getDomainCodeList(String usernameUsr);
 	
