@@ -27,7 +27,7 @@ public class ProfileAccessorService implements IProfileAccessorService {
 	
 	private List<RoleDto> roleDtoList;
 	
-	private List<String> domaninCodeList;
+	private List<String> domainCodeList;
 	
 	private List<LevelDto> levelDtoList;
 	
@@ -52,8 +52,8 @@ public class ProfileAccessorService implements IProfileAccessorService {
 
 	@Override
 	public List<String> getDomainCodeList(String usernameUsr) {
-		this.domaninCodeList=userService.getDomainCodeList(usernameUsr);
-		return domaninCodeList ;
+		this.domainCodeList=userService.getDomainCodeList(usernameUsr);
+		return domainCodeList ;
 	}
 
 	@Override

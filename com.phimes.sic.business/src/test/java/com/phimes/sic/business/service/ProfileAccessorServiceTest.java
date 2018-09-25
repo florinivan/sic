@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.phimes.sic.api.dto.FilterDto;
+import com.phimes.sic.api.dto.LevelDto;
+import com.phimes.sic.api.dto.RoleDto;
 import com.phimes.sic.api.dto.UserProfileDto;
 import com.phimes.sic.api.service.IProfileAccessorService;
 import com.phimes.sic.business.config.AppConfig;
@@ -44,5 +47,34 @@ public class ProfileAccessorServiceTest {
 		// testare che is UserProfileDto e diverso da null
 		assertThat(testDto).isNotNull();
 	}
+	
+	
+	@Test
+	public void test_getRoleList() {
+		List<RoleDto> roleDtoList = profileAccessorService.getRoleList();
+		
+		//testare che roleDtoList non sia una lista vuota
+		assertThat(roleDtoList).isNotEmpty();
+	}
 
+	@Test
+	public void test_getLevelList() {
+		List<LevelDto> levelDtoList = profileAccessorService.getLevelList();
+		
+		//testare che levelDtoList non sia una lista vuota
+		assertThat(levelDtoList).isNotEmpty();
+		}
+	
+	@Test
+	public void test_getFilterList() {
+		List<FilterDto> filterDtoList = profileAccessorService.getFilterList();
+		//testare che filterDtoList non sia una lista vuota
+		assertThat(filterDtoList).isNotEmpty();
+	}
+	
+	
+	@Test
+	public void test2_getFilterList() {
+		
+	}
 }
