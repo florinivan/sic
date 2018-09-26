@@ -29,8 +29,8 @@ public class RoleService extends Service<Role, Long> implements IRoleService {
 
 	ModelMapper modelMapper = new ModelMapper();
 
-	public List<RoleDto> getRoleListDto(String codeApp, String codeUsr, Character idStateRl) {
-		Set<Role> role = rep.getRoleList(codeApp, codeUsr, idStateRl);
+	public List<RoleDto> getRoleListDto(String codeApp, String username, Character idStateRl) {
+		Set<Role> role = rep.getRoleList(codeApp, username, idStateRl);
 		List<RoleDto> dtos = new ArrayList<RoleDto>();
 		for (Role item : role) {
 			RoleDto roleSer = modelMapper.map(item, RoleDto.class);
@@ -41,8 +41,8 @@ public class RoleService extends Service<Role, Long> implements IRoleService {
 
 	}
 
-	public RoleDto getFilterDto(String codeApp, String codeUsr, String codeRl, Character idStateRl) {
-		List<RoleDto> roles = getRoleListDto(codeApp, codeUsr, idStateRl);
+	public RoleDto getFilterDto(String codeApp, String username, String codeRl, Character idStateRl) {
+		List<RoleDto> roles = getRoleListDto(codeApp, username, idStateRl);
 		RoleDto roleSer = null;
 		for (RoleDto roleDto : roles) {
 			if (roleDto.getCode() == codeRl)
