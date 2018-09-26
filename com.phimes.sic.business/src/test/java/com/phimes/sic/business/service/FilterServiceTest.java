@@ -19,7 +19,7 @@ import com.phimes.sic.business.config.AppConfig;
 
 public class FilterServiceTest {
 	@Autowired
-	IFilterService filterService;
+	IFilterService filterService; 
 
 	@Test
 	public void testGetFilterListDto() {
