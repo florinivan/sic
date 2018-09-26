@@ -33,8 +33,8 @@ public class UserService extends Service<User, Long> implements IUserService {
 
 
 
-	public List<String> getDomainCodeList(String usernameUsr) {
-		Set<String> domainCode = rep.getDomainList(usernameUsr);
+	public List<String> getDomainCodeList(String username) {
+		Set<String> domainCode = rep.getDomainList(username);
 		List<String> domCode = new ArrayList<String>();
 		for (String item : domainCode) {
 		domCode.add(item);
@@ -43,10 +43,10 @@ public class UserService extends Service<User, Long> implements IUserService {
 
 	}
 	
-	public UserProfileDto getUsername(String domainCodeUsr, String usernameUsr) {
-		User user= rep.findOne(domainCodeUsr, usernameUsr);
+	public UserProfileDto getUsername(String domainCodeUsr, String username) {
+		User user= rep.findOne(domainCodeUsr, username);
 		UserProfileDto userProfileDto = new UserProfileDto();
-		userProfileDto.setUserName(usernameUsr);
+		userProfileDto.setUserName(username);
 		return userProfileDto;
 	}
 

@@ -10,10 +10,10 @@ import com.phimes.sic.business.model.User;
 
 public interface UserRepository extends CrudRepository<User, Long> {
 
-	@Query("select domainCode from User usr where usr.username = :usernameUsr")
-	Set<String> getDomainList(@Param("usernameUsr") String usernameUsr);
+	@Query("select domainCode from User usr where usr.username = :username")
+	Set<String> getDomainList(@Param("username") String username);
 
-	@Query("select usr from User usr where usr.domainCode = :domainCodeUsr and usr.username = :usernameUsr")
-	User findOne(@Param("domainCodeUsr") String domainCodeUsr, @Param("usernameUsr") String usernameUsr);
+	@Query("select usr from User usr where usr.domainCode = :domainCodeUsr and usr.username = :username")
+	User findOne(@Param("domainCodeUsr") String domainCodeUsr, @Param("username") String username);
 
 }

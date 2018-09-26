@@ -4,11 +4,9 @@ import java.util.List;
 
 import com.phimes.sic.api.dto.UserProfileDto;
 
-
-
 public interface IUserService {
-	public List<String> getDomainCodeList(String usernameUsr);
-	
-	public UserProfileDto getUsername(String domainCodeUsr, String usernameUsr);
+	public List<String> getDomainCodeList(String username);
+
+	public UserProfileDto getUsername(String domainCodeUsr, String username);
 
 }
