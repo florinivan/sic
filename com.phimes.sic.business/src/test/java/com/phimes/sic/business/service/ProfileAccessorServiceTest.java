@@ -75,6 +75,10 @@ public class ProfileAccessorServiceTest {
 	
 	@Test
 	public void test2_getFilterList() {
+		LevelDto levelDto = new LevelDto();
+		levelDto.setCode("lev_code_test");
+		List<FilterDto> filterDtoList= profileAccessorService.getFilterList(levelDto);
+		assertThat(filterDtoList).isNotEmpty();
 		
 	}
 }
