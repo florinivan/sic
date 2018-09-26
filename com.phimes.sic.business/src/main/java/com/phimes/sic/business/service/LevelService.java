@@ -34,7 +34,7 @@ public class LevelService extends Service<Level, Long> implements ILevelService 
 	}
 	
 	//Metodo aggiunto perchè serviva in IProfileAccessorService (Mada)
-	public List<LevelDto> getLevelDtoList(String codeApp){
+	public List<LevelDto> getLevelListDto(String codeApp){
 		Set<Level> level = rep.getLevelListByApp(codeApp);
 		List<LevelDto> levelDtoList = new ArrayList<>();
 		

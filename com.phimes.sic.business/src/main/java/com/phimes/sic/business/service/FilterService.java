@@ -43,8 +43,8 @@ public class FilterService extends Service<Filter, Long> implements IFilterServi
 		return retListFl;
 	}
 
-	public List<FilterDto> getFilterListDto(String codeAr) {
-		Set<Filter> filter = rep.getFilterList(codeAr);
+	public List<FilterDto> getFilterListDto(String codeApp) {
+		Set<Filter> filter = rep.getFilterList(codeApp);
 
 		List<FilterDto> retListFlByArea = new ArrayList<>();
 

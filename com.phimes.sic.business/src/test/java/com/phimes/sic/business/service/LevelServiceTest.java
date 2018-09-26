@@ -10,28 +10,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.phimes.sic.api.service.IService;
+import com.phimes.sic.api.dto.LevelDto;
+import com.phimes.sic.api.service.ILevelService;
 import com.phimes.sic.business.config.AppConfig;
-import com.phimes.sic.business.model.Area;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = { AppConfig.class })
 public class LevelServiceTest {
 	@Autowired
-	IService levelService;
+	ILevelService levelService;
 
 	@Test
-	public void test_findAll() {
-		assertThat(levelService.get(1L)).hasFieldOrPropertyWithValue("code", "lev_code_test");
-		assertThat(levelService.get(1L)).hasFieldOrPropertyWithValue("description", "lev_description_test");
-		assertThat(levelService.get(1L)).hasFieldOrPropertyWithValue("levelOrder", 2);
+	public void testGetLevelDto() {
+		String codeApp = "app_code_test";
+		String codeFl = "fil_code_test";
+
+		LevelDto levelDto = levelService.getLevelDto(codeApp, codeFl);
+
+		assertThat(levelDto).isNotNull();
 	}
 
 	@Test
-	public void test_getAreaList() {
+	public void testGetLevelListDto() {
+		String codeApp = "app_code_test";
 
-		List<Area> getLevelList = levelService.findAll();
-		assertThat(getLevelList).isNotEmpty();
+		List<LevelDto> listLevelDto = levelService.getLevelListDto(codeApp);
+
+		assertThat(listLevelDto).isNotEmpty();
 	}
 
 }

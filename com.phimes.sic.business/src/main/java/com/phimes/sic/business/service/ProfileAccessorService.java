@@ -19,20 +19,20 @@ import com.phimes.sic.api.service.IUserService;
 
 @org.springframework.stereotype.Service
 public class ProfileAccessorService implements IProfileAccessorService {
-	
+
 	private static final Character ACTIVE_STATE = 'A';
 	private static final String CODE_APP = "app_code_test";
-	
+
 	private UserProfileDto userProfileDto;
-	
+
 	private List<RoleDto> roleDtoList;
-	
+
 	private List<String> domainCodeList;
-	
+
 	private List<LevelDto> levelDtoList;
-	
+
 	private List<FilterDto> filterDtoList;
-	
+
 	@Autowired
 	IUserService userService;
 	@Autowired
@@ -43,68 +43,65 @@ public class ProfileAccessorService implements IProfileAccessorService {
 	IFilterService filterService;
 	@Autowired
 	IAreaService areaService;
-	
-	
-	
+
 	public UserProfileDto getUserProfileDto() {
 		return this.userProfileDto;
 	}
 
 	@Override
 	public List<String> getDomainCodeList(String usernameUsr) {
-		this.domainCodeList=userService.getDomainCodeList(usernameUsr);
-		return domainCodeList ;
+		this.domainCodeList = userService.getDomainCodeList(usernameUsr);
+		return domainCodeList;
 	}
 
 	@Override
 	public void logIn(String usernameUsr, String password, String domainCodeUsr) {
 		// instanziare userProfileDto e setare il username;
-		this.userProfileDto=userService.getUsername(domainCodeUsr, usernameUsr);
-		
+		this.userProfileDto = userService.getUsername(domainCodeUsr, usernameUsr);
+
 		// setare il primo rolo del utente
 		List<RoleDto> listRoleDto = getRoleList();
-		if(!listRoleDto.isEmpty()) {
-			userProfileDto.setRole(listRoleDto.get(0));  
+		if (!listRoleDto.isEmpty()) {
+			userProfileDto.setRole(listRoleDto.get(0));
 		}
-		
+
 		// setare prima area del utente
-		List<AreaDto> listAreaDto = areaService.getListAreaDto(userProfileDto.getUserName(), CODE_APP);
-		if(!listAreaDto.isEmpty()) {
+		List<AreaDto> listAreaDto = areaService.getAreaListDto(userProfileDto.getUserName(), CODE_APP);
+		if (!listAreaDto.isEmpty()) {
 			userProfileDto.setArea(listAreaDto.get(0));
 		}
-		
+
 	}
 
 	@Override
 	public List<RoleDto> getRoleList() {
-		//String codeArea= userProfileDto.getArea().getCode();
-		String username= userProfileDto.getUserName();
-		
+		// String codeArea= userProfileDto.getArea().getCode();
+		String username = userProfileDto.getUserName();
+
 		this.roleDtoList = roleService.getRoleListDto(CODE_APP, username, ACTIVE_STATE);
 		return roleDtoList;
 	}
 
 	@Override
 	public List<LevelDto> getLevelList() {
-		//String codeArea=userProfileDto.getArea().getCode();
-		levelDtoList=levelService.getLevelDtoList(CODE_APP);
+		// String codeArea=userProfileDto.getArea().getCode();
+		levelDtoList = levelService.getLevelListDto(CODE_APP);
 		return levelDtoList;
 	}
 
 	@Override
 	public List<FilterDto> getFilterList() {
-		//String codeArea = userProfileDto.getArea().getCode();
-		this.filterDtoList= filterService.getFilterListDto(CODE_APP);
-		return filterDtoList ;
+		// String codeArea = userProfileDto.getArea().getCode();
+		this.filterDtoList = filterService.getFilterListDto(CODE_APP);
+		return filterDtoList;
 	}
 
 	@Override
-	//Deve restituire lista di filtri in base al code livello.
+	// Deve restituire lista di filtri in base al code livello.
 	public List<FilterDto> getFilterList(LevelDto levelDto) {
 		this.filterDtoList = filterService.getFilterListDtoByLevel(levelDto.getCode());
-		
+
 		return filterDtoList;
 	}
-	
 
 }

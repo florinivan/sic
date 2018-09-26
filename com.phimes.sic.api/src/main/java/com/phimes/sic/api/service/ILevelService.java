@@ -8,6 +8,6 @@ public interface ILevelService {
 
 	public LevelDto getLevelDto(String codeApp, String codeFl);
 	
-	public List<LevelDto> getLevelDtoList(String codeAr);
+	public List<LevelDto> getLevelListDto(String codeApp);
 
 }

@@ -10,30 +10,43 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.phimes.sic.api.service.IService;
+import com.phimes.sic.api.dto.FilterDto;
+import com.phimes.sic.api.service.IFilterService;
 import com.phimes.sic.business.config.AppConfig;
-import com.phimes.sic.business.model.Area;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = { AppConfig.class })
 
 public class FilterServiceTest {
 	@Autowired
-	IService filterService;
+	IFilterService filterService;
 
 	@Test
-	public void test_findAll() {
-		assertThat(filterService.get(1L)).hasFieldOrPropertyWithValue("code", "fil_code_test");
-		assertThat(filterService.get(1L)).hasFieldOrPropertyWithValue("description", "fil_description_test");
-		assertThat(filterService.get(1L)).hasFieldOrPropertyWithValue("longDescription", "fil_long_description_test");
+	public void testGetFilterListDto() {
+		String codeAr = "ar_code_test";
+		String codeLv = "lev_code_test";
 
+		List<FilterDto> listFilterDto = filterService.getFilterListDto(codeAr, codeLv);
+
+		assertThat(listFilterDto).isNotEmpty();
 	}
 
 	@Test
-	public void test_getAreaList() {
+	public void test_GetFilterListDto() {
+		String codeApp = "app_code_test";
 
-		List<Area> getFilterList = filterService.findAll();
-		assertThat(getFilterList).isNotEmpty();
+		List<FilterDto> listFilterDto = filterService.getFilterListDto(codeApp);
+
+		assertThat(listFilterDto).isNotEmpty();
+	}
+
+	@Test
+	public void testGetFilterListByLevel() {
+		String codeLv = "lev_code_test";
+
+		List<FilterDto> listFilterDtoByLevel = filterService.getFilterListDtoByLevel(codeLv);
+
+		assertThat(listFilterDtoByLevel).isNotEmpty();
 	}
 
 }
