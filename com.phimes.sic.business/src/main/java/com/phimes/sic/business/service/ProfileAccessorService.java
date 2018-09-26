@@ -92,7 +92,7 @@ public class ProfileAccessorService implements IProfileAccessorService {
 	@Override
 	public List<FilterDto> getFilterList() {
 		// String codeArea = userProfileDto.getArea().getCode();
-		this.filterDtoList = filterService.getFilterListDto(CODE_APP);
+		this.filterDtoList = filterService.getFilterListDtoByCodeApp(CODE_APP);
 		return filterDtoList;
 	}
 

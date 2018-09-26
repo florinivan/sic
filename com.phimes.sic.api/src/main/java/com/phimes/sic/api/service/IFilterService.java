@@ -13,7 +13,7 @@ public interface IFilterService {
 	
 	public List<FilterDto> getFilterListDto(String codeAr, String codeLv);
 
-	public List<FilterDto> getFilterListDto(String codeApp);
+	public List<FilterDto> getFilterListDtoByCodeApp(String codeApp);
 	
 	public List<FilterDto> getFilterListDtoByLevel(String codeLv);
 	

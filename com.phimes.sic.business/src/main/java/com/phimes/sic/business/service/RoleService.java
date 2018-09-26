@@ -41,7 +41,7 @@ public class RoleService extends Service<Role, Long> implements IRoleService {
 
 	}
 
-	public RoleDto getFilterDto(String codeApp, String username, String codeRl, Character idStateRl) {
+	public RoleDto getRoleDto(String codeApp, String username, String codeRl, Character idStateRl) {
 		List<RoleDto> roles = getRoleListDto(codeApp, username, idStateRl);
 		RoleDto roleSer = null;
 		for (RoleDto roleDto : roles) {

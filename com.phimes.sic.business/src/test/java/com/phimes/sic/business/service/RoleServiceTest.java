@@ -38,14 +38,14 @@ public class RoleServiceTest {
 	}
 
 	@Test
-	public void test_getFilterDto() {
+	public void test_getRoleDto() {
 
 		String codeApp = "app_code_test";
 		String username = "us_username_test";
 		String codeRl = "rl_code_test";
 		Character idStateRl = 'c';
 
-		RoleDto roleDto = roleService.getFilterDto(codeApp, username, codeRl, idStateRl);
+		RoleDto roleDto = roleService.getRoleDto(codeApp, username, codeRl, idStateRl);
 
 		assertThat(roleDto).isNotNull();
 

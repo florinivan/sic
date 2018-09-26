@@ -35,7 +35,7 @@ public class FilterServiceTest {
 	public void test_GetFilterListDto() {
 		String codeApp = "app_code_test";
 
-		List<FilterDto> listFilterDto = filterService.getFilterListDto(codeApp);
+		List<FilterDto> listFilterDto = filterService.getFilterListDtoByCodeApp(codeApp);
 
 		assertThat(listFilterDto).isNotEmpty();
 	}

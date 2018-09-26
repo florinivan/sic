@@ -8,6 +8,6 @@ public interface IRoleService {
 
 	public List<RoleDto> getRoleListDto(String codeApp, String username, Character idStateRl);
 
-	public RoleDto getFilterDto(String codeApp, String username, String codeRl, Character idStateRl);
+	public RoleDto getRoleDto(String codeApp, String username, String codeRl, Character idStateRl);
 
 }

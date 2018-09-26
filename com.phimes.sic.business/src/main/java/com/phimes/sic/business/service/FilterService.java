@@ -43,8 +43,8 @@ public class FilterService extends Service<Filter, Long> implements IFilterServi
 		return retListFl;
 	}
 
-	public List<FilterDto> getFilterListDto(String codeApp) {
-		Set<Filter> filter = rep.getFilterList(codeApp);
+	public List<FilterDto> getFilterListDtoByCodeApp(String codeApp) {
+		Set<Filter> filter = rep.getFilterListByCodeApp(codeApp);
 
 		List<FilterDto> retListFlByArea = new ArrayList<>();
 
@@ -57,7 +57,7 @@ public class FilterService extends Service<Filter, Long> implements IFilterServi
 	
 	
 	public List<FilterDto> getFilterListDtoByLevel(String codeLv) {
-		Set<Filter> filter = rep.getFilterList(codeLv);
+		Set<Filter> filter = rep.getFilterListByLevel(codeLv);
 
 		List<FilterDto> retListFlByLevel = new ArrayList<>();
 
