@@ -45,7 +45,7 @@ public class RoleService extends Service<Role, Long> implements IRoleService {
 		List<RoleDto> roles = getRoleListDto(codeApp, username, idStateRl);
 		RoleDto roleSer = null;
 		for (RoleDto roleDto : roles) {
-			if (roleDto.getCode() == codeRl)
+			if (roleDto.getCode().equals(codeRl))
 				roleSer = roleDto;
 
 		}

@@ -51,6 +51,7 @@ public class ProfileAccessorServiceTest {
 	
 	@Test
 	public void test_getRoleList() {
+		profileAccessorService.logIn("us_username_test", "", "us_dom_code");
 		List<RoleDto> roleDtoList = profileAccessorService.getRoleList();
 		
 		//testare che roleDtoList non sia una lista vuota

@@ -20,7 +20,7 @@ import com.phimes.sic.api.service.IUserService;
 @org.springframework.stereotype.Service
 public class ProfileAccessorService implements IProfileAccessorService {
 
-	private static final Character ACTIVE_STATE = 'A';
+	private static final Character ACTIVE_STATE = 'C';
 	private static final String CODE_APP = "app_code_test";
 
 	private UserProfileDto userProfileDto;
