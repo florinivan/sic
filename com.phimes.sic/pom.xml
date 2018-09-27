@@ -27,6 +27,7 @@
 
 		<!-- module -->
 		<com.phimes.sic.api.version>0.0.1</com.phimes.sic.api.version>
+		<com.phimes.sic.api.rst.version>0.0.1</com.phimes.sic.api.rst.version>
 		<com.phimes.sic.business.version>0.0.1</com.phimes.sic.business.version>
 	</properties>
 	
@@ -45,6 +46,12 @@
 				<artifactId>com.phimes.sic.business</artifactId>
 				<version>${com.phimes.sic.business.version}</version>
 			</dependency>
+			
+			<dependency>
+				<groupId>com.phimes.sic</groupId>
+				<artifactId>com.phimes.sic.api.rst</artifactId>
+				<version>${com.phimes.sic.api.rst.version}</version>
+			</dependency>
 
 		</dependencies>
 
@@ -53,5 +60,6 @@
 	<modules>
 		<module>../com.phimes.sic.api</module>
 		<module>../com.phimes.sic.business</module>
+		<module>../com.phimes.sic.api.rst</module>
 	</modules>
 </project>
