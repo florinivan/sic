@@ -18,9 +18,9 @@ import static org.assertj.core.api.BDDAssertions.then;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@TestPropertySource(properties = {"management.port=0"})
+@TestPropertySource(properties = { "management.port=0" })
 public class ProfileAccessorApplicationTests {
-	
+
 	@LocalServerPort
 	private int port;
 
@@ -29,12 +29,12 @@ public class ProfileAccessorApplicationTests {
 
 	@Autowired
 	private TestRestTemplate testRestTemplate;
-	
+
 	@Test
 	public void shouldReturn200WhenSendingRequestToController() throws Exception {
 		@SuppressWarnings("rawtypes")
-		ResponseEntity<Map> entity = this.testRestTemplate.getForEntity(
-				"http://localhost:" + this.port + "/auth/profile/accessor/domains", Map.class);
+		ResponseEntity<Map> entity = this.testRestTemplate
+				.getForEntity("http://localhost:" + this.port + "/auth/profile/accessor/domains", Map.class);
 
 		then(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
 	}
@@ -42,8 +42,8 @@ public class ProfileAccessorApplicationTests {
 	@Test
 	public void shouldReturn200WhenSendingRequestToManagementEndpoint() throws Exception {
 		@SuppressWarnings("rawtypes")
-		ResponseEntity<Map> entity = this.testRestTemplate.getForEntity(
-				"http://localhost:" + this.mgt + "/actuator/info", Map.class);
+		ResponseEntity<Map> entity = this.testRestTemplate
+				.getForEntity("http://localhost:" + this.mgt + "/actuator/info", Map.class);
 
 		then(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
 	}
