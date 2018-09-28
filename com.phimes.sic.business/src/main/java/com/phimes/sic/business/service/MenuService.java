@@ -28,7 +28,7 @@ public class MenuService extends Service<Menu, Long> implements IMenuService {
 	ModelMapper modelMapper = new ModelMapper();
 
 	public List<MenuDto> getMenuDto(String codeRl, String codeApp, Long idSubMenu) {
-		Set<Menu> menu = rep.getAllMenuSubMenu(codeRl, codeApp, idSubMenu);
+		Set<Menu> menu = rep.getMenusAndSubMenu(codeRl, codeApp, idSubMenu);
 		List<MenuDto> retListMn = new ArrayList<>();
 
 		for (Menu item : menu) {

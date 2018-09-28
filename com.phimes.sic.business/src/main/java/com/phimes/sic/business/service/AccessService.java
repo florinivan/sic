@@ -1,6 +1,5 @@
 package com.phimes.sic.business.service;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -17,7 +16,7 @@ import com.phimes.sic.api.dto.AccessDto;
 import com.phimes.sic.business.model.Access;
 
 @org.springframework.stereotype.Component
-public class AccessService extends Service<Access, Character> implements IAccessService{
+public class AccessService extends Service<Access, Character> implements IAccessService {
 
 	@Autowired
 	private AccessRepository rep;
@@ -31,23 +30,10 @@ public class AccessService extends Service<Access, Character> implements IAccess
 
 	public List<AccessDto> getAccessDto(String codeFz) {
 		Set<Access> access = rep.getAccessFunction(codeFz);
-		
+
 		List<AccessDto> retList = new ArrayList<>();
-		/*
-		 * for(Access item:access){
-		 * 
-		 * 		inizio lavoro modelMapper
-		 * 		AccessDto dto = new AccessDto();
-		 * 		dto.setIdAccess(item.getIdAccess());
-		 * 		dto.setDescription(item.getDescription);
-		 * 		fine lavoro modelMapper
-		 * 
-		 * 		retList.add(dto);
-		 * 		
-		 * }
-		 * 
-		 * */
-		for(Access item:access){
+
+		for (Access item : access) {
 			AccessDto dto = modelMapper.map(item, AccessDto.class);
 			retList.add(dto);
 		}
