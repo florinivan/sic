@@ -31,7 +31,7 @@ public class RoleApplicationTest {
 	public void shouldReturn200WhenSendingRequestToController() throws Exception {
 		@SuppressWarnings("rawtypes")
 		ResponseEntity<Map> entity = this.testRestTemplate
-				.getForEntity("http://localhost:" + this.port + "/auth/role/roles", Map.class);
+				.getForEntity("http://localhost:" + this.port + "/auth/Role/roles/role", Map.class);
 
 		then(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
 	}
