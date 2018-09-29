@@ -51,9 +51,10 @@ public class ProfileAccessor {
 	@ResponseBody
 	public List<FilterDto> filterListBy(){
 		return profileAccessorService.getFilterList();
+		//In ProfileAccessorService ci sono due metodi getFilterList, li lasciamo così o uno lo cambiamo?? (Mada)
 	}
 	
-	//Manca ultimo metodo perchè non so come gestire i nomi in @getMapping (Mada)
+	//Manca ultimo metodo perchè non so come gestire i nomi in @getMapping
 	
 
 }

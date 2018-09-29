@@ -31,7 +31,7 @@ public class AreaService extends Service<Area, Long> implements IAreaService {
 		List<AreaDto> l = getAreaListDto(username, codeApp);
 		AreaDto arDto = new AreaDto();
 		for (AreaDto areaDto : l) {
-			if (areaDto.getCode() == codeAr)
+			if (areaDto.getCode().equals(codeAr))
 				arDto = areaDto;
 
 		}
