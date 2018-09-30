@@ -13,7 +13,7 @@ import com.phimes.sic.api.dto.MenuDto;
 import com.phimes.sic.api.service.IMenuService;
 
 @Controller
-@RequestMapping(value = "/auth/Menu")
+@RequestMapping(value = "/auth/menu")
 
 public class Menu {
 

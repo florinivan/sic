@@ -13,7 +13,7 @@ import com.phimes.sic.api.dto.AccessDto;
 import com.phimes.sic.api.service.IAccessService;
 
 @Controller
-@RequestMapping(value = "/auth/Access")
+@RequestMapping(value = "/auth/access")
 
 public class Access {
 

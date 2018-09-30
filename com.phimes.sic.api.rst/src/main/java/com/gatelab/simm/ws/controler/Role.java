@@ -13,7 +13,7 @@ import com.phimes.sic.api.dto.RoleDto;
 import com.phimes.sic.api.service.IRoleService;
 
 @Controller
-@RequestMapping(value = "/auth/Role")
+@RequestMapping(value = "/auth/ole")
 public class Role {
 
 	@Autowired

@@ -13,7 +13,7 @@ import com.phimes.sic.api.dto.FunctionDto;
 import com.phimes.sic.api.service.IFunctionService;
 
 @Controller
-@RequestMapping(value = "/auth/Function")
+@RequestMapping(value = "/auth/function")
 
 public class Function {
 

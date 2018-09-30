@@ -31,7 +31,7 @@ public class FunctionApplicationTest {
 	public void shouldReturn200WhenSendingRequestToController() throws Exception {
 		@SuppressWarnings("rawtypes")
 		ResponseEntity<Map> entity = this.testRestTemplate
-				.getForEntity("http://localhost:" + this.port + "/auth/Function/functions", Map.class);
+				.getForEntity("http://localhost:" + this.port + "/auth/function/functions", Map.class);
 
 		then(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
 	}

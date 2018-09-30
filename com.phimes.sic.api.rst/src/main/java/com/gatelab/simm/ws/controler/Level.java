@@ -12,19 +12,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.phimes.sic.api.dto.LevelDto;
 import com.phimes.sic.api.service.ILevelService;
 
-	
-		@Controller
-		@RequestMapping(value="auth/level")
-		public class Level {
-		
-		@Autowired	
-		private ILevelService levelService;	
-		
-		@GetMapping(value="/level")			//qui /level al sisngolare, in ProfileAccessor /levels
-		@ResponseBody
-		public LevelDto level(@RequestParam(name="codeApp", required=true)String codeApp,
-							  @RequestParam(name="codeFl", required=true)String codeFl) {
-			return levelService.getLevelDto(codeApp, codeFl);
-		}
-		//getLevelListDto è chiamato in ProfileAccessor
+@Controller
+@RequestMapping(value = "auth/level")
+public class Level {
+
+	@Autowired
+	private ILevelService levelService;
+
+	@GetMapping(value = "/level") // qui /level al singolare, in ProfileAccessor /levels
+	@ResponseBody
+	public LevelDto level(@RequestParam(name = "codeApp", required = true) String codeApp,
+			@RequestParam(name = "codeFl", required = true) String codeFl) {
+		return levelService.getLevelDto(codeApp, codeFl);
+	}
+	// getLevelListDto è chiamato in ProfileAccessor
 }
